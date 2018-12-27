@@ -9,18 +9,15 @@ linkedin: http://www.linkedin.com
 email: rnpatel[at]me.com
 location: 42°2'16"N   70°12'47"W
 disqus: memem
+theme: just-the-docs
+remote_theme: pmarsceill/just-the-docs
+# color_scheme: "dark"
 
 ##Make sure to edit the above fields, especially for disqus.
 
-
+search_enabled: true
 highlighter: rouge
-<<<<<<< HEAD
 markdown: kramdown
-=======
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
->>>>>>> 8328c3a18a0a2c7020208355bea13accc9bc2b02
 
 defaults:
   - scope:
