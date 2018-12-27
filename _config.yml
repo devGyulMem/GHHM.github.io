@@ -14,7 +14,13 @@ disqus: memem
 
 
 highlighter: rouge
+<<<<<<< HEAD
 markdown: kramdown
+=======
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
+>>>>>>> 8328c3a18a0a2c7020208355bea13accc9bc2b02
 
 defaults:
   - scope:
