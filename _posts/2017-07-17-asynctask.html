@@ -1,0 +1,51 @@
+---
+layout: post
+title:  "AsyncTask"
+subtitle: "안드로이드 개발 AsyncTask와 Thread"
+date:   2017-07-17 15:04:13
+background: '/img/posts/01.jpg'
+author: Hyemi Kim
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h3>AsyncTask</h3>
+<p>Syntax: AsyncTask &lt;Params, Progress, Result&gt;</p>
+<p>안드로이드에서 제공하는 추상클래스.</p>
+<ul>
+<li>UI Thread를 쉽고 적절하게 사용할 수 있도록 해준다.</li>
+<li>Background  작업을 수행하고 결과값을 별도의 Handler나 Thread 없이 UI Thread 반영할 수 <span style="line-height: 1.5;">있다.</span></li>
+<li>AsyncTask는 Thread나 Handler의 Helper 클래스로 디자인 되었다.</li>
+<li>AsyncTask는 짧은 시간을 소요하는 작업의 최적화 되어 있다.</li>
+<li>만약, 긴 시간을 필요로 하는 작업을 수행해야 한다면 java 1.5 부터 지원하는 java.util,concurrent 패키지의 Executor나 ThreadPoolExecutor, FutherTask 등을 사용하는 것이 좋다.</li>
+<li>AsyncTask는 세 가지의 Generic Type이 필요하며, onPreExecute, doInBackground, onProgressUpdate, onPostExecute의 4가지 단계로 작업을 수행한다</li>
+</ul>
+<p>(참고: 안드로이드에서 화면 갱신할 수 있는 스레드는 단 하나 뿐이고 이것을 Main thread 혹은 UI thread 라고 한다. UI thread가 복잡해질 경우 화면 갱신을 못하고 다른 작업을 수행하면서 ANR오류가 발생할 수 있다. 이 때, 화면 갱신 외의 시간이 걸리는 작업은 별도의 Worker thread를 생성하는 것이 좋다. 예를 들어 네트워크 통신.)</p>
+<p>UI thread는 화면 갱신시 Handler를 통해 요청한다.</p>
+<p>AsyncTask는 작업 중가중간의 화면 변경과 수행 후 해야할 동작에 대해 간단히 구현할 수 있다.</p>
+<p></p>
+<ol>
+<li><span style="line-height: 1.5;">AsyncTask 클래스는 반드시 UI Thread 내에서 로드되어야 한다. 즉, UI Thread가 아닌 다른 Thread 내에서 정의하면 안된다.</span></li>
+<li><span style="line-height: 1.5;">AsyncTask의 인스턴스는 반드시 UI Thread 내에서 생성되어야 한다.</span></li>
+<li><span style="line-height: 1.5;">AsyncTask를 실행하는 execute()는 반드시 UI Thread내에서 호출되어야 한다.</span></li>
+<li>onPreExecute(), doInBackground(), onProgressUpdate(), onPostExecute() 는 직접 호출하면 안된다.</li>
+<li>AsyncTask는 한 번만 호출해야 한다. 중복 호출일 경우 Exception이 발생한다.</li>
+</ol>
+<p><a href="http://blog.naver.com/wow2778/221016693320"><u><span style="color: #0066cc;" color="#0066cc">http://blog.naver.com/wow2778/221016693320</span></u></a></p>
+<p><u> </u></p>
+<h4>execute</h4>
+<div class="autosourcing-stub-extra" style="-ms-zoom: 1; opacity: 1;">
+<pre class="language-java"><code>DownloadFilesTask = new DownloadFilesTask();
+
+task.execute(url1, url2, url3);</code></pre>
+<p style="margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;"><span style="font-size: 10pt;">execute를 통해 작업을 실행시키면 onPreExecute() -&gt; doInBackground() -&gt; onProgressUpdate() -&gt; onPostExecute() 의 순서로 수행한다.</span></p>
+</div>
+<p style="margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;"><span style="font-size: 10pt;"><strong><span style="color: #000000;"><span color="#3d76ab">onPreExecute</span> </span></strong>: 보통 작업 진행 정도를 프로그래스 바로 표현</span></p>
+<p style="margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;"><span style="font-size: 10pt;"><strong>doInBackGround </strong>: 실제로 백그라운드에서 수행하는 작업</span></p>
+<p><span style="font-size: 10pt;"><strong>onProgressUpdate</strong> : doInBackGround 작업 수행 도중에 publishProgress 실행 후에 UI Thread에 의해 호출된다. 작업의 진행정도 표시를 위한 프로그래스 바 업데이트에 사용됨</span></p>
+<p><span style="font-size: 10pt;"><strong>onPostExecute</strong> : doInBackGround 작업 수행 후 UI Thread에 의해 호출됨.</span></p>
+</body>
+</html>

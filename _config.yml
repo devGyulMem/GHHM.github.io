@@ -1,17 +1,17 @@
-title:             Clean Blog
+title:             Mem learning
 email:             zozon1330@gmail.com
-description:       A Blog Theme by Start Bootstrap
-author:            Start Bootstrap
-baseurl:           "/"
+description:       배운 것을 정리하는 공간 입니다.
+author:            Hyemi Kim
 # root 주소 (프로젝트명) ~> baseurl : "GHHM.github.io"
 # netlify ~> baseurl : "/"
-url:               "https://memlearning.netlify.com/"
+baseurl:           "/"
 # 도메일 주소가 바뀌면 바꿔줘야한다. url: "https://ghhm.github.io/"
+url:               "https://memlearning.netlify.com/"
 
 # Social Profiles
-twitter_username:  SBootstrap
-github_username:   BlackrockDigital
-facebook_username: StartBootstrap
+twitter_username:  
+github_username:   GHHM
+facebook_username: 
 
 # Build settings
 markdown:          kramdown
