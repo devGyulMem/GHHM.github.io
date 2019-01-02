@@ -3,8 +3,10 @@ email:             zozon1330@gmail.com
 description:       A Blog Theme by Start Bootstrap
 author:            Start Bootstrap
 baseurl:           "/"
-url:               "https://ghhmcleanblog.netlify.com/"
-# url: "https://ghhm.github.io/"
+# root 주소 (프로젝트명) ~> baseurl : "GHHM.github.io"
+# netlify ~> baseurl : "/"
+url:               "https://memlearning.netlify.com/"
+# 도메일 주소가 바뀌면 바꿔줘야한다. url: "https://ghhm.github.io/"
 
 # Social Profiles
 twitter_username:  SBootstrap
