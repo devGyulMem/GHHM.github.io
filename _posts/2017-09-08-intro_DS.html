@@ -1,0 +1,89 @@
+---
+layout: post
+title:  "분산시스템 소개"
+subtitle: "Distrubuted System"
+date:   2017-09-08 09:09:13
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. 생활에서의 분산 시스템</h2>
+<p>분산 시스템을 실생활에서 찾아 볼 수 있다.</p>
+<p>구글에서 웹서치를 해보자.</p>
+<p></p>
+<p>Step 1. 주소창에 google.com 입력</p>
+<p>Step 2. 서치하려는 키워드를 입력</p>
+<p>Step 3. 검색 결과를 얻음</p>
+<p></p>
+<p>이 간단한 과정에서도 분산 시스템이 사용되고 있다.</p>
+<p></p>
+<p>Step 1. "google.com" 에 해당하는 IP 주소 "66.233.169.103" 서버로 패킷을 전달하기 위해 여러 개의 라우터가 IP routing protocol 을 근거로 패킷의 진로를 결정한다. 이 때 독립된 여러 개의 라우터는 패킷을 목적지까지 전달한다는 공통 목적을 가지고 서로 정보를 공유해 길을 결정하므로 분산 시스템이다.</p>
+<p></p>
+<p>Step 2. 웹 페이지에 접속 한 후 "Distributed System" 이라는 단어를 찾아보자. 검색 결과는 서버 한 군데 있는 것이 아니라 수 십만대의 서버가 나누어 가지고 있기 때문에 분산 시스템이다.</p>
+<p></p>
+<p>Step 3. 검색 결과도 Map &amp; Reduce, Google File System (GFS) 로 나누어져 있다.</p>
+<h2>2. 기술</h2>
+<p>네트워킹, 프로세서, 메모리, 저장 용량, 프로토콜 등의 기술 발달이 있었다.</p>
+<p>분산 시스템이 가능한 두 가지 핵심 기술을 아래와 같다.</p>
+<h3>2-1. Computing power</h3>
+<blockquote>
+<p>Development of powerful micro-processors</p>
+</blockquote>
+<p>Smaller, Cheaper, Power efficient, Faster</p>
+<p>메모리가 작아지고, 싸지고, 성능이 향상되고, 빨라졌다.</p>
+<p>Moore's law라고 트랜지스터 기술이 1년 반 마다 2배 씩 증가한다는 예측이 있었다. (지금은 적용 안된다고 함)</p>
+<h3>2-2. Network speed</h3>
+<blockquote>
+<p>Invention of high-speed computer networks</p>
+</blockquote>
+<p>LAN, Wi-Fi 스피드 향상</p>
+<p><span style="text-decoration: underline;">모든 컴퓨터가 연결되어있고 빠른 속도로 데이터를 주고받을 수 있다.</span></p>
+<p></p>
+<p>예전에는 큰 회사들, 대학에만 인터넷이 있었다.</p>
+<p>네트워크 사이에 게이트웨이가 있었다.</p>
+<p>전화선 접속</p>
+<p>1985년에 1961개의 호스트 존재했다.</p>
+<p></p>
+<p>지금은 인터넷은 거의 하나라고 볼 수 있다.</p>
+<p>2015년 10억 2천만 호스트가 존재한다. (1.012 billion)</p>
+<p>광범위한 접속</p>
+<p>개폐형 LAN, 무선 인터넷 네트워크</p>
+<p></p>
+<ul>
+<li>요약
+<ul>
+<li>1945년도에는 현대 컴퓨터 시대가 시작되었다. 각 컴퓨터는 1만달러 이내였고 독립 실행형 컴퓨터는 소수였다.</li>
+<li>80년대 중반에 들어서서 두 가지 장점으로 분산시스템이 발달하였다.</li>
+</ul>
+</li>
+</ul>
+<p></p>
+<p>결론적으로, 이제는 많은 수의 컴퓨터가 고속의 네트워크로 연결되어 하나의 컴퓨팅 시스템을 이루는 것이 쉬울 뿐만 아니라 실현가능(feasible)해졌다!</p>
+<p>이런 것을 컴퓨터 네트워크 혹은 분산 시스템이라 부른다.</p>
+<p></p>
+<h2>3. 분산 시스템이란?</h2>
+<blockquote>
+<p>분산 시스템이란</p>
+<p>A collection of independent computers that appears to its users as a single coherent system.</p>
+<p>유저에게 하나의 coherent system으로 보이는 독립적인 컴퓨터들의 집합이다.</p>
+</blockquote>
+<p>분산 시스템은 여러 대의 독립된 컴퓨터로 이루어져 있습니다. 메인프레임 데이터 센터에서부터 작게는 센서들까지 범위가 분산시스템이 될 수 있습니다.</p>
+<p></p>
+<p>Q. 어떻게 독립된 컴퓨터가 single system으로 보이나요?</p>
+<p>A. 컴퓨터들은 <span style="text-decoration: underline;">네트워크</span>를 통해 공동작업을 하기 때문입니다.</p>
+<p></p>
+<p>Q. Coherent는 무슨 의미인가요?</p>
+<p>A. 분산 시스템은 <span style="text-decoration: underline;">일관(consistent)되고 균일한(uniform)</span> 방식으로 사용자에게 나타나야 한다는 의미입니다.</p>
+<p>(*coherent는 '균일한, 일정한, 일치한, 일관된' 이라는 뜻이고, 여기서는 하나의 작업을 하는 것 처럼 보인다는 의미이다.)</p>
+<p></p>
+<blockquote>
+<p>A distributed system is a model in which components located on<br />networked computers communicate and coordinate their actions by<br />passing messages. The components interact with each other in order<br />to achieve a common goal.</p>
+<p>-- Wikipedia</p>
+</blockquote>
+<p></p>
+</body>
+</html>

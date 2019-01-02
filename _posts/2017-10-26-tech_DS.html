@@ -1,0 +1,269 @@
+---
+layout: post
+title:  "분산시스템 소개"
+subtitle: "Distrubuted System"
+date:   2017-10-26 11:00:00
+background: '/img/posts/01.jpg'
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. Resource Sharing</h2>
+<p></p>
+<p></p>
+<h2>2. Transparency</h2>
+<p>Access: Hide differences in data representation and how a resource is accessed</p>
+<p>Location: Hide where a resouce is located</p>
+<p>Migration: Hid that a resource may move to another location</p>
+<p>Relocation</p>
+<p>Replication: Hide that a resource is replicated</p>
+<p>Concurrency: Hide that a resource may be shraed by several competitive users</p>
+<p>Failure: Hide the failure an recovery of a resource</p>
+<p></p>
+<p>Degree of Transparency</p>
+<p>결론: 어느 정도만 추구하는 것이 좋다.</p>
+<p>완벽하게 숨기는 것은 performance 측면에서 어렵기 때문</p>
+<p></p>
+<p></p>
+<h2>3. Scalability</h2>
+<p>확장성: 인터넷 환경</p>
+<p></p>
+<p>확장성의 세 가지 요소</p>
+<p>Size scalability(규모 측면): 유저/프로세스의 수</p>
+<p>Geographical scalability(지리적 측면): 노드 사이의 최대 거리</p>
+<p>Administrative scalability(관리적 측면): 관리 도메인의 수</p>
+<p></p>
+<h3>Techniques for Scaling</h3>
+<ul>
+<li>Partition data/computation acroose multiple machines
+<ul>
+<li>Java applets, DNS, WWW</li>
+</ul>
+</li>
+<li>복제와 캐싱 (Replication and caching): 데이터의 복제를 만들어 다른 머신에 저장한다.
+<ul>
+<li>하지만 복제본을 만들 경우 한 복제본이 변경되었을 때 다른 것도 동기화되어야함</li>
+</ul>
+</li>
+</ul>
+<p></p>
+<h4>DNS</h4>
+<p>hierarchically distributed</p>
+<p>Application-layer protocol</p>
+<p></p>
+<h4>Web</h4>
+<p>World Wide Web(WWW)</p>
+<p>하나의 단독 서버에서 가져오는 것이 아니라 많은 서버로부터 가져온다.</p>
+<p></p>
+<p></p>
+<div contenteditable="false">
+<div class="alert wiki-alert-default00" contenteditable="true">
+<p>Parallel computing</p>
+<p>Parallel computing이 시작되면서 높은 성능의 분산 컴퓨팅이 가능해졌다.</p>
+<p></p>
+<table style="width: 100%;">
+<tbody>
+<tr style="height: 29px;">
+<td style="height: 29px;">Multiprocess / multicore</td>
+<td style="height: 29px;">Multicomputer</td>
+</tr>
+<tr style="height: 29.4445px;">
+<td style="height: 29.4445px;">Shared memory</td>
+<td style="height: 29.4445px;">Private memory</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">네트워크를 통해 하나의 메모리를 공유한다.</td>
+<td style="height: 29px;">각각의 개인 메모리를 가짐.</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">SMP (Symmetric Multiprocessor)</td>
+<td style="height: 29px;">Cloud (Distributed Systems)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p></p>
+<h2>4. SMP : Symmetric Multiprocessor</h2>
+<ul>
+<li>multi-core processor에서는 여러 개의 코어가 프로세스를 나누어 담당함.</li>
+<li>프로세서와 캐시를 각자가 가지고 있지만 메모리와 I/O device는 네트워크를 통해 공유함</li>
+</ul>
+<p></p>
+<h3>왜 멀티코어 프로세서인가?</h3>
+<p>Moore's law에 따르면 18-24개월 마다 트랜지스터의 수용량이 두 배가 된다고 하였지만, 실제로 이론상의 효율을 내려면 태양의 온도를 견딜 수 있는 CPU가 필요함. (그런거 없엄!!)</p>
+<p>이것을 해결하게 위해</p>
+<ul>
+<li>Pipelining</li>
+<li>multi-core processor
+<ul>
+<li>SMP, Shared memory</li>
+</ul>
+</li>
+</ul>
+<p>를 이용한다.</p>
+<p></p>
+<p>만일 어떤 x라는 값이 변경되었을 때 그 값이 캐시에만 갱신되고 공유하는 메모리에는 반영되지 않는다면, 또 다른 코어에서 그 x 값에 접근할 때 값이 일치하지 않는(incoherent) 문제가 발생한다.</p>
+<h3>write-through</h3>
+<p>cache의 값이 바뀌었을 때 cache뿐만 아니라 memory에서도 write 해주는 방법.</p>
+<p>단점: 또 다른 core의 cache에 해당 값이 있을 경우 memory incoherent 발생</p>
+<p>예시)</p>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="width: 11%;">Time step</td>
+<td style="width: 23.5077%;">Event</td>
+<td style="width: 23.4923%;">Core A's cache</td>
+<td style="width: 20%;">Core B's cache</td>
+<td style="width: 20%;">Memory</td>
+</tr>
+<tr>
+<td style="width: 11%;">0</td>
+<td style="width: 23.5077%;"></td>
+<td style="width: 23.4923%;"></td>
+<td style="width: 20%;"></td>
+<td style="width: 20%;">3</td>
+</tr>
+<tr>
+<td style="width: 11%;">1</td>
+<td style="width: 23.5077%;">Core A read X</td>
+<td style="width: 23.4923%;">3</td>
+<td style="width: 20%;"></td>
+<td style="width: 20%;">3</td>
+</tr>
+<tr>
+<td style="width: 11%;">2</td>
+<td style="width: 23.5077%;">Core B read X</td>
+<td style="width: 23.4923%;">3</td>
+<td style="width: 20%;">3</td>
+<td style="width: 20%;">3</td>
+</tr>
+<tr>
+<td style="width: 11%;">3</td>
+<td style="width: 23.5077%;">Core A write 0 to X</td>
+<td style="width: 23.4923%;">0</td>
+<td style="width: 20%;">3</td>
+<td style="width: 20%;">0</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h3>Snoopy cache (Bus sniffing)</h3>
+<p>거의 모든 bus-based 구조에서 snoopy cache를 사용한다.</p>
+<p>값을 write 할 때 <span style="text-decoration: underline;"><strong>invalidate message</strong></span>를 bus를 통해 모든 캐시/메모리에 전송한다(broadcast). 만일 다른 캐시/메모리에 그 값이 있으면 지운다. 또 다른 캐시가 그 값을 읽으려고 할 때는 cache miss가 발생한다.</p>
+<p>예시)</p>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>CPU activity</td>
+<td>Bus activity</td>
+<td>Core A's cache</td>
+<td>Core B's cache</td>
+<td>Memory</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>Core A reads X</td>
+<td>Cache miss for X</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>
+<p>Core B read X</p>
+</td>
+<td>Cache miss for X</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Core A writes 1 to X</td>
+<td>Invalidate for X</td>
+<td>1</td>
+<td>(deleted)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Core B read X</td>
+<td>Cache miss for X</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h3>Problem</h3>
+<p><strong>Bus-based mulitcomputer</strong></p>
+<ul>
+<li>메모리를 공유 문제
+<ul>
+<li>memory coherence problem</li>
+<li>트래픽 증가</li>
+</ul>
+</li>
+<li>기존의 문제점을 극복해보자.<br />
+<ul>
+<li>통신에는 버스(bus) 가 필요하다.</li>
+<li>메모리 접근보다 트래픽이 낮으면 좋겠다.</li>
+<li>물리적인 버스 보다는 LAN(local area network)를 사용해보자.</li>
+<li>멀티 코어만 가지고 안된다면 컴퓨터를 여러 대로 늘려서 한계를 극복하자.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Switched multicomputer on LAN</strong></p>
+<ul>
+<li>네트워크 상에서 send/receive message를 통해 프로세서 사이에서 메세지를 주고받자.</li>
+<li>즉 각각의 컴퓨터는 독립적인 프로세서, 캐시, 메모리 가지며 이들 사이의 통신은 네트워크를 이용한다.</li>
+</ul>
+<p></p>
+<h2>5. Distributed Systems </h2>
+<ul>
+<li><strong>Cloud data center</strong>
+<ul>
+<li>구글, 페이스북, 아마존...</li>
+</ul>
+</li>
+<li><strong>Cluster Computing</strong>: 10000개 이상의 저렴한 기계를 사용해 큰 문제를 해결한다</li>
+<li><strong>Devide and Conquer - Map &amp; Reduce</strong></li>
+<li><strong>Distributed File System - Hadoop File System (HDFS)</strong></li>
+</ul>
+<h3>Distributed Computing</h3>
+<p>Distributed Computing system</p>
+<p>높은 컴퓨팅 성능을 위해 사용된다</p>
+<p>슈퍼 컴퓨터 -&gt; 클러스터 컴퓨팅 시스템, Grid 컴퓨팅 시스템</p>
+<p></p>
+<p>지금은 하나의 문제를 여러 개의 서브 문제로 만들고 각각의 컴퓨터가 해결한다. (Devide and Conquer)</p>
+<p></p>
+<p>큰 하나의 문제/데이터를 해결하는 것은 많은 작은 문제/데이터를 해결하는 것과 같다.</p>
+<p></p>
+<h3>기타</h3>
+<p>Distributed Home systems (networks) : 개인 디바이스, 엔터테인먼트, 핸드폰, Network attached storage(NAS) 는 게이트 웨이를 거친다. 이때, self-configuring, sharing policy 가 이슈임.</p>
+<p><span>Distributed Electronic Health Care Systems</span></p>
+<p><span>Internet of Things (IoT)</span></p>
+<p><span>Connected Cars-&gt;Automated Vehicles</span></p>
+<p><span></span></p>
+<h2><span>요약</span></h2>
+<div contenteditable="false">
+<div class="alert wiki-alert-default00" contenteditable="true">
+<p>1. 분산 시스템은 자율적인(autonomous) 여러 대의 컴퓨터로 이루져있고 그 컴퓨터들이 같이 일하면서 하나의 시스템으로 보이는 것이다. (single coherent system)</p>
+<p>2. 특징: Sharing, Transparend, Scalable</p>
+<p>3. Parallel Computing: SMP, Cloud</p>
+<p>4. 분산시스템의 다른 종류: Home network, Healthcare systems, IoT, Automated Cars..</p>
+</div>
+</div>
+<p></p>
+</body>
+</html>
