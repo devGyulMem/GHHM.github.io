@@ -1,32 +1,19 @@
-name: Mem Learning
-author: memem
-baseurl: /learning
-description: theme for jekyll
-github: http://www.github.com/GHHM
-twitter: http://www.twitter.com/
-facebook: http://www.facebook.com
-linkedin: http://www.linkedin.com
-email: rnpatel[at]me.com
-location: 42°2'16"N   70°12'47"W
-disqus: memem
-# theme: just-the-docs
-remote_theme: pmarsceill/just-the-docs
-# color_scheme: "dark"
+title:             Clean Blog
+email:             your-email@example.com
+description:       A Blog Theme by Start Bootstrap
+author:            Start Bootstrap
+baseurl:           "/startbootstrap-clean-blog-jekyll"
+url:               "http://blackrockdigital.github.io"
 
-##Make sure to edit the above fields, especially for disqus.
+# Social Profiles
+twitter_username:  SBootstrap
+github_username:   BlackrockDigital
+facebook_username: StartBootstrap
 
-search_enabled: true
-highlighter: rouge
-markdown: kramdown
-
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
+# Build settings
+markdown:          kramdown
+paginate:          5
+paginate_path:     "/posts/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
