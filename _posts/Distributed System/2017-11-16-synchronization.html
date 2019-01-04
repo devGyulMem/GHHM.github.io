@@ -1,0 +1,296 @@
+---
+layout: post
+title:  "동기화"
+subtitle: "Synchronization"
+date:   2017-11-16 13:16:00
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p>Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&gt;=A)</p>
+<p></p>
+<p>그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까?</p>
+</div>
+</div>
+<h2><br />1. Clock Synchronization</h2>
+<h3>1-1. Physical Clocks</h3>
+<p>Timer: 높은 진동수의 진동자 (quartz crystal)</p>
+<p>하나의 컴퓨터라면 각각의 프로세스는 같은 클락을 사용하기에 문제가 되지 않는다.</p>
+<p>하지만 네트워크 상에서는 클락이 다를것이기 때문에 시간의 오차(clock skew)가 존재한다. 클락은 아주 미세하지만 다른 속도(rate)로 왕복운동(oscillate)한다.</p>
+<p></p>
+<p>이 때 두 가지 문제가 있는데,</p>
+<p>1. 서로 어떻게 동기화 할 것인가?</p>
+<p>2. 다수의 클락과 실제 시간을 어떻게 동기화 할 것인가?</p>
+<p></p>
+<p>간단히 실제 시간을 알고 싶을 때</p>
+<p>Universal Coordinated Time (UTC): 인공 위성은 각자의 원자 시계를 가지고 있다. UTC는 GPS 위성과 동기화되어 시간을 방송한다.</p>
+<p></p>
+<h3>1-2. GPS</h3>
+<p>Global Positioning System</p>
+<p>인공 위성 기반 분산 시스템</p>
+<p>31개의 인공 위성은 대략 20,000km 높이의 궤도를 돌고있다.</p>
+<p>각각의 인공위성은 3개의 원자 시계를 가지고 있다.(매우 정확함)</p>
+<p>메시지를 지속적으로 방송한다</p>
+<ul>
+<li>위치(position)</li>
+<li>타임 스탬프</li>
+</ul>
+<p></p>
+<h4>Time-of-Arribal (ToA)</h4>
+<p><strong>인공 위성으로부터 GPS receiver까지의 거리는 어떻게 구할까?</strong></p>
+<p style="padding-left: 30px;">신호를 보냈을 때 시간과 받았을 때 시간차를 이용해 거리를 구할 수 있다.</p>
+<ul>
+<li>신호의 속도 c: 빛의 속도 (3x10^8m/s)</li>
+<li>인공 위성에서의 타임 스탬프: Ti</li>
+<li>GPS receiver 에서 받았을 때 타임 스탬프: Tnow</li>
+<li>인공위성 i 에서부터 여기까지의 거리
+<ul>
+<li>di=c * (Tnow-Ti)</li>
+</ul>
+</li>
+</ul>
+<h4>Trilatertation</h4>
+<p>3개의 인공위치의 위치를 알고 타임스탬프를 안다면 우리의 실제 위치를 구할 수 있다.</p>
+<ul>
+<li>문제점: 모든 시계가 정확하고 동기화되어 있다는 가정이 필요하다.
+<ul>
+<li>receiver의 시계는 보통 위성과 동기화 되어있지 않다.</li>
+<li>신호가 receiver에 도달하는데 시간이 걸린다.</li>
+<li>해결방법: Unsynchronized clock at receiver</li>
+</ul>
+</li>
+</ul>
+<h4>Unsynchronized clock at receiver</h4>
+<p><strong>Δdelay i= ( Tnow + Δr ) − Ti= ( Tnow − Ti) + Δr</strong></p>
+<p><span>Δr: receiver의 clock skew (아직 모름)</span></p>
+<p><span>Ti: 인공위성 i에서의 타임 스탬프</span></p>
+<p><span>c * Δdelay i (정확한 거리) = c( Tnow − Ti) + cΔr (clock skew로 인해 잘못 구한 거리)</span></p>
+<p><span>c: 빛의 속도</span></p>
+<p><span>즉, 정확한 위치를 구하기 위해서는 오차를 빼줘야한다.</span></p>
+<p><span></span></p>
+<p><span>di=c Δdelay Δdelay i− c Δr =  <span class="AM" title="sqrt(a)">`sqrt(a)`</span>  (a: (xi−xr)2+(yi−yr)2)</span></p>
+<p>이 때 , xr, yr은 receiver의 2D 좌표이다. (아직 모름)</p>
+<p></p>
+<p>3개의 인공위성: Trilateration을 이용해 pinpoint (x,y)를 특정하여 receiver의 정확한 시각을 구할 수 있다.</p>
+<p>4개의 인공위성: clock skew를 구하기 위한 식을 하나 더 가져올 수 잇다.</p>
+<h3>1-3. Clock Synchronization Algorithms</h3>
+<p>지상에 있는 서버가 정확한 시간을 알려줘 동기화 하는 방식</p>
+<h4>NTP(Network Time Protocol)</h4>
+<p>timer server로 부터 클라이언트가 현재 시간을 가져온다.</p>
+<ul>
+<li>Timer server는 원자 시계 등을 통해 정확한 시계를 가지고 있다.</li>
+<li>문제점: propogation delay (서버에서 클라이언트로 전송될 때 걸리는 시간)</li>
+<li>클라이언트가 아는 정보: 요청 send(T1)/receive(T2), 응답 <span>요청 send(T3)/receive(T4)</span></li>
+</ul>
+<p></p>
+<p>A 라는 시계가 B 시계보다 θ만큼 느릴때  CB(t) = CA(t) + θ 가 성립하며 양 측을 오가는 propogation delay는 동일하다.</p>
+<p><strong>T2 – (T 1+ θ) = (T 4+ θ) -T3</strong></p>
+<p>따라서 clock skew θ = [(T 2-T1) + (T 3– T4)]/2</p>
+<p><span style="text-decoration: line-through;">Review Question 추가 필요</span></p>
+<h2>2. Logical Clocks</h2>
+<p>Lamport's Logical Clocks</p>
+<p>Happen-Before (HB) Relation</p>
+<p><span style="text-decoration: line-through;">내용 추가 필요</span></p>
+<h2>3. Distributed Mutual Exclusion</h2>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p>~OS 복습~ Centralized System</p>
+<p><strong>Mutual Exclusion</strong></p>
+<p>동시에 실행되는 프로그램에서 critical section(CS)은 하나 이상의 스레드가 실행되면서 공유된 리소스에 접근할 때 동시에 접근하지 못하게 하는 코드이다. 공유된 리소스는 하나의 스레드만 사용할 수 있게 한다.</p>
+<p><strong>Mutual exclusion (ME, mutex) algorithm</strong> 은 global 변수, critical section에 포함되는 코드 조각 같은 공통된 리소스에 동시 다발적인 접근을 박는다.</p>
+</div>
+</div>
+<p>Distributed Mutual Exclusion</p>
+<p></p>
+<h3>3-1. Centralized Algorithm</h3>
+<p>Coordinator가 각각의 프로세서 시스템에게 뭘 해야할지 지시함. (coordinator는 election algorithm으로 결정)</p>
+<p></p>
+<p>Step1: 프로세스1이 coordinator에게 공유된 리소스에 접근할 수 있을지 허락을 구한다. queue가 비었기 때문에 승인된다.</p>
+<p>Step2: 프로세스2가 같은 리소스에 접근할 수 있는지 물어본다. coordinator는 답(reply)를 보내지 않음. (다른 방법으로는 사용하지 못한다(no)는 답을 보낼 수 있다. 이 경우, 기다리라는 건지 single point failure인지 구분하여 해결할 수 있음.)</p>
+<p>Step3: 프로세스1이 리소스를 다 쓰고 해제하면 coordinator에게 말해주고, 이 때 프로세스2는 써도 된다는 답을 받게 된다.</p>
+<p></p>
+<ul>
+<li>장점: ME(mutual exclusion) 보장, 공평하다 (no starvation), 구현이 쉽다.</li>
+<li>단점: single-point failure(coordinator가 죽어버린 경우, permission이 거절될 경우),  coordinator의 퍼포먼스가 병목(bottleneck)될 수 있다. </li>
+<li>ME entry/exit 당 메시지 수 : 3 (request/OK/release)</li>
+<li>entry이전의 딜레이: 2 (request/OK)</li>
+</ul>
+<p></p>
+<h3>3-2. Token Ring</h3>
+<p><img src="/api/File/Real/5a0d4ba1bf9a757778a897e5" /></p>
+<ol>
+<li>링이 만들어지면 프로세스0에게 토큰을 준다.</li>
+<li>토큰은 point-to-point 메시지를 통해 링을 돌게된다.</li>
+<li>프로세스가 CS(critical section)에 입장하고 싶다면 토큰을 가질 때 까지 기다린다. 사용할 땐 토큰을 가지고 있다가 다 썼으면 토큰을 패스한다.</li>
+</ol>
+<ul>
+<li>Mutual Exclusion? 지켜진다.</li>
+<li>Starvation? 발생하지 않는다. 언젠가 토큰을 가질 수 있게되는 구조이기 때문</li>
+<li>Lost tocken? 여기서 토큰이란, 특수한 토큰인데 전달 과정에서 잃어버리게 된다면 어떤 프로세스가 토큰을 새로 생성해야한다는 문제가 발생한다.</li>
+</ul>
+<p></p>
+<p>Token-based</p>
+<p>Token: 프로세스 사이를 넘나드는 특수한 메시지</p>
+<p>하나의 토큰만 이용할 수 있다.</p>
+<p>토큰을 가진 프로세스만이 공유된 리소스에 접근 가능하다.</p>
+<p>장점: starvation, deadlocks 발생하지 않음</p>
+<p>단점: 토큰을 잃어버리게 되면 새로 토큰을 생성해야 한다.</p>
+<p></p>
+<p>ME entry/exit 당 메시지 수: 1 에서 무한대 (예시의 경우 최대 8)</p>
+<p>entry 딜레이: 0(마침 내가 들고 있을 때) 에서 n-1(방금 전에 지나갔을 때)</p>
+<p>평균 딜레이: (n-1)/2</p>
+<h3>3-3. Distributed Algorithm</h3>
+<p><img src="/api/File/Real/5a0d549fbf9a757778a89816" /></p>
+<p></p>
+<p>모든 프로세스가 다 coordinator라고 할 수 있다. 모든 프로세스가 허락 해줘야 사용할 수 있음.</p>
+<p></p>
+<ol>
+<li>프로세스가 리소스를 사용하길 원할 때, <span style="text-decoration: underline;">리소스의 이름, 해당 프로세스의 넘버, 현재 logical time</span>를 쓴 메시지를 만든다.</li>
+<li>모든 프로세스에게 메시지를 보내고 모든 프로세스로부터 OK 메시지를 받을 때 까지 기다린다.</li>
+<li>각 프로세스가 메시지를 받았을 때:
+<ol style="list-style-type: lower-alpha;">
+<li>receiver 프로세스가 리소스에 접근하지도 않고, 접근하려고 시도하지도 않을 때 OK 메시지를 sender 프로세스에게 보낸다. "너 그 리소스 써도된다!"</li>
+<li>receiver 프로세스가 리소스를 이미 가지고 있을 때, 답(reply)를 보내지 않는다. 그 대신, 그 프로세스의 큐에 리퀘스트를 쌓는다. "지금 쓰고 있기 때문에, 일이 다 끝나면 OK 라고 알려줄게!"</li>
+<li>receiver 프로세스도 해당 리소스를 사용하고 싶지만 아직 사용하고있지 않을 경우, 메시지에 적힌 타임스탬프를 비교해서 더 빨리 온 것(수가 적은 쪽)을 보낸다. (타임스탬프는 logical time이라 정확하진 않지만 사용에 무리없다.)</li>
+</ol>
+</li>
+<li>허락을 얻기 위한 요청 메시지를 보낸 후에는 모든 프로세스로부터 허락(OK 메시지)받을 때 까지 기다린다. 허락을 받은 후에는 리소스를 사용하고 다 사용하고 난 후에는 OK 메시지를 큐에 있는 모든 프로세스에게 보낸다. </li>
+</ol>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>Centralized Algorithm</td>
+<td>Distributed Algorithm</td>
+</tr>
+<tr>
+<td>Single point of failure</td>
+<td>
+<p>n points of failure : n개 중에서 아무나 하나가 문제가 생기면 동작을 안한다.(;;)</p>
+<ul>
+<li>n개의 노드 중 하나만 크래쉬가 나도 ok message를 보내지 못하고 모든 리소스가 block된다.</li>
+</ul>
+<p>centralized algorithm에 비해 최소 n 배의 메시지가 필요하다.(계속 실패할 경우)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>ME entry/exit 당 메시지 수: 2(n-1)</p>
+<p>entry 딜레이: 2(n-1)</p>
+<p></p>
+<h3>3-4. Decentralized(Voting) Algorithm</h3>
+<p><img src="/api/File/Real/5a0d5711bf9a757778a89829" /></p>
+<ol>
+<li>각각의 리소스는 n개의 coordinator를 갖는다.</li>
+<li>클라이언트는 n개의 coordinator에게 리퀘스트를 보내 허락을 구한다.
+<ol style="list-style-type: lower-alpha;">
+<li>만일 m(&gt;n/2)개의 coordinator로부터 승인(grant)으로 받으면 리소스를 얻을 수 있다.</li>
+<li>과반수 이하일 경우 승인은 거절(deny)된다. (쓰고 싶으면 또 요청해야함)</li>
+</ol>
+</li>
+<li>Voting algorithm
+<ol style="list-style-type: lower-alpha;">
+<li>클라이언트는 n개의 리퀘스트를 보내고 n개의 응답을 받는다. (승인 혹은 거절)</li>
+<li>클라이언트는 리소스를 다 사용하고 나서 n 개의 release 메시지를 보낸다.</li>
+</ol>
+</li>
+</ol>
+<p></p>
+<p>Reliability: coordinator가 fail 되어도 상관없이 다른 coordinator가 아직 동작하고 있기 때문에 역할을 대신해줄 수 있다.</p>
+<p></p>
+<p>단점: 많은 노드가 같은 리소스에 접근하려할 때, 어떤 노드도 허락을 얻지 못할 수 있다. (이 경우, 2N 개의 메시지가 낭비된다.), 그러면 노드들이 계속 리소스를 얻지 못하므로 starvation이 발생함.</p>
+<p></p>
+<h3>3-5. Comparision of four ME algorithms</h3>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Algorithm</strong></td>
+<td style="text-align: center;"><strong>Total message per ME entry/exit</strong></td>
+<td style="text-align: center;"><strong>Delay before entry (in message times)</strong></td>
+<td style="text-align: center;"><strong>Problems</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Centralized</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Coordinator crash (single-point failure)</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Decentralized</p>
+<p>(m coordinators, k failures)</p>
+</td>
+<td style="text-align: center;">2mk(failure)+m(permission)</td>
+<td style="text-align: center;">2mk</td>
+<td style="text-align: center;">Starvation</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Distributed</p>
+<p>(N nodes)</p>
+</td>
+<td style="text-align: center;">2(N-1)</td>
+<td style="text-align: center;">2(N-1)</td>
+<td style="text-align: center;">N points of failure</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Token Ring</p>
+<p>(N nodes)</p>
+</td>
+<td style="text-align: center;">1 to infinite</td>
+<td style="text-align: center;">0 to N-1</td>
+<td style="text-align: center;">Lost token, process crash</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h2>4. Election Algorithms</h2>
+<h3>4-1. The Bully Algorithm</h3>
+<p>프로세스 중에서 coordinator를 선정하는 방법</p>
+<ol>
+<li>미리 정해진 순서 (initial state)</li>
+<li>현재 coordinator가 fail 일때 등</li>
+</ol>
+<p>참고: 많은 시스템에서 coordinator는 수기로 정해진다.(서버 파일) 이 경우 centalied solution(single point of failure의 솔루션) 이 될 수 있다.</p>
+<p></p>
+<p>각각의 프로세스는 우선순위(weight)가 있다. 높은 우선순위를 가진 프로세스가 coordinator로 선출된다.</p>
+<p>어떻게 우선순위 높은 프로세스를 찾을 수 있을까?</p>
+<p>어떤 프로세스 k 가 coordinator가 제 역할을 못한다고 판단하면, election message를 다른 프로세스들에게 보낸다.</p>
+<p></p>
+<h4>Election by Bullying</h4>
+<p>Bully: 큰 놈만 맨날 이겨서...</p>
+<ol>
+<li>Pk : ELECTION 메시지 전송. 이 때, k 보다 높은 우선 순위를 가진 프로세스에게 보낸다. (Pk+1, Pk+2, ... , Pn-1)</li>
+<li>아무에게도 응답에 오지 않으면, Pk의 우선순위가 가장 높다는 말이기 때문에 coordinator가 된다. (더 높은 우선순위의 프로세스는 크래쉬 등의 이유로 될 수 없나보다.)</li>
+<li>응답이 온다면 Pk의 일은 끝난다.</li>
+</ol>
+<p></p>
+<p><img src="/api/File/Real/5a0d5c52bf9a757778a89845" /></p>
+<p>(a) 프로세스4는 7번에 문제가 생겼음을 발견하고 ELECTION 메시지를 보낸다. 4보다 우선순위가 높은 5,6,7에게 전송</p>
+<p>(b) 프로세스5와 프로세스6는 프로세스4에게 OK 메시지를 보낸다. "넌 안해도 된다!" 이 때, 프로세스 7은 크래쉬되었기 때문에 OK 메시지를 보낼 수 없다.</p>
+<p></p>
+<p><img src="/api/File/Real/5a0d5e33bf9a757778a89852" /></p>
+<p>프로세스5는 프로세스6,7에게 ELECTION 메시지를 보내 프로세스6에게 응답을 받음.</p>
+<p>프로세스6은 프로세스7에게 ELECTION 메시지를 보내지면 응답 받지 못하므로 coordinator가 된다.</p>
+<p></p>
+<p>(c) coordinator가 선출 된 후 Coordinator 메시지를 다른 프로세스에게 보낸다. (?? 이 경우 브로드캐스트 아니면 우선순위가 낮은 노드에게만?)</p>
+<p></p>
+<ul>
+<li>정리</li>
+</ul>
+<ol>
+<li>heavy 프로세스가 lighter 프로세스에게 election 메시지를 받으면 Ok 메시지를 보낸다.( lighter는 race에서 제외됨)</li>
+<li>프로세스가 Ok 메시지를 받지 못하면 coordinator가 되고 다른 프로세스에게 coordinator 메시지를 보낸다.</li>
+</ol>
+<p></p>
+<p></p>
+<p><span style="text-decoration: line-through;">Review Question 있음</span></p>
+</body>
+</html>

@@ -1,0 +1,169 @@
+---
+layout: post
+title:  "4. 분산 저장 시스템"
+subtitle: "Storage Architecture"
+date:   2017-09-25 09:16:00
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. Distributed Storage</h2>
+<h3>1-1. RAID systems</h3>
+<p>RAID: Redundant Array of Independent Disks</p>
+<p>하드디스크를 여러 개 배치해 사용함으로 신뢰성(reliability)를 높인다.</p>
+<p></p>
+<p>RAID는 신뢰성(reliability)과 성능 향상(performance)를 높이기 위해 사용된다.</p>
+<p></p>
+<ul>
+<li><strong>신뢰성을 향상시키기 위해 중복(redundancy)!</strong></li>
+</ul>
+<p style="padding-left: 30px;">Mirroring: 두 개의 물리적 디스크로 구성되어진 하나의 개념적 디스크인데, 모든 write 작업은 두 개의 디스크에 각각 전달된다.</p>
+<p style="padding-left: 30px;">Mean time to failure(MTTF): disk failure가 발생할 때 까지 걸리는 시간을 말한다.</p>
+<p style="padding-left: 30px;">싱글 디스크일 때 100,000 시간 이라면 두 개의 디스크를 사용 할 때는 두 개의 디스크 모두에 failure 가 일어나야 하므로 100,000^2 /(2*10) 시간임.</p>
+<p></p>
+<ul>
+<li><strong>성능을 향상시키기 위해 평행성(parallelism)!</strong></li>
+</ul>
+<p style="padding-left: 30px;">Mirrroing 사용 시 : 단위 시간 당 읽기 횟수가 두 배로 증가. 즉, 같은 시간이 주어진다면 더 많은 읽기가 가능하다.</p>
+<p style="padding-left: 30px;">Data Striping: 블락 단위의 파일이 복수의 디스크에 순서대로(stripe) 로 저장되어 있다. n 개의 디스크와 i번째 파일 블락은 (i mod n)+1 의 디스크에 위치하게 된다.</p>
+<p style="padding-left: 30px;">모든 디스크가 모든 액세스, read/write할 때 참여하게 된다. 싱글 디스크가 한 번 read/write 하는 시간 동안 각각의 디스크가 read/write 할 수 있다! </p>
+<p></p>
+<h4>RAID 0</h4>
+<p>file을 block 단위로 쪼개서 parity 혹은 striping한다.</p>
+<p>mirroring 없음.</p>
+<p>read/write 효율: nX (n: 디스크의 수)</p>
+<p>디스크의 데이터 접근은 속도가 다른 장치에 비해 현저히 느리기 때문에 성능에 있어 병목(bottle neck)현상이 발생한다.</p>
+<p>만일 같은 시간이 주어진다면 디스크가 많을 수록 read/write를 더 많이 할 수 있다.</p>
+<p>Space efficiency = 1 (디스크 하나와 같음!)</p>
+<p>No data redundancy: 이 뜻은 protection을 제공하지 않음. error 나 failure이 떠도 방도가 없다.</p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/59bacebb0c2ecfb10fb2e983" /></p>
+<h4>RAID 1</h4>
+<p>mirroring 있음</p>
+<p>parity 혹은 striping 없음.</p>
+<p>read 효율 : nX</p>
+<p>write 효율 : X</p>
+<p>Error/Failure 지원 (n-1개 까지 에러가 허용된다.)</p>
+<p>Space efficiency = 1/n (카피는 n개인데 디스크 하나의 효율과 같다.)</p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/59c4c26a8d05825b1179fb87" /></p>
+<h4>RAID 4</h4>
+<p>Block-level striping 있음</p>
+<p>parity disk 있음 (A = A1+A2+A3, A: parity block)</p>
+<p>read/write 효율 = (n-1)X (parity disk 하나가 에러 방지용이기 때문에 1개 빼야함)</p>
+<ul>
+<li>근데 write 할 때는 parity disk 계산 시간이 필요함</li>
+</ul>
+<p>Space efficiency = (n-1)/n (디스크는 n개인데 실질적 데이터를 저장하는 디스크는 n-1개)</p>
+<p>하나의 disk failure 까지 방지 할 수 있다! (연산으로 유추하면 됨, 만일 parity disk가 하나 더 있다면 두 개 까지 복구 가능)</p>
+<p>문제점: Parity disk가 write시 항상 쓰여짐 (high stress for parity disk)</p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/59c4c2af8d05825b1179fb8c" /></p>
+<h4>RAID 5</h4>
+<p>제일 많이 쓰는 방법.</p>
+<p>Block-level striping 있음</p>
+<p>distributed parity (RAID4와 다른 점: parity 정보가 드라이브 안에 분산되어 있음)</p>
+<p><strong>read 효율: (n-1)X  혹은 nX</strong></p>
+<ul>
+<li>블럭 수가 3개 이하 : RAID4와 같은 상황이므로 (n-1)X</li>
+<li>블럭 수가 3개 보다 많음: nX (특정 parity disk를 두는 것이 아니기 때문에 모든 디스크가 read에 참여한다.)</li>
+</ul>
+<p>write 효율: RAID 4와 같음 (에러 방지용으로 parity block을 만들었고, 계산에도 시간이 걸린다. 결과적으로는 write하는 수가 같다.)</p>
+<p>Space efficiency: RAID 4와 같음 (결론적인 실질적 데이터 저장량) </p>
+<p><strong>write할 때의 부담이 모든 디스크에게 분산되었다.</strong></p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/59c4c2b88d05825b1179fb8f" /></p>
+<h4> RAID level 선택하기</h4>
+<p>Rebuild performance (복구 시 걸리는 시간)</p>
+<ul>
+<li>disk failure가 발생하면 데이터를 복구해야하고 이 때 시간이 걸림</li>
+<li>RAID 1: 똑같은 데이터가 하나 더 있기 때문에 복사해 오면 된다. 매우 쉽다.</li>
+<li>RAId 4,5 : 다른 디스크에 접속해서 연산을 거쳐야한다. (디스크가 클 경우에는 수 시간이 걸릴 수도 있음)</li>
+</ul>
+<p>RAID level usage </p>
+<ul>
+<li>RAID 0: 데이터를 좀 날려도 괜찮은데 높은 성능을 원할 때</li>
+<li>RAID 1: reliability도 어느 정도 있지만 복구도 빨리하고 싶을 때. (데이터 손실이 많은서버에서 주로 이용)</li>
+<li>RAID 5: 많은 양의 데이터를 저장할 때. RAID 0 보다는 reliability가 높음</li>
+</ul>
+<table style="width: 100%;">
+<tbody>
+<tr style="height: 29px;">
+<td style="height: 29px;">RAID type</td>
+<td style="height: 29px;">Read efficiency</td>
+<td style="height: 29px;">Write efficiency</td>
+<td style="height: 29px;">Space efficiency</td>
+<td style="height: 29px;">Failure protection</td>
+</tr>
+<tr style="height: 29.6666px;">
+<td style="height: 29.6666px;">No RAID(1 disk)</td>
+<td style="height: 29.6666px;">1</td>
+<td style="height: 29.6666px;">1</td>
+<td style="height: 29.6666px;">1</td>
+<td style="height: 29.6666px;">0</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">RAID 0 (n disks)</td>
+<td style="height: 29px;">n</td>
+<td style="height: 29px;">n</td>
+<td style="height: 29px;"><span style="color: #ff0000;">1</span></td>
+<td style="height: 29px;">0</td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">RAID 1 (n disks)</td>
+<td style="height: 29px;">n</td>
+<td style="height: 29px;">1</td>
+<td style="height: 29px;">1/n</td>
+<td style="height: 29px;"><span style="color: #ff0000;">n-1</span></td>
+</tr>
+<tr style="height: 29px;">
+<td style="height: 29px;">RAID 2 (n disks)</td>
+<td style="height: 29px;">n-1</td>
+<td style="height: 29px;"><span style="color: #ff0000;">n-1</span></td>
+<td style="height: 29px;">(n-1)/n</td>
+<td style="height: 29px;">1</td>
+</tr>
+</tbody>
+</table>
+<h3>1-2. Storage network</h3>
+<ul>
+<li>DAS (Direct Attached Storage): 케이블을 이용해 직접적으로 storage끼리 연결. 물리적으로 선을 연결해줘야하기 때문에 '공유'하기에 좋지 않다.</li>
+<li>NAS (Network Attached Storage): 네트워크를 통해 모든 storage에게 서버를 연결해준다. 공유하기엔 좋지만 속도가 떨어짐.</li>
+<li>SAN (Storage Area Network): 클라이언트는 네트워크를 이용해 접근하지만 서버인 storage는 private network로 연결되어 있다. (광케이블과 스위치로 local하게 연결되어 있음.) NAS에 비해 속도는 빨라졌지만 비용이 많이 든다.</li>
+</ul>
+<h2>2. Data Centers</h2>
+<h3>2-1. Google data center</h3>
+<p><a href="https://www.youtube.com/watch?v=XZmGGAbHqa0">https://www.youtube.com/watch?v=XZmGGAbHqa0</a></p>
+<p>memcache, facebook, naver...</p>
+<p></p>
+<h3>2-2. Facebooks Photo Storage</h3>
+<h4>Haystack</h4>
+<p>이전까지는 photo store sever라는 것이 따로 있어서 CDN에서 서버에 1차로 요청하면 서버에서는 사진이 저장되어 있는 NAS storage에 2차로 요청해 데이터를 가져왔다. 하지만 이렇게되면 디스크에 접근하는 횟수가 많아져서 느리다. haystack photo storage architecture는 디스크 접근 횟수를 줄이기 위해 index를 이용하였다.</p>
+<p></p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/59c64adf50cbf45e4ee82eae" width="467" height="389" /></p>
+<p></p>
+<p><strong>CDNs</strong>: Content Delivery Networks</p>
+<p><strong>Haystack Cache</strong>: 사진들이 어디에 저자오디어 있는지 index가 써져있다. index를 알기 때문에 disk acess는 한 번만 하면 되고 속도는 상당히 올라간다.</p>
+<p><strong>Haystack Store</strong>: memcached-based file index</p>
+<p></p>
+<div contenteditable="false">
+<div class="alert wiki-alert-default00" contenteditable="true">
+<p><strong>Memcached</strong></p>
+<p>캐싱을 디스크에 하는 대신 RAM에 올리는 방법. 사진 파일의 위치 정보인 인덱스를 메모리에 모두 올렸다(in-memroy index). external data source에 접근 횟수를 줄이는 것이 목적.</p>
+</div>
+</div>
+<p></p>
+<h4>Cold Storage</h4>
+<p>오래 전에 올라온 사진 보다 최근에 업로드 된 사진으로 접근하는 경우가 많았다. (the older, and thuss less popular, less accessed) 하지만 모든 사진은 같은 데이터 센터에 보관되어 있기 때문에 많은 에너지와 메모리가 필요하다.</p>
+<p></p>
+<p>cold storage systmen은 서버 한 대가 여러개의 하드디스크를 관리하는 형태이다.</p>
+<ul>
+<li>Disks: rack 마다 2PB의 저장소</li>
+<li><strong>Power saving</strong>: on/off duty cycle. </li>
+<li><strong>Storage saving: Erasure coding (Reed-Solomon error correction code<br /></strong></li>
+</ul>
+<p></p>
+<p>replication 효율을 3배로 늘릴 수 있는 방법.</p>
+<p>Reed-solomon coding: 코딩으로 4개의 블럭을 더 만들어 block recovery를 가능하게함.</p>
+</body>
+</html>

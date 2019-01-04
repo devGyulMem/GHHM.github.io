@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "6. 프로세스"
+subtitle: "Process"
+date:   2017-09-28 18:16:00
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. Virtualization (가상화)</h2>
+<p></p>
+<p>분산 시스템에서 가상화의 역할</p>
+<p>1 Virtualization can help here by porting the legacy interfaces to the new platforms and thus immediately opening up the latter for large classes of existing programs.</p>
+<p>2. that system administrators maintain a large and heterogeneous collection of server computers, each one running very different applications, which can be accessed by clients. 현대 컴퓨터는 대부분 인터넷 네트워크 서비스를 지원하기 때문에 각 클라이언트는 서로 다른 많은 서버 컴퓨터들에 접근이 가능해야한다. (라이브러리, OS 가 달라도 공통된 플랫폼에서 어플리케이션이 돌아가야함.)</p>
+<p>3. virtualization provides a high degree of portability and flexibility.</p>
+<p></p>
+<p></p>
+<p>컴퓨터 시스템은 보통 4가지 interface로 구성되어있다.</p>
+<p></p>
+<h2>2. Google DCN Virtualization &amp; SDN</h2>
+<p>1. MapReduce: divide and conquer</p>
+<p>2. Google File System</p>
+<ul>
+<li>B4</li>
+<li>GGC</li>
+<li><strong>Jupiter : 데이터 센터 안의 네트워크가 어떻게 구성되어 있나!</strong></li>
+<li>Freedome</li>
+<li>Andromeda</li>
+</ul>
+<p>3. Big Table</p>
+<p></p>
+<h3>Jupiter</h3>
+<p>그 전까지는 비싼 라우터를 4개 정도 썼다. 하지만 확장성도 떨어져서 곧 쓸 수 없게 되었다.</p>
+<p><strong>Clos Topology</strong>: 저렴한 라우터(스위치)를 엄청 많이 사용하자. </p>
+<p><strong>Centralized Control Protocols</strong>: 그러기 위해 <strong>Software Defined Networking(SDN)</strong> 기술을 사용하겠다. Master Node가 link-state 정보를 네트워크를 통해 모으는 방식이다. 각각의 스위치는 자신만의 테이블을 계산한다. </p>
+<h3>SDN</h3>
+<p>라우터 마다 control plane을 가지고 있을 때, 다른 라우터와 정보를 교환해서 어디로 보낼지 정해주는 forwarding table을 작성했다.</p>
+<p>하지만 control plane을 하나로 합쳐 controller 라는 서버로 두고, 라우터는 data plane의 일만 한다. CA(control agents)는 데이터를 보내는 일만 함. bandwidth이 커졌기 때문에 로컬상태에서 연결하는 것 같은 효과를 볼 수 있다.</p>
+<p>장점: 네트워크 관리가 쉬워짐, 라우터가 forwarding table을 작성하는 부담이 줄었음, 새로운 알고리즘을 적용할 수 있음(open implementation)</p>
+<p></p>
+<h2>3. Clients/Servers</h2>
+<p></p>
+<h2>4. Code Migration</h2>
+<p></p>
+<h2>5. Cloud Computing: MapReduce</h2>
+<p></p>
+</body>
+</html>

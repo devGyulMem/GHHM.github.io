@@ -1,0 +1,180 @@
+---
+layout: post
+title:  "8. 멀티미디어와 무선 시스템"
+subtitle: "Multimedia and Wireless Systems"
+date:   2017-10-20 20:16:00
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. Multimedia Streaming</h2>
+<p>비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec)</p>
+<p>디지털 이미지: array of pixels</p>
+<p>코딩: 압축 바</p>
+<p style="padding-left: 30px;">temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄.</p>
+<p style="padding-left: 30px;">spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄.</p>
+<p>CBR (constant bit rate)</p>
+<p>VBR (variable bit rate)</p>
+<p style="padding-left: 30px;">MPEG1 (CD_ROM) 1.5 Mbps</p>
+<p style="padding-left: 30px;">MPEG2 (DVD) 3-6Mbps</p>
+<p style="padding-left: 30px;">MPEG4 (인터넷 환경에서 주로 쓰인다 , 1 Mbps 이하)</p>
+<p></p>
+<p>Streaming stored</p>
+<p>streaming: 파일 전체를 다운 받기 전에 재생할 수 있다.</p>
+<p></p>
+<h3>1-1. Streaming stored video</h3>
+<div contenteditable="false">
+<div class="alert wiki-alert-default01" contenteditable="true">
+<p>저장된 비디오를 스트리밍</p>
+<p>(1) video recorded  (2) video sent  (3) video received, played out at client</p>
+</div>
+</div>
+<p>(2)와 (3) 사이를 스트리밍이라고 한다.</p>
+<p>비디오가 저장된 서버로 부터 인터넷을 거쳐 클라이언트로 온다.</p>
+<p>모든 비디오 데이터를 받기 전에 클라이언트에서 재생할 수 있다.</p>
+<p></p>
+<p>어느 정도의 데이터가 들어오면 비디오를 재생할 것인가?</p>
+<p>Continuous playout constraint</p>
+<p>바로바로 재생하면 좋겠지만 <span style="text-decoration: underline;">jitter</span>가 있기 때문에 원래 시간대로 실행하기 위해서는 <span style="text-decoration: underline;">클라이언트에 버퍼</span>가 필요하다.</p>
+<p></p>
+<p>jitter: 각 패킷에 대한 지연 변동 (delay for each packet fluctuates)</p>
+<p>라우터에서 queueing delay가 일어나기 때문에 패킷이 도착하는 시간은 일정하지 않다.</p>
+<p>video transmission과 비디오 데이터를 클라이언트에서 받는 사이에 딜레이가 존재하는데 이것이 네트워크 딜레이, 지터이다.</p>
+<p></p>
+<p>jitter를 줄이기위해 버퍼를 사용하자!</p>
+<p>client-side buffering and playout delay: 클라이언트에서 버퍼링을 사용하기 때문에 비디오 실행에 딜레이가 걸린다. 네트워크 딜레이가 걸릴 것을 예상하고 대비하기 위함. (<span>playout delay: 비디오 데이터를 받은 후 부터 실행하기 까지 걸리는 시간)</span></p>
+<p><span>단점은?</span></p>
+<p><span></span></p>
+<h3><span>1-2. Streaming multimedia: HTTP</span></h3>
+<p>멀티미디어 파일은 HTTP를 통해 웹 상에서 가져온다.</p>
+<p>TCP 최대 전송율 밑으로 전송 가능함.</p>
+<p>버퍼의 한계는 TCP congestion control과 retransmission(순차 전송) 에 영향을 받는다.</p>
+<p>Application playout buffer: 시작할 때 딜레이(playout delay)는 오래걸리지만 영상은 부드럽다.</p>
+<p></p>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p><strong>왜 HTTP(TCP) 를 사용하는가?</strong></p>
+<p>UDP TCP 차이</p>
+<p>UDP: unreliable(no acks), lightweight(faster), smooth</p>
+<p>TCPL reliable(use acks), heavyweight(slower), sawtooth pattern (congestion control)</p>
+<p>이러한 특성들만 봤을 때 UDP를 사용해야하지만... TCP를 사용한다.</p>
+<p></p>
+<p>UDP는 보안 문제로 방화벽에 막힘</p>
+<p>비디오 스트리밍을 위해 서버를 따로 두어야함.</p>
+<p></p>
+<p><strong>HTTP는 방화벽을 뚫기 쉽다.</strong></p>
+<p><strong>기존에 있던 웹 서버를 사용할 수 있다.</strong></p>
+<p><strong>TCP sawtooth pattern은 application buffer를 통해 완화할 수 있다.</strong></p>
+<p></p>
+</div>
+</div>
+<p><strong></strong></p>
+<h3>1-3. DASH: Dynamic, Adaptive Streaming over HTTP</h3>
+<p><strong>서버</strong></p>
+<p style="padding-left: 30px;">여러 화질의 영상을 가지고 있다.(encoded different rates)</p>
+<p style="padding-left: 30px;">영상들은 청크(chunk)로 나누어져 있는데 하나의 청크는 1~15초의 비디오 영상 데이터이다.</p>
+<p></p>
+<p><strong>클라이언트</strong></p>
+<p style="padding-left: 30px;">주기적으로 서버-클라이언트의 bandwidth을 측정</p>
+<p style="padding-left: 30px;">현재 bandwidth에서 받을 수 있는 가장 높은 부호화 속도를 선택</p>
+<p style="padding-left: 30px;">당시의 bandwidth에 따라 다른 속도를 선택할 수 있다.</p>
+<p></p>
+<p>MPEG-DASH, Adobe, Apple, MS</p>
+<p>각각의 청크가 존재하는 url에 접속</p>
+<p></p>
+<h3>1-4. Voice-over-IP (VoIP)</h3>
+<ul>
+<li><strong>VoIP end-end-delay requirement</strong>: 대화해야 하기 때문에 딜레이가 높아서는 안된다. 400 ms 이상 넘어가면 사람이 느낄 수 있음.</li>
+<li><strong>network loss</strong>: 네트워크가 혼잡하여 (라우터 오버플로우) IP datagram lost 가 발생할 수 있다. 이 때 재전송을 하게 되면 딜레이가 급격히 증가하기 때문에 대신에 FEC나 Interleaving을 사용함.</li>
+</ul>
+<h4>Forward Error Correction (FEC) vs. Interleaving</h4>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>FEC(=Compounding high-and-low resolution packets)</td>
+<td>Interleaving (사이사이에 끼워넣는다는 의미)</td>
+</tr>
+<tr>
+<td>
+<p>앞에 보낸 음성데이터를 저음질(low resolution)로 복제해서 piggyback</p>
+<p>(1번 데이터를 저음질로 2번 데이터에 실어 보낸다.)</p>
+</td>
+<td>non interleaved transmission: 보낼 데이터를 순차적으로 패킷으로 묶어 보낸다.</td>
+</tr>
+<tr>
+<td>패킷 로스가 발생하면 다음 패킷으로부터 저음질 데이터를 가져온다.</td>
+<td><span>interleaved transmission: 보낼 데이터를 세로로 묶은 순서로 보내고 수신자 측에서 재조합한다. 각 패킷에 1개씩 밖에 에러가 안난 것 처럼 하여 error correction</span></td>
+</tr>
+<tr>
+<td>
+<p>장점: delay가 낮다</p>
+<p>단점: 패킷 하나만 로스났을 땐 복구 가능하지만, 연속적인 로스는 복구 불가능하다. 그리고 사실 패킷 하나만 로스나는 경우는 거의 없다.</p>
+</td>
+<td>
+<p>장점: FEC에 비해 오버헤드가 줄어든다.</p>
+<p>단점: Playout delay</p>
+</td>
+</tr>
+<tr>
+<td>non-consecutive loss: receiver can conceal loss</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>참고 사이트: 
+<script src="https://ssl.pstatic.net/static.editor/static/dist/viewer/1508390393653/common/se.viewer.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://blog.like.naver.com/static20171018143456/js/likeIt.list.main.js" type="text/javascript" charset="utf-8"></script>
+<script id="gnb_clickcrD" src="https://ssl.pstatic.net/static.gn/js/clickcrD.js" charset="utf-8"></script>
+</p>
+<div id="head-skin">
+<div class="on_highlight" id="body">
+<div id="whole-border">
+<div id="whole-body">
+<div class="clearfix" id="wrapper">
+<div class="clearfix" id="twocols">
+<div id="content-area">
+<div id="post-area">
+<div id="postListBody">
+<div class="post _post_wrap _param(1)" id="post_1">
+<div class="post-back">
+<table class="post-body" id="printPost1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="bcc">
+<div class="pcol2 _param(1) _postViewArea220733958064" id="post-view220733958064">
+<div class="se_doc_viewer se_body_wrap se_theme_transparent " id="SEDOC-1465682456753-614393654" data-docversion="1.0">
+<div class="se_component_wrap">
+<div class="se_component se_documentTitle documentTitle_blog  is-fill">
+<div class="se_sectionArea is-fill se_align-left">
+<div class="se_post_function"><a class="copyTargetUrl" href="http://blog.naver.com/PostView.nhn?blogId=no5100&amp;logNo=220733958064&amp;beginTime=0&amp;jumpingVid=&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;topReferer=http%3A%2F%2Fsearch.naver.com%2Fsearch.naver%3Fsm%3Dtab_hty.top%26where%3Dpost%26query%3Dinterleaving%2B%25ED%258C%25A8%25ED%2582%25B7%26oquery%3Dinterleaving%26tqi%3DTPCuCdpVuEhssc8lOL4ssssssed-182906%26url%3Dhttp%253A%252F%252Fkimdongeun.com%252F220733958064%26ucs%3DFvcnkLT2X5%252B9&amp;directAccess=false#" alt="url">http://kimdongeun.com/220733958064</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2>2. Content Delivery Network (CDN)</h2>
+<p></p>
+<h2>3. Wireless/Mobile Architecture</h2>
+<p></p>
+<p></p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "5. 하둡 파일 시스템"
+subtitle: "HDFS (Hadoop File System)"
+date:   2017-09-28 13:16:00
+background: '/img/posts/01.jpg'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h6 class="wiki-page-abstract">HDFS?<br />Hadoop으로 구성된 file system이며 매우 많은 데이터를 관리하기 위해 설계되었다.<br />(1) reliably<br />(2) high bandwidth to user application<br />Replicating file content (3배 정도)</h6>
+<p></p>
+<h2>1. Hadoop</h2>
+<p></p>
+<h2>2. HDFS</h2>
+<h3>목표</h3>
+<p>매우 큰 분산 파일 시스템에 적합.</p>
+<p>하드웨어 hardware failure가 났을 때 recovery</p>
+<p>Batch Processing 에 최적화 되어있다. (MapReduce)</p>
+<p>OS에 상관없이 user space에서 돌릴 수 있다. (어플리케이션이기 떄문)</p>
+<h3>구조</h3>
+<ul>
+<li>NameNode</li>
+<li>DataNode</li>
+<li>SecondaryNameNode</li>
+</ul>
+<h4>Read</h4>
+<p>Data Pipelining</p>
+<p></p>
+<h4>Write</h4>
+<p></p>
+<h4>Error Recovery</h4>
+<ul>
+<li>NameNode Metadata</li>
+</ul>
+<p>메모리에 메타데이터를 올림. 많은 datanode의 신호와 client의 요청을 빠르게 수행하기 위해</p>
+<ul>
+<li>DataNode</li>
+<li>Block server, Block Report(네임 노드에게 리포팅해준다.)</li>
+<li>Heartbeats</li>
+<li>Rack Awareness: 같은 rack 안에 다 저장하지 않고 또 다른 rack에 나머지 두 개의 복제본을 저장한다. 네트워크를 이용하므로 파이프라이닝은 복잡해지니 최소화하고 싶지만 reliability는 적당히 보장할 수 있다.</li>
+<li>Block Placement</li>
+<li>NameNode Failure</li>
+<li>NameNode High Availability: AvatarNode (쌍둥이 노드)</li>
+<li>Hadoop balancing: 새로운 데이터노드가 등록될 때 기존의 것을 나누어 각 기기 마다 데이터를 같은 비율로 저장할 수 있다. 하지만 접근 패턴은 알 수 없기 때문에 인기있는 노드가 무엇인지는 파악할 수 없다.</li>
+<li>RAID를 적극적으로 이용한다.</li>
+</ul>
+<p></p>
+<p></p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "7. 네트워크 구조"
+subtitle: "Network Architectures"
+date:   2017-10-20 18:16:00
+background: '/img/posts/01.jpg'
+---
+
+1. Internet Architecture
+IPv4 -> (solution) NAT,IPv6
+
+Network Congestion
+많은 사람들이 네트워크 자원을 공유해서!
+
+네트워크 자원은?
+
+Link bandwidth, Router 나 Switch의 버퍼 공간
+
+만약에 너무 많은 패킷이 하나의 링크를 공유하려하면 큐가 넘치고 패킷은 없어질 것이다.
+
+Solution: Flow control and Congestion control
+
+
+
+Flow control & Congestion control
+Flow control: 빠른 sender와 느린 receiver가 있을 때 transmitter가 속도를 조절한다. receiver의 capacity를 고려함.
+
+Congestion control: sender가 스피드를 조절한다. router의 buffer size를 고려하는 것. (sending rate을 조절)
+
+TCP window
+
+라우터의 버퍼 크기를 고려한다.
+
+TCP sender는 min(cwnd, awnd)중 작은 것을 선택 (cwnd: congestionwindow, awnd: advertised window)
+
+
+
+데이터를 보내고 ACK이 잘 오냐 안오냐로 판단한다. ACK이 계속 온다면 congestion이 발생하지 않는다고 판단.
+
+
+
+TCP Slow Start: exponentially increase (1, 2, 4, 8..)
+
+TCP congestion avoidance: ssthresh(the slow start threshold value) 지점을 지난 후 부터 linear increase
+
+TCP fast recovery (3 duplicate ACKs): 
+
+
+
+
+
+2. Multipath TCP
+
+
+3. Type of Communication
+
+
+4. RPC (Remote Procedure Call)
