@@ -82,7 +82,7 @@ WebUI.closeBrowser()
 | Param       | Param Type      | Mandatory | Description |
 |:-----------:|:---------------:|:---------:|:-----------:|
 | script      | String | Required | 실행할 자바스크립트    |
-| argument    | List | Required | 스크립트의 argument. 비워두거나 null 가능 |
+| argument    | List | Required | 스크립트의 argument. 스크립트를 실행하기 위해 필요한 값. 비워두거나 null 가능 |
 | flowControl | FailureHandling | Optional | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다. |
 
 * 
@@ -95,17 +95,18 @@ Boolean, Long, Double, String, List, WebElement, or Null
 
 * 
 ### Example
-* 웹페이지에 alert 띄우기 <br>
+
+** 웹페이지에 alert 띄우기 <br>
 `WebUI.executeJavaScript( "alert('This is an alert')" , null)`
 
-* id 기반의 WebElement 리턴받기 <br>
+** id 기반의 WebElement 리턴받기 <br>
 `WebElement element = WebUI.executeJavaScript("return document.getElementById('someId');", null)`
 
-* 리턴된 WebElement와 상호작용 <br>
+** 리턴된 WebElement와 상호작용 <br>
 `WebElement element = WebUiCommonHelper.findWebElement(findTestObject('your/object'),30)
 WebUI.executeJavaScript("arguments[0].style.border='3px solid blue'", Arrays.asList(element))`
 
-* 리턴된 WebElement 클릭하기 <br>
+** 리턴된 WebElement 클릭하기 <br>
 `WebElement element = WebUiCommonHelper.findWebElement(findTestObject('your/object'),30)
 WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(element))`
 
@@ -129,6 +130,7 @@ WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(element))`
 | Param       | Param Type      | Mandatory | Description |
 |:-----------:|:---------------:|:---------:|:-----------:|
 | flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다. |
+
 
 * 
 ### 핵심 코드
@@ -243,6 +245,120 @@ height = WebUI.getPageHeight()
 
 'Close browser'
 ```
+
+
+***
+
+### <br>
+### 적용
+
+* 'btn-login' 라는 id를 가진 WebElement를 가져와서 클릭한다.
+
+```java
+import org.openqa.selenium.WebElement
+
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import internal.GlobalVariable as GlobalVariable
+
+WebUI.openBrowser(GlobalVariable.G_url_loginPage)
+
+WebElement element = WebUI.executeJavaScript("return document.getElementById('btn-login');",null)
+
+element.click()
+```
+
+* WebElement의 정보를 가져와서 alert로 띄우기
+
+```java
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+//로그인 페이지 열기
+WebUI.openBrowser(GlobalVariable.G_url_loginPage)
+
+//자바스크립트를 실행하여 id와 pw element를 가져와 입력한 후 클릭한다.
+WebElement input_id = WebUI.executeJavaScript("return document.getElementById('id')", null)
+WebElement input_pw = WebUI.executejavaScript("return document.getElementById('pw')", null)
+
+// input_id 의 box size와 page size를 가져와서 alert로 송출
+if(input_id != null)
+size = input_id.getSize()
+
+height = WebUI.getPageHeight()
+
+String result = "The size of id box is " + size + "and page height is "+height
+String message = "alert("+"'"+result+"');"
+
+WebUI.executeJavaScript(message, null)
+```
+
+* id로 가져온 WebElement로 로그인 하기
+
+```java
+import org.openqa.selenium.WebElement
+
+import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import internal.GlobalVariable as GlobalVariable
+
+
+//로그인 페이지 열기
+WebUI.openBrowser(GlobalVariable.G_url_loginPage)
+
+//자바스크립트를 실행하여 id와 pw element를 가져와 입력한 후 클릭한다.
+WebElement input_id = WebUI.executeJavaScript("return document.getElementById('id');", null)
+WebElement input_pw = WebUI.executeJavaScript("return document.getElementById('password');", null)
+WebElement btn_login = WebUI.executeJavaScript("return document.getElementById('btn-login');", null)
+
+//TestObject로 가져왔을 경우 setText를 사용하였지만, 지금은 WebElement이기 때문에 sendKeys를 사용
+if(input_id != null)
+input_id.sendKeys('khmmanager')
+
+if(input_pw != null)
+input_pw.sendKeys('13301330!@')
+
+if(btn_login != null)
+btn_login.click()
+
+//WebElement element = WebUiCommonHelper.findWebElement((TestObject)findTestObject('Object Repository/loginPage/Page_/button_login'),30)
+//WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(element))
+
+```
+
+* 로그인 후 뒤로가기
+
+``` java
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import org.openqa.selenium.WebElement
+
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import internal.GlobalVariable as GlobalVariable
+
+WebUI.openBrowser(GlobalVariable.G_url_loginPage)
+
+WebElement element = WebUiCommonHelper.findWebElement((TestObject)findTestObject('Object Repository/loginPage/Page_/button_login'),30)
+
+
+WebUI.setText(findTestObject('Object Repository/loginPage/Page_/input__id'), 'khmmanager')
+WebUI.setText(findTestObject('Object Repository/loginPage/Page_/input__password'), '13301330!@')
+
+WebUI.executeJavaScript("arguments[0].style.border='10px solid blue'", Arrays.asList(element))
+
+WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(element))
+
+//뒤로: back() 앞으로: forward()
+WebUI.back()
+WebUI.forward()
+```
+
+***
+
+* 자동 import 단축키 : ctrl+shift+o
 
 [1]: https://docs.katalon.com/katalon-studio/docs/webui-delete-all-cookies.html
 [2]: https://docs.katalon.com/katalon-studio/docs/webui-execute-javascript.html
