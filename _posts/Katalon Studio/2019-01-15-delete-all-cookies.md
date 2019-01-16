@@ -198,6 +198,7 @@ WebUI.closeBrowser()
 
 * 
 ### Returns
+
 | Param Type | Description |
 |:----------:|:-----------:|
 | int | 현재 웹 페이지의 높이(height) |
