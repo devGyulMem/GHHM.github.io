@@ -13,6 +13,7 @@ background: '/img/posts/katalonlogo.png'
 ## 5. Get Number Of Selected Option
 ## 6. Get Number Of Total Option
 
-## 문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기
+## 7. 문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기
 
 ---
+
