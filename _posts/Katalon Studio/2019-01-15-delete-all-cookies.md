@@ -1,12 +1,11 @@
-<!-- $theme: default -->
-----
--layout: post
--title:  "WebUI Keywords"
--subtitle: "Delete all cookies, Execute JavaScript, Forward, Get Page Height"
--background: '/img/posts/01.jpg'
-Katalon Studio
-----
+---
+layout: post
+title:  "WebUI Keywords"
+subtitle: "Delete all cookies, Execute JavaScript, Forward, Get Page Height"
+background: '/img/posts/katalonlogo.png'
+---
 
+Katalon Studio
 ===
 
 ### 김혜미
