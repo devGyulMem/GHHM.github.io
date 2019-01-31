@@ -70,6 +70,20 @@ WebUI.closeBrowser()
 
 ***
 
+* ## Example 2
+
+```groovy
+
+WebUI.openBrowser("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox")
+
+isChecked = WebUI.verifyElementChecked(findTestObject('Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'), 5)
+
+println(isChecked)
+
+```
+
+***
+
 2 Deselect All Option
 ----------
 
