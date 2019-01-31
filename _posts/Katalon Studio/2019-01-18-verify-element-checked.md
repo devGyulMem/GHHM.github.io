@@ -22,7 +22,6 @@ Katalon Studio
 ## 4. Deselect Option By Value
 ## 5. Get Number Of Selected Option
 ## 6. Get Number Of Total Option
-
 ## 7. 문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기
 
 ***
@@ -108,7 +107,7 @@ WebUI.closeBrowser()
 --------
 
 * ## Description
-주어진 인덱스의 옵션을 선택 해제 한다. 인덱스는 0부터 시작한다.
+콤보박스에서 주어진 인덱스의 옵션을 선택 해제 한다. 인덱스는 0부터 시작한다.
 
 ***
 
@@ -145,11 +144,12 @@ WebUI.closeBrowser()
 ------
 
 * ## Description
-지정된 레이블(보여지는 텍스트)를 사용하여 옵션을 선택 해제한다.
+콤보박스에서 지정된 레이블(보여지는 텍스트)를 사용하여 옵션을 선택 해제한다.
 
 ***
 
 * ## Parameter
+
 | Param       | Param Type      | Mandatory | Description    |
 |:-----------:|:---------------:|:---------:|:--------------:|
 | to | TestObject | Required  | web element를 나타낸다.       |
@@ -184,22 +184,82 @@ WebUI.closeBrowser()
 ------
 
 * ## Description
+주어진 콤보박스 web element 에서 선택된 옵션의 수를 센다.
+
+***
 
 * ## Parameter
 
+| Param | Param Type | Mandatory | Description |
+|:-----:|:----------:|:---------:|:-----------:|
+| to | Testobject | Required | Represent a web element |
+| flowControl | FailureHandling | Optional | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다. |
+
+***
+
+* ## Returns
+
+| Param Type | Description |
+|:----------:|:------------:|
+| int | 선택된 옵션의 수 |
+
+***
+
 * ## Example
+
 ```groovy
+'Open browser and navigate to demo AUT site'
+WebUI.openBrowser('http://demoaut.katalon.com/')
+
+'Click on \'Make Appointment\' button'
+WebUI.click(findTestObject('Page_CuraAppointment/btn_BookAppointment'))
+
+'Select \"Hongkong CURA Healthcare Center\" option'
+WebUI.selectOptionByValue(findTestObject('Page_CuraAppointment/lst_Facility'), 'Hongkong CURA Healthcare Center', false)
+
+'Get number of selected option in Facility list'
+WebUI.getNumberOfSelectedOption(findTestObject('Page_CuraAppointment/lst_Facility'))
+
+'Close Browser'
+WebUI.closeBrowser()
+
 ```
 
 ***
 
-6
+6  Get Number Of Total Option
 ------
 
 * ## Description
+주어진 콤보박스 web element가 가진 옵션의 총 수를 센다.
+
+***
 
 * ## Parameter
 
+| Param | Param Type | Mandatory | Description |
+|:-----:|:----------:|:---------:|:-----------:|
+| to | Testobject | Required | Represent a web element |
+| flowControl | FailureHandling | Optional | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다. |
+
+* ## Returns
+| Param Type | Description |
+|:----------:|:------------:|
+| int | 총 옵션의 수 |
+
+***
+
 * ## Example
 ```groovy
+'Open browser and navigate to demo AUT site'
+WebUI.openBrowser('http://demoaut.katalon.com/')
+
+'Click on \'Make Appointment\' button'
+WebUI.click(findTestObject('Page_CuraAppointment/btn_BookAppointment'))
+
+'Get number of total option in Facility list'
+WebUI.getNumberOfTotalOption(findTestObject('Page_AppointmentConfirmation/lbl_Facility'))
+
+'Close Browser'
+WebUI.closeBrowser()
 ```
