@@ -250,6 +250,7 @@ WebUI.closeBrowser()
 ***
 
 * ## Example
+
 ```groovy
 'Open browser and navigate to demo AUT site'
 WebUI.openBrowser('http://demoaut.katalon.com/')
