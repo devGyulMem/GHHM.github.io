@@ -14,14 +14,14 @@ background: '/img/posts/katalonlogo.png'
 * Get Viewport Top Position
 * Get Viewport Width
 
-
 ***
 
 
-1. Get Page Width
+# 1. Get Page Width
 -----
 
 * ## Description
+현재 페이지의 넓이를 가져온다.
 
 * ## Parameter
 
@@ -44,10 +44,11 @@ WebUI.closeBrowser()
 
 ***
 
-2. Get Url
+# 2. Get Url
 -----
 
 * ## Description
+현재 페이지의 URL을 가져온다.
 
 * ## Parameter
 
@@ -77,10 +78,11 @@ WebUI.closeBrowser()
 ***
 
 
-2. Get Viewport Height/Left Position/Top Position/Width
+# 3. Get Viewport Height/Left Position/Top Position/Width
 -----
 
 * ## Description
+현재 viewport의 높이, 넓이, x, y 값을 가져온다.
 
 * ## Parameter
 
