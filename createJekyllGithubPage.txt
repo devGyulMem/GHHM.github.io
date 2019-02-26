@@ -11,5 +11,15 @@ h2. 환경설정
 1. ruby 설치
 2. DevKit 설치
 * C드라이브에 깔았으면 D에서는 안됨. PATH 설정을 다시해줘야함
+* 폴더 이름에 공백이 없게 해야함
 
 
+---
+
+h2. gulp 실행
+
+1. node, npm 설치
+2. gulp 전역 설치 (npm install gulp-cli -g)
+3. 지킬 소스 폴더로 이동
+4. 패키지 설치 (npm install)
+6. gulp 실행
