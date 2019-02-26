@@ -71,7 +71,7 @@ lsi: False
 username: GHHM
 repo: GHHM.github.io
 branch: master
-relative_source: ../memlearning/
+relative_source: ../
 destination: ../memlearning-pages/
 production_url:  https://GHHM.github.io/
 # source_url:  https://github.com/jekyller/jasper2/
