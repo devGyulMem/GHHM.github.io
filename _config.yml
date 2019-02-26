@@ -7,15 +7,15 @@ language: 'en-uk'
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: /
 
-url: https://GHHM.github.io/
+url: https://GHHM.github.io
 # url: "https://memlearning.netlify.com/"
 
 # Website info
 title: Mem Learning
 description: What I learned Today
 cover: assets/images/blog-cover.jpg
-logo: assets/images/blog-icon.png
-logo_dark: assets/images/favicon.png
+logo: 
+logo_dark: 
 favicon: assets/images/favicon.png
 production_url: https://GHHM.github.io/
 source_url: https://github.com/GHHM/GHHM.github.io/
@@ -34,7 +34,7 @@ disqus: False
 disqus_shortname: jekyller # replace with your disqus username
 
 # Google Analytics
-google_analytics: UA-69281367-1 # replace with your GA tracking identifier
+google_analytics:  # replace with your GA tracking identifier
 
 # Permalinks
 permalink: /:title
@@ -71,13 +71,13 @@ feed:
 # or "master" otherwise
 safe: False
 lsi: False
-username: GHHM
-repo: GHHM.github.io
+username: 
+repo: 
 branch: master
 relative_source:
 destination: ./output/
 production_url:  https://GHHM.github.io/
-source_url:  https://github.com/jekyller/jasper2/
+source_url: https://github.com/GHHM/GHHM.github.io/
 
 
 exclude:
