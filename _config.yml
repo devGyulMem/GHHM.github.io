@@ -5,7 +5,7 @@ paginate: 100 # it will paginate after this number
 language: 'en-uk'
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /jasper2/
+baseurl: /
 
 # Website info
 title: Mem Learning
@@ -14,8 +14,8 @@ cover: assets/images/blog-cover.jpg
 logo: assets/images/blog-icon.png
 logo_dark: assets/images/favicon.png
 favicon: assets/images/favicon.png
-production_url: https://jekyller.github.io/jasper2/
-source_url: https://github.com/jekyller/jasper2/
+production_url: https://GHHM.github.io/
+source_url: https://github.com/GHHM/GHHM.github.io/
 CNAME: #add cname for website to be created
 
 # Social info
@@ -69,11 +69,11 @@ feed:
 safe: False
 lsi: False
 username: GHHM
-repo: jasper2
+repo: GHHM.github.io
 branch: master
-relative_source: ../jasper2/
-destination: ../jasper2-pages/
-# production_url:  https://jekyller.github.io/jasper2/
+relative_source: ../memlearning/
+destination: ../memlearning-pages/
+production_url:  https://GHHM.github.io/memlearning/
 # source_url:  https://github.com/jekyller/jasper2/
 url: "https://memlearning.netlify.com/"
 
