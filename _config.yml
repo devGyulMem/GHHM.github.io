@@ -5,7 +5,7 @@ paginate: 100 # it will paginate after this number
 language: 'en-uk'
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /memlearning/
+baseurl: /
 
 # Website info
 title: Mem Learning
@@ -73,7 +73,7 @@ repo: GHHM.github.io
 branch: master
 relative_source: ../memlearning/
 destination: ../memlearning-pages/
-production_url:  https://GHHM.github.io/memlearning/
+production_url:  https://GHHM.github.io/
 # source_url:  https://github.com/jekyller/jasper2/
 url: "https://memlearning.netlify.com/"
 
