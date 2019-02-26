@@ -1,8 +1,15 @@
 ---
 layout: post
+current: post
+cover: assets/images/katalonlogo.png 
 title:  "WebUI Keywords"
+navigation: True
+tags: [katalon-studio]
+class: post-template
 subtitle: "Delete all cookies, Execute JavaScript, Forward, Get Page Height"
-background: '/img/posts/katalonlogo.png'
+background: assets/images/katalonlogo.png 
+subclass: 'post tag-getting-started'
+author: mem
 ---
 
 Katalon Studio

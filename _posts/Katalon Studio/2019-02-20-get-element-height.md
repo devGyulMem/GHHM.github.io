@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Web UI element 2"
-subtitle: "get page width, get url, get viewport height, get viewport left position, get viewport top position, get viewport width"
-background: '/img/posts/katalonlogo.png'
+current: post
+cover: assets/images/katalonlogo.png 
+title:  "WebUI Element 3"
+navigation: True
+tags: [Katalon Studio]
+class: post-template
+subtitle: "get element height/left position/width, mouse over/over offset, right click/click offset, scroll to element"
+background: assets/images/katalonlogo.png 
+subclass: 'post tag-getting-started'
+author: mem
 ---
 
 

@@ -1,43 +1,70 @@
 var gulp = require('gulp');
 
-gulp.task('copy', function() {
+// gulp plugins and utils
+var gutil = require('gulp-util');
+var livereload = require('gulp-livereload');
+var nodemon = require('gulp-nodemon');
+var postcss = require('gulp-postcss');
+var sourcemaps = require('gulp-sourcemaps');
+var zip = require('gulp-zip');
 
-  // Start Bootstrap Clean Blog SCSS
-  gulp.src(['node_modules/startbootstrap-clean-blog/scss/**/*'])
-    .pipe(gulp.dest('assets/vendor/startbootstrap-clean-blog/scss'))
+// postcss plugins
+var autoprefixer = require('autoprefixer');
+var colorFunction = require('postcss-color-function');
+var cssnano = require('cssnano');
+var customProperties = require('postcss-custom-properties');
+var easyimport = require('postcss-easy-import');
 
-  // Start Bootstrap Clean Blog JS
-  gulp.src([
-      'node_modules/startbootstrap-clean-blog/js/clean-blog.min.js',
-      'node_modules/startbootstrap-clean-blog/js/jqBootstrapValidation.js'
+var swallowError = function swallowError(error) {
+    gutil.log(error.toString());
+    gutil.beep();
+    this.emit('end');
+};
+
+var nodemonServerInit = function () {
+    livereload.listen(1234);
+};
+
+gulp.task('build', ['css'], function (/* cb */) {
+    return nodemonServerInit();
+});
+
+gulp.task('css', function () {
+    var processors = [
+        easyimport,
+        customProperties,
+        colorFunction(),
+        autoprefixer({browsers: ['last 2 versions']}),
+        cssnano()
+    ];
+
+    return gulp.src('assets/css/*.css')
+        .on('error', swallowError)
+        .pipe(sourcemaps.init())
+        .pipe(postcss(processors))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('assets/built/'))
+        .pipe(livereload());
+});
+
+gulp.task('watch', function () {
+    gulp.watch('assets/css/**', ['css']);
+});
+
+gulp.task('zip', ['css'], function() {
+    var targetDir = 'dist/';
+    var themeName = require('./package.json').name;
+    var filename = themeName + '.zip';
+
+    return gulp.src([
+        '**',
+        '!node_modules', '!node_modules/**',
+        '!dist', '!dist/**'
     ])
-    .pipe(gulp.dest('assets/vendor/startbootstrap-clean-blog/js'))
+        .pipe(zip(filename))
+        .pipe(gulp.dest(targetDir));
+});
 
-  // Bootstrap
-  gulp.src([
-      'node_modules/bootstrap/dist/**/*',
-      '!**/npm.js',
-      '!**/bootstrap-theme.*',
-      '!**/*.map'
-    ])
-    .pipe(gulp.dest('assets/vendor/bootstrap'))
-
-  // jQuery
-  gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-    .pipe(gulp.dest('assets/vendor/jquery'))
-
-  // Font Awesome
-  gulp.src([
-      'node_modules/font-awesome/**',
-      '!node_modules/font-awesome/**/*.map',
-      '!node_modules/font-awesome/.npmignore',
-      '!node_modules/font-awesome/*.txt',
-      '!node_modules/font-awesome/*.md',
-      '!node_modules/font-awesome/*.json'
-    ])
-    .pipe(gulp.dest('assets/vendor/font-awesome'))
-
-})
-
-// Default task
-gulp.task('default', ['copy']);
+gulp.task('default', ['build'], function () {
+    gulp.start('watch');
+});
