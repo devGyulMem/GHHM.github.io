@@ -73,7 +73,7 @@ repo: GHHM.github.io
 branch: master
 relative_source: ../memlearning/
 destination: ../memlearning-pages/
-production_url:  https://GHHM.github.io//memlearning/
+production_url:  https://GHHM.github.io/memlearning/
 # source_url:  https://github.com/jekyller/jasper2/
 url: "https://memlearning.netlify.com/"
 
