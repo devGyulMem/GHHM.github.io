@@ -71,12 +71,21 @@ WebUI.closeBrowser()
 | to          | TestObject      | Required  | 구하려는 web element      |
 | flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.   |
 
+| Param       | Param Type      | Mandatory | Description    |
+|:-----------:|:---------------:|:---------:|:--------------:|
+| to          | TestObject      | Required  | 구하려는 web element      |
+| offsetX     | int       | Required | element의 상대적인 x 위치 |
+| offsetY     | int       | Required | element의 상대적인 y 위치 | 
+| flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.   |
+
 * ## Example
 
 ```groovy
 
 'Mouse over on \'Book Appointment\' button'
-WebUI.mouseOver(findTestObject('Page_CuraAppointment/btn_BookAppointment'), 'font-size')
+WebUI.mouseOver(findTestObject('Page_CuraAppointment/btn_BookAppointment'))
+
+WebUI.mouseOverOffset(findTestObject('Page_Bar Chart/canvas_chart'), 20, 30)
 
 ```
 
@@ -85,12 +94,33 @@ WebUI.mouseOver(findTestObject('Page_CuraAppointment/btn_BookAppointment'), 'fon
 # 3. Right Click/Click Offset
 
 * ## Description
+주어진 element를 우클릭한다.
 
 * ## Parameter
 
-* ## Returns
+| Param       | Param Type      | Mandatory | Description    |
+|:-----------:|:---------------:|:---------:|:--------------:|
+| to          | TestObject      | Required  | 구하려는 web element      |
+| flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.   |
+
+| Param       | Param Type      | Mandatory | Description    |
+|:-----------:|:---------------:|:---------:|:--------------:|
+| to          | TestObject      | Required  | 구하려는 web element      |
+| offsetX     | int       | Required | element의 상대적인 x 위치 |
+| offsetY     | int       | Required | element의 상대적인 y 위치 | 
+| flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.   |
 
 * ## Example
+
+```groovy
+
+'Right click on \'Book Appointment\' button'
+WebUI.rightClick(findTestObject('Page_CuraHomepage/btn_MakeAppointment'))
+
+'Right-click on the top left cell'
+WebUI.rightClickOffset(findTestObject('Object Repository/Page_CodePen - Tic Tac Toe/canvas_tic-tac-toe-board'), 100, 100)
+
+```
 
 ---
 
@@ -98,10 +128,23 @@ WebUI.mouseOver(findTestObject('Page_CuraAppointment/btn_BookAppointment'), 'fon
 
 * ## Description
 
+element가 보이는 위치로 브라우저 윈도우를 스크롤한다.
+
 * ## Parameter
 
-* ## Returns
+| Param       | Param Type      | Mandatory | Description    |
+|:-----------:|:---------------:|:---------:|:--------------:|
+| to          | TestObject      | Required  | 구하려는 web element      |
+| timeout | int | Required | 
+| flowControl | FailureHandling | Optional  | failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.   |
 
 * ## Example
+
+```groovy
+
+'Scroll to \'Book Appointment\' button'
+WebUI.scrollToElement(findTestObject('Page_CuraHomepage/btn_MakeAppointment'), 3)
+
+```
 
 ---
