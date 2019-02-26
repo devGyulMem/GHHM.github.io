@@ -7,6 +7,9 @@ language: 'en-uk'
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: /
 
+url: https://GHHM.github.io/
+# url: "https://memlearning.netlify.com/"
+
 # Website info
 title: Mem Learning
 description: What I learned Today
@@ -74,8 +77,8 @@ branch: master
 relative_source: ../
 destination: ../memlearning-pages/
 production_url:  https://GHHM.github.io/
-# source_url:  https://github.com/jekyller/jasper2/
-url: "https://memlearning.netlify.com/"
+source_url:  https://github.com/jekyller/jasper2/
+
 
 exclude:
   - assets/css
