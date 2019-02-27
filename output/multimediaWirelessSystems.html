@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>8. 멀티미디어와 무선 시스템</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <!-- web font setting -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="What I learned Today" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/multimediaWirelessSystems" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Mem Learning" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="8. 멀티미디어와 무선 시스템" />
+    <meta property="og:description" content="1. Multimedia Streaming 비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec) 디지털 이미지: array of pixels 코딩: 압축 바 temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄. spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄. CBR (constant bit rate) VBR" />
+    <meta property="og:url" content="http://localhost:4000/multimediaWirelessSystems" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2017-10-20T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2017-10-20T00:00:00+09:00" />
+    <meta property="article:tag" content="Distributed System" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="8. 멀티미디어와 무선 시스템" />
+    <meta name="twitter:description" content="1. Multimedia Streaming 비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec) 디지털 이미지: array of pixels 코딩: 압축 바 temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄. spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄. CBR (constant bit rate) VBR" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Mem Learning" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Distributed System" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mem Learning",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/multimediaWirelessSystems",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/multimediaWirelessSystems"
+    },
+    "description": "1. Multimedia Streaming 비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec) 디지털 이미지: array of pixels 코딩: 압축 바 temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄. spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄. CBR (constant bit rate) VBR"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="8. 멀티미디어와 무선 시스템" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/">Mem Learning</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-tag-android" role="menuitem"><a href="/tag/android/">Android</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/distributed-system/">Distributed System</a></li>
+    <li class="nav-tag-katalon" role="menuitem"><a href="/tag/katalon-studio/">Katalon Studio</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="20 October 2017">20 October 2017</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/distributed-system/'>DISTRIBUTED SYSTEM</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">8. 멀티미디어와 무선 시스템</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h2>1. Multimedia Streaming</h2>
+<p>비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec)</p>
+<p>디지털 이미지: array of pixels</p>
+<p>코딩: 압축 바</p>
+<p style="padding-left: 30px;">temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄.</p>
+<p style="padding-left: 30px;">spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄.</p>
+<p>CBR (constant bit rate)</p>
+<p>VBR (variable bit rate)</p>
+<p style="padding-left: 30px;">MPEG1 (CD_ROM) 1.5 Mbps</p>
+<p style="padding-left: 30px;">MPEG2 (DVD) 3-6Mbps</p>
+<p style="padding-left: 30px;">MPEG4 (인터넷 환경에서 주로 쓰인다 , 1 Mbps 이하)</p>
+<p></p>
+<p>Streaming stored</p>
+<p>streaming: 파일 전체를 다운 받기 전에 재생할 수 있다.</p>
+<p></p>
+<h3>1-1. Streaming stored video</h3>
+<div contenteditable="false">
+<div class="alert wiki-alert-default01" contenteditable="true">
+<p>저장된 비디오를 스트리밍</p>
+<p>(1) video recorded  (2) video sent  (3) video received, played out at client</p>
+</div>
+</div>
+<p>(2)와 (3) 사이를 스트리밍이라고 한다.</p>
+<p>비디오가 저장된 서버로 부터 인터넷을 거쳐 클라이언트로 온다.</p>
+<p>모든 비디오 데이터를 받기 전에 클라이언트에서 재생할 수 있다.</p>
+<p></p>
+<p>어느 정도의 데이터가 들어오면 비디오를 재생할 것인가?</p>
+<p>Continuous playout constraint</p>
+<p>바로바로 재생하면 좋겠지만 <span style="text-decoration: underline;">jitter</span>가 있기 때문에 원래 시간대로 실행하기 위해서는 <span style="text-decoration: underline;">클라이언트에 버퍼</span>가 필요하다.</p>
+<p></p>
+<p>jitter: 각 패킷에 대한 지연 변동 (delay for each packet fluctuates)</p>
+<p>라우터에서 queueing delay가 일어나기 때문에 패킷이 도착하는 시간은 일정하지 않다.</p>
+<p>video transmission과 비디오 데이터를 클라이언트에서 받는 사이에 딜레이가 존재하는데 이것이 네트워크 딜레이, 지터이다.</p>
+<p></p>
+<p>jitter를 줄이기위해 버퍼를 사용하자!</p>
+<p>client-side buffering and playout delay: 클라이언트에서 버퍼링을 사용하기 때문에 비디오 실행에 딜레이가 걸린다. 네트워크 딜레이가 걸릴 것을 예상하고 대비하기 위함. (<span>playout delay: 비디오 데이터를 받은 후 부터 실행하기 까지 걸리는 시간)</span></p>
+<p><span>단점은?</span></p>
+<p><span></span></p>
+<h3><span>1-2. Streaming multimedia: HTTP</span></h3>
+<p>멀티미디어 파일은 HTTP를 통해 웹 상에서 가져온다.</p>
+<p>TCP 최대 전송율 밑으로 전송 가능함.</p>
+<p>버퍼의 한계는 TCP congestion control과 retransmission(순차 전송) 에 영향을 받는다.</p>
+<p>Application playout buffer: 시작할 때 딜레이(playout delay)는 오래걸리지만 영상은 부드럽다.</p>
+<p></p>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p><strong>왜 HTTP(TCP) 를 사용하는가?</strong></p>
+<p>UDP TCP 차이</p>
+<p>UDP: unreliable(no acks), lightweight(faster), smooth</p>
+<p>TCPL reliable(use acks), heavyweight(slower), sawtooth pattern (congestion control)</p>
+<p>이러한 특성들만 봤을 때 UDP를 사용해야하지만... TCP를 사용한다.</p>
+<p></p>
+<p>UDP는 보안 문제로 방화벽에 막힘</p>
+<p>비디오 스트리밍을 위해 서버를 따로 두어야함.</p>
+<p></p>
+<p><strong>HTTP는 방화벽을 뚫기 쉽다.</strong></p>
+<p><strong>기존에 있던 웹 서버를 사용할 수 있다.</strong></p>
+<p><strong>TCP sawtooth pattern은 application buffer를 통해 완화할 수 있다.</strong></p>
+<p></p>
+</div>
+</div>
+<p><strong></strong></p>
+<h3>1-3. DASH: Dynamic, Adaptive Streaming over HTTP</h3>
+<p><strong>서버</strong></p>
+<p style="padding-left: 30px;">여러 화질의 영상을 가지고 있다.(encoded different rates)</p>
+<p style="padding-left: 30px;">영상들은 청크(chunk)로 나누어져 있는데 하나의 청크는 1~15초의 비디오 영상 데이터이다.</p>
+<p></p>
+<p><strong>클라이언트</strong></p>
+<p style="padding-left: 30px;">주기적으로 서버-클라이언트의 bandwidth을 측정</p>
+<p style="padding-left: 30px;">현재 bandwidth에서 받을 수 있는 가장 높은 부호화 속도를 선택</p>
+<p style="padding-left: 30px;">당시의 bandwidth에 따라 다른 속도를 선택할 수 있다.</p>
+<p></p>
+<p>MPEG-DASH, Adobe, Apple, MS</p>
+<p>각각의 청크가 존재하는 url에 접속</p>
+<p></p>
+<h3>1-4. Voice-over-IP (VoIP)</h3>
+<ul>
+<li><strong>VoIP end-end-delay requirement</strong>: 대화해야 하기 때문에 딜레이가 높아서는 안된다. 400 ms 이상 넘어가면 사람이 느낄 수 있음.</li>
+<li><strong>network loss</strong>: 네트워크가 혼잡하여 (라우터 오버플로우) IP datagram lost 가 발생할 수 있다. 이 때 재전송을 하게 되면 딜레이가 급격히 증가하기 때문에 대신에 FEC나 Interleaving을 사용함.</li>
+</ul>
+<h4>Forward Error Correction (FEC) vs. Interleaving</h4>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>FEC(=Compounding high-and-low resolution packets)</td>
+<td>Interleaving (사이사이에 끼워넣는다는 의미)</td>
+</tr>
+<tr>
+<td>
+<p>앞에 보낸 음성데이터를 저음질(low resolution)로 복제해서 piggyback</p>
+<p>(1번 데이터를 저음질로 2번 데이터에 실어 보낸다.)</p>
+</td>
+<td>non interleaved transmission: 보낼 데이터를 순차적으로 패킷으로 묶어 보낸다.</td>
+</tr>
+<tr>
+<td>패킷 로스가 발생하면 다음 패킷으로부터 저음질 데이터를 가져온다.</td>
+<td><span>interleaved transmission: 보낼 데이터를 세로로 묶은 순서로 보내고 수신자 측에서 재조합한다. 각 패킷에 1개씩 밖에 에러가 안난 것 처럼 하여 error correction</span></td>
+</tr>
+<tr>
+<td>
+<p>장점: delay가 낮다</p>
+<p>단점: 패킷 하나만 로스났을 땐 복구 가능하지만, 연속적인 로스는 복구 불가능하다. 그리고 사실 패킷 하나만 로스나는 경우는 거의 없다.</p>
+</td>
+<td>
+<p>장점: FEC에 비해 오버헤드가 줄어든다.</p>
+<p>단점: Playout delay</p>
+</td>
+</tr>
+<tr>
+<td>non-consecutive loss: receiver can conceal loss</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>참고 사이트: 
+<script src="https://ssl.pstatic.net/static.editor/static/dist/viewer/1508390393653/common/se.viewer.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://blog.like.naver.com/static20171018143456/js/likeIt.list.main.js" type="text/javascript" charset="utf-8"></script>
+<script id="gnb_clickcrD" src="https://ssl.pstatic.net/static.gn/js/clickcrD.js" charset="utf-8"></script>
+</p>
+<div id="head-skin">
+<div class="on_highlight" id="body">
+<div id="whole-border">
+<div id="whole-body">
+<div class="clearfix" id="wrapper">
+<div class="clearfix" id="twocols">
+<div id="content-area">
+<div id="post-area">
+<div id="postListBody">
+<div class="post _post_wrap _param(1)" id="post_1">
+<div class="post-back">
+<table class="post-body" id="printPost1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="bcc">
+<div class="pcol2 _param(1) _postViewArea220733958064" id="post-view220733958064">
+<div class="se_doc_viewer se_body_wrap se_theme_transparent " id="SEDOC-1465682456753-614393654" data-docversion="1.0">
+<div class="se_component_wrap">
+<div class="se_component se_documentTitle documentTitle_blog  is-fill">
+<div class="se_sectionArea is-fill se_align-left">
+<div class="se_post_function"><a class="copyTargetUrl" href="http://blog.naver.com/PostView.nhn?blogId=no5100&amp;logNo=220733958064&amp;beginTime=0&amp;jumpingVid=&amp;from=search&amp;redirect=Log&amp;widgetTypeCall=true&amp;topReferer=http%3A%2F%2Fsearch.naver.com%2Fsearch.naver%3Fsm%3Dtab_hty.top%26where%3Dpost%26query%3Dinterleaving%2B%25ED%258C%25A8%25ED%2582%25B7%26oquery%3Dinterleaving%26tqi%3DTPCuCdpVuEhssc8lOL4ssssssed-182906%26url%3Dhttp%253A%252F%252Fkimdongeun.com%252F220733958064%26ucs%3DFvcnkLT2X5%252B9&amp;directAccess=false#" alt="url">http://kimdongeun.com/220733958064</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2>2. Content Delivery Network (CDN)</h2>
+<p></p>
+<h2>3. Wireless/Mobile Architecture</h2>
+<p></p>
+<p></p>
+</body>
+</html>
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Mem Learning</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+                </section>
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/ghost.png" alt="mem" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/mem">Memi</a></h4>
+                                
+                                    <p>The professional publishing platform</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/mem">Read More</a>
+                        </div>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Mem Learning &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/distributed-system/">Distributed system</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Fault-Tolerance">결함 허용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/consistencyAndReplication">일관성과 복제</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/synchronization">동기화</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/distributed-system/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/networkArchitecture">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Distributed system</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">7. 네트워크 구조</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/processing">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Distributed system</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">6. 프로세스</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>Mem Learning</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">8. 멀티미디어와 무선 시스템</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=8.+%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4%EC%99%80+%EB%AC%B4%EC%84%A0+%EC%8B%9C%EC%8A%A4%ED%85%9C&amp;url=https://GHHM.github.io/multimediaWirelessSystems"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://GHHM.github.io/multimediaWirelessSystems"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Mem Learning</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Subscribe to Mem Learning</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

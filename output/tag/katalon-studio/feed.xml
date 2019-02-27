@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/katalon-studio/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:31:42+09:00</updated>
+  <id>http://localhost:4000/tag/katalon-studio/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Mem Learning | </title>
+  
+
+  
+    <subtitle>What I learned Today</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">WebUI Element 3</title>
+      <link href="http://localhost:4000/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
+      <published>2019-02-20T00:00:00+09:00</published>
+      <updated>2019-02-20T00:00:00+09:00</updated>
+      <id>http://localhost:4000/get-element-height</id>
+      <content type="html" xml:base="http://localhost:4000/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+&lt;h2 id=&quot;get-element-height&quot;&gt;Get Element Height&lt;/h2&gt;
+&lt;h2 id=&quot;get-element-left-position&quot;&gt;Get Element Left Position&lt;/h2&gt;
+&lt;h2 id=&quot;get-element-width&quot;&gt;Get Element Width&lt;/h2&gt;
+&lt;h2 id=&quot;mouse-over&quot;&gt;Mouse Over&lt;/h2&gt;
+&lt;h2 id=&quot;mouse-over-offset&quot;&gt;Mouse Over Offset&lt;/h2&gt;
+&lt;h2 id=&quot;right-click&quot;&gt;Right Click&lt;/h2&gt;
+&lt;h2 id=&quot;right-click-offset&quot;&gt;Right Click Offset&lt;/h2&gt;
+&lt;h2 id=&quot;scroll-to-element&quot;&gt;Scroll To Element&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;1-get-element-heightleft-positionwidth&quot;&gt;1. Get Element Height/Left Position/Width&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;Web element의 높이/좌측 좌표/넓이 를 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;height&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to AUT'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 
+&lt;span class=&quot;s1&quot;&gt;'Get height of txt_UserName'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getElementHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_Login/txt_UserName'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Get left position of txt_UserName'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;leftPosition&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getElementLeftPosition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_Login/txt_UserName'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+ 
+&lt;span class=&quot;s1&quot;&gt;'Get width of txt_UserName'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getElementWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_Login/txt_UserName'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;2-mouse-overover-offset&quot;&gt;2. Mouse Over/Over Offset&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-1&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 element에 마우스를 올려놓는 동작을 함&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-1&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;offsetX&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;element의 상대적인 x 위치&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;offsetY&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;element의 상대적인 y 위치&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-1&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;s1&quot;&gt;'Mouse over on \'Book Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mouseOver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mouseOverOffset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_Bar Chart/canvas_chart'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;3-right-clickclick-offset&quot;&gt;3. Right Click/Click Offset&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-2&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 element를 우클릭한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-2&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;offsetX&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;element의 상대적인 x 위치&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;offsetY&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;element의 상대적인 y 위치&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;s1&quot;&gt;'Right click on \'Book Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rightClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraHomepage/btn_MakeAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Right-click on the top left cell'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rightClickOffset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Page_CodePen - Tic Tac Toe/canvas_tic-tac-toe-board'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;4-scroll-to-element&quot;&gt;4. Scroll To Element&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-3&quot;&gt;Description&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;element가 보이는 위치로 브라우저 윈도우를 스크롤한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-3&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;구하려는 web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;timeout&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-3&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;s1&quot;&gt;'Scroll to \'Book Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scrollToElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraHomepage/btn_MakeAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html">Index Get Element Height Get Element Left Position Get Element Width Mouse Over Mouse Over Offset Right Click Right Click Offset Scroll To Element</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

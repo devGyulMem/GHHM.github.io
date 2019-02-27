@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>결함 허용</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <!-- web font setting -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="What I learned Today" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Fault-Tolerance" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Mem Learning" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="결함 허용" />
+    <meta property="og:description" content="서문 Failure는 옵션 사항이 아니다. 꼭 고려해야함. Failure 단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다. 분산 시스템: 하나의 시스템에 부분 실패 (partial failure)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다. Tolerance and Recovery 분산 시스템에서 가장 중요한 목표는 전반적인 수행에 심각한 영향을 미치기 전에 partial failure으로부터" />
+    <meta property="og:url" content="http://localhost:4000/Fault-Tolerance" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2017-12-01T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2017-12-01T00:00:00+09:00" />
+    <meta property="article:tag" content="Distributed System" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="결함 허용" />
+    <meta name="twitter:description" content="서문 Failure는 옵션 사항이 아니다. 꼭 고려해야함. Failure 단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다. 분산 시스템: 하나의 시스템에 부분 실패 (partial failure)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다. Tolerance and Recovery 분산 시스템에서 가장 중요한 목표는 전반적인 수행에 심각한 영향을 미치기 전에 partial failure으로부터" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Mem Learning" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Distributed System" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mem Learning",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/Fault-Tolerance",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/Fault-Tolerance"
+    },
+    "description": "서문 Failure는 옵션 사항이 아니다. 꼭 고려해야함. Failure 단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다. 분산 시스템: 하나의 시스템에 부분 실패 (partial failure)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다. Tolerance and Recovery 분산 시스템에서 가장 중요한 목표는 전반적인 수행에 심각한 영향을 미치기 전에 partial failure으로부터"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="결함 허용" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/">Mem Learning</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-tag-android" role="menuitem"><a href="/tag/android/">Android</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/distributed-system/">Distributed System</a></li>
+    <li class="nav-tag-katalon" role="menuitem"><a href="/tag/katalon-studio/">Katalon Studio</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 1 December 2017"> 1 December 2017</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/distributed-system/'>DISTRIBUTED SYSTEM</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">결함 허용</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p>서문</p>
+<p>Failure는 옵션 사항이 아니다. 꼭 고려해야함.</p>
+<p></p>
+<p><strong>Failure</strong></p>
+<p>단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다.</p>
+<p>분산 시스템: 하나의 시스템에 부분 실패 (<strong>partial failure</strong>)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다.</p>
+<p></p>
+<p><strong>Tolerance and Recovery</strong></p>
+<p>분산 시스템에서 가장 중요한 목표는</p>
+<ul>
+<li>전반적인 수행에 심각한 영향을 미치기 전에 <span style="text-decoration: underline;">partial failure으로부터 자동 복구</span>시키는 것</li>
+<li>failure가 발생해도, 시스템은 <span style="text-decoration: underline;">지속적으로 작동하</span>면서 수리해야한다.</li>
+<li>다른 말로하면, 분산 시스템은<strong> fault tolerant</strong> 해야한다는 뜻이다.</li>
+</ul>
+</div>
+</div>
+<h2>1. Basic Concepts</h2>
+<h3>1-1. Dependability</h3>
+<p>Dependable system (신뢰할 수 있는 시스템)</p>
+<p>Properties</p>
+<p><strong>Availability</strong>: 지금 바로 사용할 수 있는 확률, 이 순간에 문제 없이 동작될 확률 (%)</p>
+<p><strong>Reliability</strong>: 문제 없이 연속적으로 사용될 수 있는 시간 (time)</p>
+<ul>
+<li>Mean Time To Failure(MTTF): 하드디스크의 성능을 나타낼 때 많이 사용되는데, 구성 요소가 fail이 날 때 까지의 평균 시간이다. </li>
+<li>Availability vs Reliability<br />
+<ul>
+<li>매 시간당 1ms 씩 시스템이 다운된다. (availability: 99.999%, reliability: under 1 hour)</li>
+<li>시스템은 일 년에 한 번씩 36일간 다운된다. (availability: low, reliability: high)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Safty</strong>: low probability of catastrophes</p>
+<ul>
+<li>fail이 일어나도 재앙이 안 일어나게 한다.</li>
+<li>ex) 원자력 발전소</li>
+</ul>
+<p><strong>Maintainability</strong>: 얼마나 쉽게 수리/복구 할 수있는지</p>
+<ul>
+<li>high maintainable = high degree of availability </li>
+</ul>
+<p></p>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p><span style="font-size: 12pt;"><strong>Terminology</strong></span></p>
+<p><strong>Failure</strong>: A system fails when it cannot provide one or more of its services</p>
+<ul>
+<li>더 이상 서비스를 제공하지 못하여 작동하지 않는 시스템</li>
+<li>ex) 웹 서버가 더이상 웹페이지를 주지 못함</li>
+</ul>
+<p><strong>Error</strong>: The part of a system state that can lead to a failure</p>
+<ul>
+<li>failure가 일어나게 된 어떤 특정한 시스템 상태</li>
+<li>ex) 에러가 있는 패킷을 받게됨</li>
+</ul>
+<p><strong>Fault</strong>: The cause of an error</p>
+<ul>
+<li>ex) 패킷 에러가 난 원인으로 노이즈나 interference</li>
+<li>ex) 프로그램 버그(programming error), 크래쉬 프로그램(failure))</li>
+</ul>
+<p><strong>Fault tolerance</strong>: a system can provide its services in the presence of faults</p>
+<ul>
+<li>fault가 있어도 서비스를 제공할 수 있는 시스템</li>
+</ul>
+<p>결과적으로 system fault가 error을 발생시키고, error는 failure로 이어진다. 이런 경우가 발생하더라도 시스템이 문제 없이 작동할 수 있다면 fault tolerance이다.</p>
+<p></p>
+</div>
+</div>
+<h3>1-2. Failure Models</h3>
+<p><strong>1. Crash failures</strong>: 서버가 멈췄는데(halt), 멈추기 전에는 정상적으로 동작함<br /><strong>2. Omission fialures</strong>: 서버에 어떠한 request가 도착했는데 적절한 응답을 보내지 못하는 상태</p>
+<ul>
+<li>Receive omission: 메시지 받기 실패 - 클라이언트의 요청에 응답 실패</li>
+<li>Send omission 메시지 보내기 실패 - 리퀘스트를 받고 작업도 했지만 어떤 이유에서 응답을 못함.</li>
+</ul>
+<p><strong>3. Timing failures</strong>: 서버의 output은 맞지만, 주어진 제한 시간 안에 수행하지 못하는 상태</p>
+<ul>
+<li>ex) 스트리밍 비디오 데이터가 제 시간에 도착하지 않음</li>
+</ul>
+<p><strong>4. Response failures</strong>: 서버의 응답이 요구에 맞지 않음 (incorrect)</p>
+<ul>
+<li>Value failure: 맞지 않은 값이 나옴
+<ul>
+<li>ex) 웹서치 키워드를 입력했을 때 엉뚱한 결과가 나옴</li>
+</ul>
+</li>
+<li>State transition failure: 서버는 리퀘스트가 오면 규칙에 따른 응답이 있는데 엉뚱한 리퀘스트가 와서 exception이 발생해 엉뚱한 결과로 빠지는 경우</li>
+</ul>
+<p><strong>5. Aribitrary (Byzantine) failures</strong>: 서버가 연산에 대한 답을 구했는데 엉뚱한 답이 나오는 경우, 의도적으로 잘못된 결과를 보내는 경우, 원인을 매우 찾기 어렵다.</p>
+<ul>
+<li>ex) 서버는 절대 나올 수 없는 결과를 냈지만 틀렸다는 것을 감지하기 어렵다.</li>
+<li>ex) 결함이 있는 서버는 의도적으로 잘못된 답을 도출하기 위해 악의적으로 같이 작업한다.</li>
+</ul>
+<p>참고: Crash failures (least severe) to arbitrary failrues (worst)</p>
+<h3>1-3. Fault Tolerance를 얻기 위해 failure에 대처하는 방법</h3>
+<p><span style="text-decoration: underline;">Failure가 났다는 사실을 숨긴다. (redundancy)</span></p>
+<ul>
+<li><strong>Information redundancy</strong>
+<ul>
+<li>FEC(Forward Error Correction): 전송하는 데이터의 패킷 에러를 복구하기 위한 코드</li>
+</ul>
+</li>
+<li><strong>Time redundancy</strong>
+<ul>
+<li>다시 수행: retransmission</li>
+<li>epecially helpful for transient or intermittent faults.</li>
+</ul>
+</li>
+<li><strong>Physical redundancy</strong>
+<ul>
+<li>Software (프로세스 복제), Hardware</li>
+</ul>
+</li>
+<li>
+<h4><strong>Triple modular redundancy(TMR)</strong></h4>
+</li>
+</ul>
+<p>Q1. A2가 fail 되면?</p>
+<p>A1. V1은 A1, A3의 맞는 답을 받았기 때문에 정상적으로 동작한다.</p>
+<p></p>
+<p>Q2. A2, B1 그리고 C1이 fail 되면?</p>
+<p>A2. 각 component에서 하나씩 fail이 나는 것은 상관 없고 정상적으로 동작한다.</p>
+<p></p>
+<p>Q3. V1이 fail 나면?</p>
+<p>A3. V1의 fail은 B1의 fail과 같기 때문에, 상관없이 정상적으로 동작한다.</p>
+<p></p>
+<p>Q4. V1과 B2가 fail 나면?</p>
+<p>A4. 잘못된 값을 얻는다.</p>
+<p></p>
+<p>Q5. 2개가 오류나도 괜찮으려면?</p>
+<p>A5. 5개의 component가 있으면 된다.</p>
+<p><strong><img src="http://ko.coco.wikidok.net/api/File/Real/5a16cc5f1f16b32652214ba4" /></strong></p>
+<p></p>
+<h2>2. Process Resilience</h2>
+<p><span style="text-decoration: underline;">failure를 방지하기 위해 프로세스를 복제하여 그룹으로 만들자.</span></p>
+<h3>2-1. Process Group</h3>
+<ol>
+<li>똑같은(identical) 프로세스를 여러 개 두는 것이다.</li>
+<li>그룹 내 하나의 프로세스가 fail 되면 다른 것들로 대체 가능하다.</li>
+<li>그룹 내 프로세스는 동적이다 : 프로세스는 시스템이 작동하는 동안 그룹에 참여하거나 떠나는 것이 가능하다.</li>
+<li>그룹으로 보내진 메시지는 모든 그룹 맴버들이 받는다.</li>
+<li>하나의 그룹은 하나의 프로세스(single logical process)로 보여진다.</li>
+</ol>
+<h3>2-2. Group Organization</h3>
+<ol>
+<li>Flat groups
+<ul>
+<li>fault tolerance에 좋다: 그룹 맴버들 간의 정보 교환이 즉시 이루어진다.</li>
+<li>통제가 완전히 분산되기 때문에 더 많은 오버헤드가 부과될 수 있다.</li>
+<li>ex) 분산 시스템 에서의 mutual exclusion </li>
+</ul>
+</li>
+<li>Hierarchical groups
+<ul>
+<li>모든 대화는 하나의 coordinator를 통한다. (효율적임)</li>
+<li>fault tolerant, scalable 하지 않지만(coordinator가 fail되면 더 이상 동작하지 않음) 구현이 쉽다.</li>
+<li>ex) centralized algorithm for mutual exclusion</li>
+</ul>
+</li>
+</ol>
+<h3>2-3. Process Replication</h3>
+<p>그룹 내 프로세스 맴버들은 consistency를 유지해야하기 떄문에 동일한 일을 해야한다.</p>
+<ol>
+<li>Primary-based protocol
+<ul>
+<li>heirarchical 구성의 그룹 (초기의 coordinator가 write 작업을 관리한다.)</li>
+<li>primary 가 붕괴되면 election algorithm을 통해 새로운 primary가 선택된다. (Election by Bullying)</li>
+</ul>
+</li>
+<li>Quorum-based protocol
+<ul>
+<li> 동일한 프로세스의 집합인 flat 그룹</li>
+<li>no single point of failure</li>
+</ul>
+</li>
+</ol>
+<h3>2-4. Groups and Failure Masking</h3>
+<p><strong>k-fault tolerant</strong> 그룹은<span style="text-decoration: underline;"> k concurrent member failures를 숨기는 것(mask)이 가능</span>하다. (k: degree of fault dolerance)</p>
+<ul>
+<li>문제점: k-fault tolerant 그룹은 어느 정도의 규모를 필요로 하는가?
+<ul>
+<li>crash failure semantics: k개의 failure을 견디기 위해서는 총 k+1 맴버가 필요하다.(k개의 프로세스가 망가진다면, 남은 하나가 사용된다.)</li>
+<li><strong>arbitrary failure semantics</strong>, <strong>결과가 클라이언트의 투표로 결정되는 경우</strong> : k개의 failure을 견디기 위해 총 <span style="text-decoration: underline;">3k+1</span> 맴버가 필요하다.</li>
+</ul>
+</li>
+</ul>
+<h4>Byzantine General's Problem</h4>
+<p></p>
+<p></p>
+<h3>2-5. Failure Detection</h3>
+<ul>
+<li>프로세스 failure 찾기
+<ul>
+<li>"너 살아있니?" 하고 물어보고 답을 기다린다. (active pinging)</li>
+<li>혹은 alive message를 패시브하게 기다린다.</li>
+</ul>
+</li>
+<li>timeout 매커니즘을 통해 찾기
+<ul>
+<li>timeout을 적절하게 정하는 것은 어렵고 애플리케이션에 따라 다르다.</li>
+<li><strong>False positive</strong>: network failure과 process failure를 구별하는 것은 쉽지않다.</li>
+<li>Solution: <strong>Gossiping/active probing</strong>: 그룹 내 이웃끼리 정기적으로 정보를 주고받는다. "나 살아있어~" "너 살아있니~?"</li>
+</ul>
+</li>
+</ul>
+<h2>3. Reliable Client-Server Communication</h2>
+<h3>3-1. Reliable Communication</h3>
+<ul>
+<li>Error detection
+<ul>
+<li>bit 에러를 찾아낼 수 있도록 패킷의 구조를 구성하며 checksum (e.g. CRC)을 이용한다.</li>
+<li>frame numbering (프레임에 번호를 붙임)을 하여 packet lost를 감지</li>
+</ul>
+</li>
+<li>Error correction
+<ul>
+<li>redundancy bits를 추가하여 패킷의 손상을 자동으로 고침 (네트워크 상에서는 bit error가 발생할 확률이 높다. error correction code를 이용해 복구 가능하게 한다.)</li>
+<li>잃어버린 패킷의 retransmission을 요청한다.</li>
+</ul>
+</li>
+</ul>
+<h3>3-2. Reliable RPC</h3>
+<p>Remote Procedure Call (RPC): remote procedure call을 숨겨서 로컬에서 작동하는 것 처럼 보이게 한다. (client stub/server stub)</p>
+<p>에러가 발생하면 local과 remote call의 다른점을 숨기기가 항상 쉬운 일만은 아니다.</p>
+<p>발생 가능 문제</p>
+<ol>
+<li>Client cannot locate server<br />
+<ul>
+<li>모든 서버가 다운되었거나 업그레이드 되었을 때</li>
+</ul>
+</li>
+<li>Client request is lost
+<ul>
+<li>OS 혹은 클라이언트 stub이 요청을 보내면서 타이머를 시작</li>
+<li>응답이 오기 전에 타이머 만료되면 요청을 재전송(retransmit) : TCP 단계에서 retransmission과 다른 것임</li>
+<li>너무 많은 요청을 잃어버리면 클라이언트는 포기함..</li>
+</ul>
+</li>
+<li>Server crashes<br />
+<ul>
+<li><img src="http://ko.coco.wikidok.net/api/File/Real/5a20bf0c9972d82d054a6842" /></li>
+<li>(a) normal case, (b) Crash after execution, (c) Crash before execution</li>
+<li>서버 크래쉬는 서버가 일을 실행시킨 후 발생했는지 전인지 알기 힘들다.</li>
+<li>문제점: 서버가 기대하는 상황을 정할 필요가 있다.
+<ul>
+<li>At-least-once-semantics: The server guarantees it will carry out an operation at least once, no matter what. 적어도 한 번은 실행시켜야하므로 리퀘스트를 보내야한다. 두 번 실행되도 괜찮기 때문.</li>
+<li>At-most-once-semantics: The server guarantees it will carry out an operation at most once, but possibly none at all. 최대 한 번만 수행해야하므로 리퀘스트를 보내지 않는다.</li>
+</ul>
+</li>
+<li>Example
+<ul>
+<li>Printing Server</li>
+<li>Assumption</li>
+<li>Server strategy</li>
+<li>Client strategy</li>
+<li>설명 추가 필요</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Server response is lost
+<ul>
+<li>클라이언트 입장에서는 리퀘스트를 잃어버린건지 서버에 문제가 있는 것인지 알 수 없다. Time out으로 밖에 찾아낼 수 없음</li>
+<li>sequence number로 해결 가능</li>
+</ul>
+</li>
+<li>Client crashes 
+<ul>
+<li>orphan process: RPC가 이중, 삼중으로 겹칠 수 있는데 리소스를 lock한 상태라면 다른 프로세스도 쓰지 못함</li>
+<li>클라이언트가 reboot되어서 새로운 메시지를 보내면 기존의 orphan process는 종료</li>
+<li>Time out을 둔다. 일정 시간동안 응답이 없으면 죽임.</li>
+</ul>
+</li>
+</ol>
+<h2>4. Reliable Group Communication</h2>
+<p>그룹 내 프로세스는 synchronization, replication 등등의 작업을 할 것이다. 이들 사이의 reliable한 통신이 가능하게 하려면?</p>
+<p>Unicast vs Multicast vs Broadcast</p>
+<h3>4-1. Reliable Multicast</h3>
+<p><span style="text-decoration: line-through;">부연 설명 필요</span></p>
+<p>ACK을 사용할 때 문제점: ACK implosion<br />NACK만 사용하는 것으로 해결 (scalability)<br />NACK을 사용할 때 문제점: 언제까지 데이터 패킷을 가지고 있어야하는지 알 수 없다, NACK implosion이 발생할 수 있다.<br />SRM으로 해결 (random delay만큼 기다려서 NACK을 multicast함)</p>
+<h4>Hierarchical Feedback Control</h4>
+<p>multicast를 scalable하게 하기 위해</p>
+<p>붙어있는 이웃 노드와 ACK을 주고받는다.</p>
+<p>ACK-based</p>
+<p>NACK-based</p>
+<h4>Receiving vs Delivering a message</h4>
+<p>Receiving: Network layer에서 받음</p>
+<p>Delivering: 패킷을 풀어서 Application layer로 전달함</p>
+<h4>문제점: Process failures</h4>
+<p>해결방안: Atomic Multicast (Virtually synchronous, Message ordering)</p>
+<p>모두 제대로 된 정보를 받거나, 모두 받지 못하면 된다.</p>
+<h3>4-2. Virtually synchronous</h3>
+<p>어떠한 protocol이 동작하여 프로세스가 crash되었는지 아닌지 확인하여 모든 프로세스가 제대로 받았으면 deliver하고, 하나의 프로세스라도 crash가 나면 모든 프로세스에서 deliver하지 않는다.</p>
+<p>모든 프로세스에 전달하지 않는 것은 reliable하다. why? Atomic multicast이기 때문</p>
+<p>Virtual Synchrony</p>
+<p>Group view: 그룹 내 모든 프로세스는 multicast가 끝날 때 까지 같은 view를 가지고 있어야한다.</p>
+<p>View change: 프로세스가 그룹에 참여하거나 빠질 수 있다, multicast 중간에는 view change가 일어날 수 없다, multicast가 일어나지 않을 때만 발생함.</p>
+<h3>4-3. Message ordering</h3>
+<p>virtual synchronous와는 독립적으로, deliver 순서 결정시 사용.</p>
+<h4>Unordered multicasts</h4>
+<h4>FIFO-ordered multicasts</h4>
+<p>같은 프로세스에서 보낸 순서 그대로 다른 프로세스로 받아야한다. (다른 프로세스에서 보낸 것은 제한이 없음)</p>
+<h4>Causally-ordered multicasts</h4>
+<p>happened-before 관계의 causally related한 순서가 있다면 그 순서대로 받아야한다.</p>
+<p>FIFO-ordered가 전제로 있어야함. 즉, Causally related 되었다면 FIFO도 되는 것이다.</p>
+<p>Causal ordering이 되었다고 total ordering이 될 수는 없다.</p>
+<h4>Totally-ordered multicasts</h4>
+<p>보낸 순서에 관계없이 받은 순서가 같아야한다.</p>
+<p></p>
+<p>Atomic Multicast</p>
+<table>
+<tbody>
+<tr>
+<td><strong>Multicast</strong></td>
+<td><strong>Basic message ordering</strong></td>
+</tr>
+<tr>
+<td>Reliable multicast</td>
+<td>None</td>
+</tr>
+<tr>
+<td>FIFO multicast</td>
+<td>FIFO-ordered delivery</td>
+</tr>
+<tr>
+<td>Causal multicast</td>
+<td>Causla-ordered delivery</td>
+</tr>
+<tr>
+<td>Atomic multicast</td>
+<td>
+<p>TO-ordered</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/5a20da83f03f6b0e05859bed" /></p>
+<p>(1) FIFO? Irrlevant</p>
+<p>(2) Causal? NO, happened-before relationship: M1-&gt;M2 성립 안함</p>
+<p>(3) Total? NO, 모든 프로세스에서 다른 순서로 보고 있기 때문에 성립 안함</p>
+<p></p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/5a20db69f03f6b0e05859bf4" /></p>
+<p>(1) T1과 T2는 Totally ordered? YES, 모든 프로세스가 T2-&gt;T1 순서로 받음</p>
+<p>(2) F1과 F2는 FIFO-related messages? YES 같은 프로세스에서 보낸 순서가 맞아야하므로 F1-&gt;F2 순서로 보나 보면 된다. </p>
+<p>(3) C1와 C3는 Causally realated message? YES happened-before: C1-&gt;C2, C1-&gt;C3</p>
+<p>(4) C1,C2,C3는 Totally ordered? NO</p>
+<h2>5. Distributed Commit</h2>
+<h3>5-1. 2-phase Commit (2PC)</h3>
+<p>하나의 coordinator, N개의 worker</p>
+<p>Coordinator는 모든 worker들에게 commit 되냐구 물어본다.(VOTE-REQ)</p>
+<p>모든 worker로부터 VOTE-COMMIT을 받으면 GLOBAL-COMMIT 을 방송한다.</p>
+<p>한 명이라도 보내지 않으면 GLOBAL-ABORT</p>
+<p><img src="http://ko.coco.wikidok.net/api/File/Real/5a20dfbbf03f6b0e05859c12" /></p>
+<p></p>
+<p></p>
+<h3>5-2. 3PC</h3>
+</body>
+</html>
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Mem Learning</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+                </section>
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/ghost.png" alt="mem" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/mem">Memi</a></h4>
+                                
+                                    <p>The professional publishing platform</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/mem">Read More</a>
+                        </div>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Mem Learning &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/distributed-system/">Distributed system</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/consistencyAndReplication">일관성과 복제</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/synchronization">동기화</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/networkArchitecture">7. 네트워크 구조</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/distributed-system/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/delete-all-cookies">
+                <div class="post-card-image" style="background-image: url(/assets/images/katalonlogo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/delete-all-cookies">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Katalon-studio</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">WebUI Keywords</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/consistencyAndReplication">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Distributed system</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">일관성과 복제</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>Mem Learning</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">결함 허용</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EA%B2%B0%ED%95%A8+%ED%97%88%EC%9A%A9&amp;url=https://GHHM.github.io/Fault-Tolerance"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://GHHM.github.io/Fault-Tolerance"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Mem Learning</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Subscribe to Mem Learning</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

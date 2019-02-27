@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>동기화</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <!-- web font setting -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="What I learned Today" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/synchronization" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Mem Learning" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="동기화" />
+    <meta property="og:description" content="Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&gt;=A) 그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까? 1. Clock Synchronization 1-1. Physical" />
+    <meta property="og:url" content="http://localhost:4000/synchronization" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2017-11-16T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2017-11-16T00:00:00+09:00" />
+    <meta property="article:tag" content="Distributed System" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="동기화" />
+    <meta name="twitter:description" content="Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&gt;=A) 그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까? 1. Clock Synchronization 1-1. Physical" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Mem Learning" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Distributed System" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mem Learning",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/synchronization",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/synchronization"
+    },
+    "description": "Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&gt;=A) 그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까? 1. Clock Synchronization 1-1. Physical"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="동기화" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/">Mem Learning</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-tag-android" role="menuitem"><a href="/tag/android/">Android</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/distributed-system/">Distributed System</a></li>
+    <li class="nav-tag-katalon" role="menuitem"><a href="/tag/katalon-studio/">Katalon Studio</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="16 November 2017">16 November 2017</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/distributed-system/'>DISTRIBUTED SYSTEM</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">동기화</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p>Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&gt;=A)</p>
+<p></p>
+<p>그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까?</p>
+</div>
+</div>
+<h2><br />1. Clock Synchronization</h2>
+<h3>1-1. Physical Clocks</h3>
+<p>Timer: 높은 진동수의 진동자 (quartz crystal)</p>
+<p>하나의 컴퓨터라면 각각의 프로세스는 같은 클락을 사용하기에 문제가 되지 않는다.</p>
+<p>하지만 네트워크 상에서는 클락이 다를것이기 때문에 시간의 오차(clock skew)가 존재한다. 클락은 아주 미세하지만 다른 속도(rate)로 왕복운동(oscillate)한다.</p>
+<p></p>
+<p>이 때 두 가지 문제가 있는데,</p>
+<p>1. 서로 어떻게 동기화 할 것인가?</p>
+<p>2. 다수의 클락과 실제 시간을 어떻게 동기화 할 것인가?</p>
+<p></p>
+<p>간단히 실제 시간을 알고 싶을 때</p>
+<p>Universal Coordinated Time (UTC): 인공 위성은 각자의 원자 시계를 가지고 있다. UTC는 GPS 위성과 동기화되어 시간을 방송한다.</p>
+<p></p>
+<h3>1-2. GPS</h3>
+<p>Global Positioning System</p>
+<p>인공 위성 기반 분산 시스템</p>
+<p>31개의 인공 위성은 대략 20,000km 높이의 궤도를 돌고있다.</p>
+<p>각각의 인공위성은 3개의 원자 시계를 가지고 있다.(매우 정확함)</p>
+<p>메시지를 지속적으로 방송한다</p>
+<ul>
+<li>위치(position)</li>
+<li>타임 스탬프</li>
+</ul>
+<p></p>
+<h4>Time-of-Arribal (ToA)</h4>
+<p><strong>인공 위성으로부터 GPS receiver까지의 거리는 어떻게 구할까?</strong></p>
+<p style="padding-left: 30px;">신호를 보냈을 때 시간과 받았을 때 시간차를 이용해 거리를 구할 수 있다.</p>
+<ul>
+<li>신호의 속도 c: 빛의 속도 (3x10^8m/s)</li>
+<li>인공 위성에서의 타임 스탬프: Ti</li>
+<li>GPS receiver 에서 받았을 때 타임 스탬프: Tnow</li>
+<li>인공위성 i 에서부터 여기까지의 거리
+<ul>
+<li>di=c * (Tnow-Ti)</li>
+</ul>
+</li>
+</ul>
+<h4>Trilatertation</h4>
+<p>3개의 인공위치의 위치를 알고 타임스탬프를 안다면 우리의 실제 위치를 구할 수 있다.</p>
+<ul>
+<li>문제점: 모든 시계가 정확하고 동기화되어 있다는 가정이 필요하다.
+<ul>
+<li>receiver의 시계는 보통 위성과 동기화 되어있지 않다.</li>
+<li>신호가 receiver에 도달하는데 시간이 걸린다.</li>
+<li>해결방법: Unsynchronized clock at receiver</li>
+</ul>
+</li>
+</ul>
+<h4>Unsynchronized clock at receiver</h4>
+<p><strong>Δdelay i= ( Tnow + Δr ) − Ti= ( Tnow − Ti) + Δr</strong></p>
+<p><span>Δr: receiver의 clock skew (아직 모름)</span></p>
+<p><span>Ti: 인공위성 i에서의 타임 스탬프</span></p>
+<p><span>c * Δdelay i (정확한 거리) = c( Tnow − Ti) + cΔr (clock skew로 인해 잘못 구한 거리)</span></p>
+<p><span>c: 빛의 속도</span></p>
+<p><span>즉, 정확한 위치를 구하기 위해서는 오차를 빼줘야한다.</span></p>
+<p><span></span></p>
+<p><span>di=c Δdelay Δdelay i− c Δr =  <span class="AM" title="sqrt(a)">`sqrt(a)`</span>  (a: (xi−xr)2+(yi−yr)2)</span></p>
+<p>이 때 , xr, yr은 receiver의 2D 좌표이다. (아직 모름)</p>
+<p></p>
+<p>3개의 인공위성: Trilateration을 이용해 pinpoint (x,y)를 특정하여 receiver의 정확한 시각을 구할 수 있다.</p>
+<p>4개의 인공위성: clock skew를 구하기 위한 식을 하나 더 가져올 수 잇다.</p>
+<h3>1-3. Clock Synchronization Algorithms</h3>
+<p>지상에 있는 서버가 정확한 시간을 알려줘 동기화 하는 방식</p>
+<h4>NTP(Network Time Protocol)</h4>
+<p>timer server로 부터 클라이언트가 현재 시간을 가져온다.</p>
+<ul>
+<li>Timer server는 원자 시계 등을 통해 정확한 시계를 가지고 있다.</li>
+<li>문제점: propogation delay (서버에서 클라이언트로 전송될 때 걸리는 시간)</li>
+<li>클라이언트가 아는 정보: 요청 send(T1)/receive(T2), 응답 <span>요청 send(T3)/receive(T4)</span></li>
+</ul>
+<p></p>
+<p>A 라는 시계가 B 시계보다 θ만큼 느릴때  CB(t) = CA(t) + θ 가 성립하며 양 측을 오가는 propogation delay는 동일하다.</p>
+<p><strong>T2 – (T 1+ θ) = (T 4+ θ) -T3</strong></p>
+<p>따라서 clock skew θ = [(T 2-T1) + (T 3– T4)]/2</p>
+<p><span style="text-decoration: line-through;">Review Question 추가 필요</span></p>
+<h2>2. Logical Clocks</h2>
+<p>Lamport's Logical Clocks</p>
+<p>Happen-Before (HB) Relation</p>
+<p><span style="text-decoration: line-through;">내용 추가 필요</span></p>
+<h2>3. Distributed Mutual Exclusion</h2>
+<div contenteditable="false">
+<div class="alert wiki-alert-default03" contenteditable="true">
+<p>~OS 복습~ Centralized System</p>
+<p><strong>Mutual Exclusion</strong></p>
+<p>동시에 실행되는 프로그램에서 critical section(CS)은 하나 이상의 스레드가 실행되면서 공유된 리소스에 접근할 때 동시에 접근하지 못하게 하는 코드이다. 공유된 리소스는 하나의 스레드만 사용할 수 있게 한다.</p>
+<p><strong>Mutual exclusion (ME, mutex) algorithm</strong> 은 global 변수, critical section에 포함되는 코드 조각 같은 공통된 리소스에 동시 다발적인 접근을 박는다.</p>
+</div>
+</div>
+<p>Distributed Mutual Exclusion</p>
+<p></p>
+<h3>3-1. Centralized Algorithm</h3>
+<p>Coordinator가 각각의 프로세서 시스템에게 뭘 해야할지 지시함. (coordinator는 election algorithm으로 결정)</p>
+<p></p>
+<p>Step1: 프로세스1이 coordinator에게 공유된 리소스에 접근할 수 있을지 허락을 구한다. queue가 비었기 때문에 승인된다.</p>
+<p>Step2: 프로세스2가 같은 리소스에 접근할 수 있는지 물어본다. coordinator는 답(reply)를 보내지 않음. (다른 방법으로는 사용하지 못한다(no)는 답을 보낼 수 있다. 이 경우, 기다리라는 건지 single point failure인지 구분하여 해결할 수 있음.)</p>
+<p>Step3: 프로세스1이 리소스를 다 쓰고 해제하면 coordinator에게 말해주고, 이 때 프로세스2는 써도 된다는 답을 받게 된다.</p>
+<p></p>
+<ul>
+<li>장점: ME(mutual exclusion) 보장, 공평하다 (no starvation), 구현이 쉽다.</li>
+<li>단점: single-point failure(coordinator가 죽어버린 경우, permission이 거절될 경우),  coordinator의 퍼포먼스가 병목(bottleneck)될 수 있다. </li>
+<li>ME entry/exit 당 메시지 수 : 3 (request/OK/release)</li>
+<li>entry이전의 딜레이: 2 (request/OK)</li>
+</ul>
+<p></p>
+<h3>3-2. Token Ring</h3>
+<p><img src="/api/File/Real/5a0d4ba1bf9a757778a897e5" /></p>
+<ol>
+<li>링이 만들어지면 프로세스0에게 토큰을 준다.</li>
+<li>토큰은 point-to-point 메시지를 통해 링을 돌게된다.</li>
+<li>프로세스가 CS(critical section)에 입장하고 싶다면 토큰을 가질 때 까지 기다린다. 사용할 땐 토큰을 가지고 있다가 다 썼으면 토큰을 패스한다.</li>
+</ol>
+<ul>
+<li>Mutual Exclusion? 지켜진다.</li>
+<li>Starvation? 발생하지 않는다. 언젠가 토큰을 가질 수 있게되는 구조이기 때문</li>
+<li>Lost tocken? 여기서 토큰이란, 특수한 토큰인데 전달 과정에서 잃어버리게 된다면 어떤 프로세스가 토큰을 새로 생성해야한다는 문제가 발생한다.</li>
+</ul>
+<p></p>
+<p>Token-based</p>
+<p>Token: 프로세스 사이를 넘나드는 특수한 메시지</p>
+<p>하나의 토큰만 이용할 수 있다.</p>
+<p>토큰을 가진 프로세스만이 공유된 리소스에 접근 가능하다.</p>
+<p>장점: starvation, deadlocks 발생하지 않음</p>
+<p>단점: 토큰을 잃어버리게 되면 새로 토큰을 생성해야 한다.</p>
+<p></p>
+<p>ME entry/exit 당 메시지 수: 1 에서 무한대 (예시의 경우 최대 8)</p>
+<p>entry 딜레이: 0(마침 내가 들고 있을 때) 에서 n-1(방금 전에 지나갔을 때)</p>
+<p>평균 딜레이: (n-1)/2</p>
+<h3>3-3. Distributed Algorithm</h3>
+<p><img src="/api/File/Real/5a0d549fbf9a757778a89816" /></p>
+<p></p>
+<p>모든 프로세스가 다 coordinator라고 할 수 있다. 모든 프로세스가 허락 해줘야 사용할 수 있음.</p>
+<p></p>
+<ol>
+<li>프로세스가 리소스를 사용하길 원할 때, <span style="text-decoration: underline;">리소스의 이름, 해당 프로세스의 넘버, 현재 logical time</span>를 쓴 메시지를 만든다.</li>
+<li>모든 프로세스에게 메시지를 보내고 모든 프로세스로부터 OK 메시지를 받을 때 까지 기다린다.</li>
+<li>각 프로세스가 메시지를 받았을 때:
+<ol style="list-style-type: lower-alpha;">
+<li>receiver 프로세스가 리소스에 접근하지도 않고, 접근하려고 시도하지도 않을 때 OK 메시지를 sender 프로세스에게 보낸다. "너 그 리소스 써도된다!"</li>
+<li>receiver 프로세스가 리소스를 이미 가지고 있을 때, 답(reply)를 보내지 않는다. 그 대신, 그 프로세스의 큐에 리퀘스트를 쌓는다. "지금 쓰고 있기 때문에, 일이 다 끝나면 OK 라고 알려줄게!"</li>
+<li>receiver 프로세스도 해당 리소스를 사용하고 싶지만 아직 사용하고있지 않을 경우, 메시지에 적힌 타임스탬프를 비교해서 더 빨리 온 것(수가 적은 쪽)을 보낸다. (타임스탬프는 logical time이라 정확하진 않지만 사용에 무리없다.)</li>
+</ol>
+</li>
+<li>허락을 얻기 위한 요청 메시지를 보낸 후에는 모든 프로세스로부터 허락(OK 메시지)받을 때 까지 기다린다. 허락을 받은 후에는 리소스를 사용하고 다 사용하고 난 후에는 OK 메시지를 큐에 있는 모든 프로세스에게 보낸다. </li>
+</ol>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>Centralized Algorithm</td>
+<td>Distributed Algorithm</td>
+</tr>
+<tr>
+<td>Single point of failure</td>
+<td>
+<p>n points of failure : n개 중에서 아무나 하나가 문제가 생기면 동작을 안한다.(;;)</p>
+<ul>
+<li>n개의 노드 중 하나만 크래쉬가 나도 ok message를 보내지 못하고 모든 리소스가 block된다.</li>
+</ul>
+<p>centralized algorithm에 비해 최소 n 배의 메시지가 필요하다.(계속 실패할 경우)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>ME entry/exit 당 메시지 수: 2(n-1)</p>
+<p>entry 딜레이: 2(n-1)</p>
+<p></p>
+<h3>3-4. Decentralized(Voting) Algorithm</h3>
+<p><img src="/api/File/Real/5a0d5711bf9a757778a89829" /></p>
+<ol>
+<li>각각의 리소스는 n개의 coordinator를 갖는다.</li>
+<li>클라이언트는 n개의 coordinator에게 리퀘스트를 보내 허락을 구한다.
+<ol style="list-style-type: lower-alpha;">
+<li>만일 m(&gt;n/2)개의 coordinator로부터 승인(grant)으로 받으면 리소스를 얻을 수 있다.</li>
+<li>과반수 이하일 경우 승인은 거절(deny)된다. (쓰고 싶으면 또 요청해야함)</li>
+</ol>
+</li>
+<li>Voting algorithm
+<ol style="list-style-type: lower-alpha;">
+<li>클라이언트는 n개의 리퀘스트를 보내고 n개의 응답을 받는다. (승인 혹은 거절)</li>
+<li>클라이언트는 리소스를 다 사용하고 나서 n 개의 release 메시지를 보낸다.</li>
+</ol>
+</li>
+</ol>
+<p></p>
+<p>Reliability: coordinator가 fail 되어도 상관없이 다른 coordinator가 아직 동작하고 있기 때문에 역할을 대신해줄 수 있다.</p>
+<p></p>
+<p>단점: 많은 노드가 같은 리소스에 접근하려할 때, 어떤 노드도 허락을 얻지 못할 수 있다. (이 경우, 2N 개의 메시지가 낭비된다.), 그러면 노드들이 계속 리소스를 얻지 못하므로 starvation이 발생함.</p>
+<p></p>
+<h3>3-5. Comparision of four ME algorithms</h3>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Algorithm</strong></td>
+<td style="text-align: center;"><strong>Total message per ME entry/exit</strong></td>
+<td style="text-align: center;"><strong>Delay before entry (in message times)</strong></td>
+<td style="text-align: center;"><strong>Problems</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Centralized</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Coordinator crash (single-point failure)</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Decentralized</p>
+<p>(m coordinators, k failures)</p>
+</td>
+<td style="text-align: center;">2mk(failure)+m(permission)</td>
+<td style="text-align: center;">2mk</td>
+<td style="text-align: center;">Starvation</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Distributed</p>
+<p>(N nodes)</p>
+</td>
+<td style="text-align: center;">2(N-1)</td>
+<td style="text-align: center;">2(N-1)</td>
+<td style="text-align: center;">N points of failure</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<p>Token Ring</p>
+<p>(N nodes)</p>
+</td>
+<td style="text-align: center;">1 to infinite</td>
+<td style="text-align: center;">0 to N-1</td>
+<td style="text-align: center;">Lost token, process crash</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h2>4. Election Algorithms</h2>
+<h3>4-1. The Bully Algorithm</h3>
+<p>프로세스 중에서 coordinator를 선정하는 방법</p>
+<ol>
+<li>미리 정해진 순서 (initial state)</li>
+<li>현재 coordinator가 fail 일때 등</li>
+</ol>
+<p>참고: 많은 시스템에서 coordinator는 수기로 정해진다.(서버 파일) 이 경우 centalied solution(single point of failure의 솔루션) 이 될 수 있다.</p>
+<p></p>
+<p>각각의 프로세스는 우선순위(weight)가 있다. 높은 우선순위를 가진 프로세스가 coordinator로 선출된다.</p>
+<p>어떻게 우선순위 높은 프로세스를 찾을 수 있을까?</p>
+<p>어떤 프로세스 k 가 coordinator가 제 역할을 못한다고 판단하면, election message를 다른 프로세스들에게 보낸다.</p>
+<p></p>
+<h4>Election by Bullying</h4>
+<p>Bully: 큰 놈만 맨날 이겨서...</p>
+<ol>
+<li>Pk : ELECTION 메시지 전송. 이 때, k 보다 높은 우선 순위를 가진 프로세스에게 보낸다. (Pk+1, Pk+2, ... , Pn-1)</li>
+<li>아무에게도 응답에 오지 않으면, Pk의 우선순위가 가장 높다는 말이기 때문에 coordinator가 된다. (더 높은 우선순위의 프로세스는 크래쉬 등의 이유로 될 수 없나보다.)</li>
+<li>응답이 온다면 Pk의 일은 끝난다.</li>
+</ol>
+<p></p>
+<p><img src="/api/File/Real/5a0d5c52bf9a757778a89845" /></p>
+<p>(a) 프로세스4는 7번에 문제가 생겼음을 발견하고 ELECTION 메시지를 보낸다. 4보다 우선순위가 높은 5,6,7에게 전송</p>
+<p>(b) 프로세스5와 프로세스6는 프로세스4에게 OK 메시지를 보낸다. "넌 안해도 된다!" 이 때, 프로세스 7은 크래쉬되었기 때문에 OK 메시지를 보낼 수 없다.</p>
+<p></p>
+<p><img src="/api/File/Real/5a0d5e33bf9a757778a89852" /></p>
+<p>프로세스5는 프로세스6,7에게 ELECTION 메시지를 보내 프로세스6에게 응답을 받음.</p>
+<p>프로세스6은 프로세스7에게 ELECTION 메시지를 보내지면 응답 받지 못하므로 coordinator가 된다.</p>
+<p></p>
+<p>(c) coordinator가 선출 된 후 Coordinator 메시지를 다른 프로세스에게 보낸다. (?? 이 경우 브로드캐스트 아니면 우선순위가 낮은 노드에게만?)</p>
+<p></p>
+<ul>
+<li>정리</li>
+</ul>
+<ol>
+<li>heavy 프로세스가 lighter 프로세스에게 election 메시지를 받으면 Ok 메시지를 보낸다.( lighter는 race에서 제외됨)</li>
+<li>프로세스가 Ok 메시지를 받지 못하면 coordinator가 되고 다른 프로세스에게 coordinator 메시지를 보낸다.</li>
+</ol>
+<p></p>
+<p></p>
+<p><span style="text-decoration: line-through;">Review Question 있음</span></p>
+</body>
+</html>
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Mem Learning</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+                </section>
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/ghost.png" alt="mem" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/mem">Memi</a></h4>
+                                
+                                    <p>The professional publishing platform</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/mem">Read More</a>
+                        </div>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Mem Learning &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/distributed-system/">Distributed system</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Fault-Tolerance">결함 허용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/consistencyAndReplication">일관성과 복제</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/networkArchitecture">7. 네트워크 구조</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/distributed-system/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/consistencyAndReplication">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Distributed system</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">일관성과 복제</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/networkArchitecture">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Distributed system</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">7. 네트워크 구조</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>Mem Learning</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">동기화</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%8F%99%EA%B8%B0%ED%99%94&amp;url=https://GHHM.github.io/synchronization"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://GHHM.github.io/synchronization"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Mem Learning</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Subscribe to Mem Learning</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

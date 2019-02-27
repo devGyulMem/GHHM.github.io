@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/android/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:31:42+09:00</updated>
+  <id>http://localhost:4000/tag/android/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Mem Learning | </title>
+  
+
+  
+    <subtitle>What I learned Today</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">AsyncTask</title>
+      <link href="http://localhost:4000/asynctask" rel="alternate" type="text/html" title="AsyncTask" />
+      <published>2017-07-17T00:00:00+09:00</published>
+      <updated>2017-07-17T00:00:00+09:00</updated>
+      <id>http://localhost:4000/asynctask</id>
+      <content type="html" xml:base="http://localhost:4000/asynctask">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;AsyncTask&lt;/h3&gt;
+&lt;p&gt;Syntax: AsyncTask &amp;lt;Params, Progress, Result&amp;gt;&lt;/p&gt;
+&lt;p&gt;안드로이드에서 제공하는 추상클래스.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UI Thread를 쉽고 적절하게 사용할 수 있도록 해준다.&lt;/li&gt;
+&lt;li&gt;Background  작업을 수행하고 결과값을 별도의 Handler나 Thread 없이 UI Thread 반영할 수 &lt;span style=&quot;line-height: 1.5;&quot;&gt;있다.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;AsyncTask는 Thread나 Handler의 Helper 클래스로 디자인 되었다.&lt;/li&gt;
+&lt;li&gt;AsyncTask는 짧은 시간을 소요하는 작업의 최적화 되어 있다.&lt;/li&gt;
+&lt;li&gt;만약, 긴 시간을 필요로 하는 작업을 수행해야 한다면 java 1.5 부터 지원하는 java.util,concurrent 패키지의 Executor나 ThreadPoolExecutor, FutherTask 등을 사용하는 것이 좋다.&lt;/li&gt;
+&lt;li&gt;AsyncTask는 세 가지의 Generic Type이 필요하며, onPreExecute, doInBackground, onProgressUpdate, onPostExecute의 4가지 단계로 작업을 수행한다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(참고: 안드로이드에서 화면 갱신할 수 있는 스레드는 단 하나 뿐이고 이것을 Main thread 혹은 UI thread 라고 한다. UI thread가 복잡해질 경우 화면 갱신을 못하고 다른 작업을 수행하면서 ANR오류가 발생할 수 있다. 이 때, 화면 갱신 외의 시간이 걸리는 작업은 별도의 Worker thread를 생성하는 것이 좋다. 예를 들어 네트워크 통신.)&lt;/p&gt;
+&lt;p&gt;UI thread는 화면 갱신시 Handler를 통해 요청한다.&lt;/p&gt;
+&lt;p&gt;AsyncTask는 작업 중가중간의 화면 변경과 수행 후 해야할 동작에 대해 간단히 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.5;&quot;&gt;AsyncTask 클래스는 반드시 UI Thread 내에서 로드되어야 한다. 즉, UI Thread가 아닌 다른 Thread 내에서 정의하면 안된다.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.5;&quot;&gt;AsyncTask의 인스턴스는 반드시 UI Thread 내에서 생성되어야 한다.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;line-height: 1.5;&quot;&gt;AsyncTask를 실행하는 execute()는 반드시 UI Thread내에서 호출되어야 한다.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;onPreExecute(), doInBackground(), onProgressUpdate(), onPostExecute() 는 직접 호출하면 안된다.&lt;/li&gt;
+&lt;li&gt;AsyncTask는 한 번만 호출해야 한다. 중복 호출일 경우 Exception이 발생한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.naver.com/wow2778/221016693320&quot;&gt;&lt;u&gt;&lt;span style=&quot;color: #0066cc;&quot; color=&quot;#0066cc&quot;&gt;http://blog.naver.com/wow2778/221016693320&lt;/span&gt;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt; &lt;/u&gt;&lt;/p&gt;
+&lt;h4&gt;execute&lt;/h4&gt;
+&lt;div class=&quot;autosourcing-stub-extra&quot; style=&quot;-ms-zoom: 1; opacity: 1;&quot;&gt;
+&lt;pre class=&quot;language-java&quot;&gt;&lt;code&gt;DownloadFilesTask = new DownloadFilesTask();
+
+task.execute(url1, url2, url3);&lt;/code&gt;&lt;/pre&gt;
+&lt;p style=&quot;margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;execute를 통해 작업을 실행시키면 onPreExecute() -&amp;gt; doInBackground() -&amp;gt; onProgressUpdate() -&amp;gt; onPostExecute() 의 순서로 수행한다.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p style=&quot;margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #000000;&quot;&gt;&lt;span color=&quot;#3d76ab&quot;&gt;onPreExecute&lt;/span&gt; &lt;/span&gt;&lt;/strong&gt;: 보통 작업 진행 정도를 프로그래스 바로 표현&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;margin: 11px 0px 7px; padding: 0px; font-family: Dotum; font-size: 12px; font-style: normal; font-weight: normal;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;doInBackGround &lt;/strong&gt;: 실제로 백그라운드에서 수행하는 작업&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;onProgressUpdate&lt;/strong&gt; : doInBackGround 작업 수행 도중에 publishProgress 실행 후에 UI Thread에 의해 호출된다. 작업의 진행정도 표시를 위한 프로그래스 바 업데이트에 사용됨&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;onPostExecute&lt;/strong&gt; : doInBackGround 작업 수행 후 UI Thread에 의해 호출됨.&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="android" />
+      
+
+      
+        <summary type="html">AsyncTask Syntax: AsyncTask &amp;lt;Params, Progress, Result&amp;gt; 안드로이드에서 제공하는 추상클래스. UI Thread를 쉽고 적절하게 사용할 수 있도록 해준다. Background  작업을 수행하고 결과값을 별도의 Handler나 Thread 없이 UI Thread 반영할 수 있다. AsyncTask는 Thread나 Handler의 Helper 클래스로 디자인 되었다. AsyncTask는 짧은 시간을 소요하는 작업의 최적화 되어 있다. 만약, 긴 시간을 필요로 하는 작업을 수행해야 한다면 java 1.5 부터 지원하는 java.util,concurrent 패키지의 Executor나 ThreadPoolExecutor, FutherTask 등을 사용하는 것이 좋다. AsyncTask는 세 가지의 Generic Type이 필요하며, onPreExecute, doInBackground, onProgressUpdate, onPostExecute의 4가지 단계로 작업을 수행한다 (참고: 안드로이드에서 화면 갱신할 수 있는 스레드는 단 하나 뿐이고 이것을 Main thread 혹은 UI thread 라고 한다. UI thread가 복잡해질 경우 화면 갱신을 못하고 다른 작업을 수행하면서 ANR오류가 발생할 수 있다. 이 때, 화면 갱신 외의 시간이 걸리는 작업은 별도의 Worker thread를 생성하는 것이 좋다. 예를 들어 네트워크 통신.) UI thread는 화면 갱신시 Handler를 통해 요청한다. AsyncTask는 작업 중가중간의 화면 변경과 수행 후 해야할 동작에 대해 간단히 구현할 수 있다. AsyncTask 클래스는 반드시 UI Thread 내에서 로드되어야 한다. 즉, UI Thread가 아닌 다른 Thread 내에서 정의하면 안된다. AsyncTask의 인스턴스는 반드시 UI Thread 내에서 생성되어야 한다. AsyncTask를 실행하는 execute()는 반드시 UI Thread내에서 호출되어야 한다. onPreExecute(), doInBackground(), onProgressUpdate(), onPostExecute() 는 직접 호출하면 안된다. AsyncTask는 한 번만 호출해야 한다. 중복 호출일 경우 Exception이 발생한다. http://blog.naver.com/wow2778/221016693320   execute DownloadFilesTask = new DownloadFilesTask();</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Verify Element Checked</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+    <!-- web font setting -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="What I learned Today" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/verify-element-checked" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Mem Learning" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Verify Element Checked" />
+    <meta property="og:description" content="What I learned Today" />
+    <meta property="og:url" content="http://localhost:4000/verify-element-checked" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Verify Element Checked" />
+    <meta name="twitter:description" content="What I learned Today" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Mem Learning" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Mem Learning",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/verify-element-checked",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/verify-element-checked"
+    },
+    "description": "What I learned Today"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Verify Element Checked" href="/feed.xml" />
+
+
+</head>
+<body class="home-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/">Mem Learning</a>
+            
+        
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="18 January 2019">18 January 2019</time>
+                    
+                </section>
+                <h1 class="post-full-title">Verify Element Checked</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <hr />
+
+<h1 id="katalon-studio">Katalon Studio</h1>
+
+<h2 id="김혜미">김혜미</h2>
+
+<hr />
+
+<h1 id="index">Index</h1>
+<ol>
+  <li>Verify Element Checked</li>
+  <li>Deselect All Option</li>
+  <li>Deselect Option By Index</li>
+  <li>Deselect Option By Value</li>
+  <li>Get Number Of Selected Option</li>
+  <li>Get Number Of Total Option</li>
+  <li>문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기</li>
+</ol>
+
+<hr />
+
+<h2 id="1-verify-element-checked">1 Verify Element Checked</h2>
+
+<ul>
+  <li>
+    <h2 id="description">Description</h2>
+    <p>지정된 체크박스 web element가 체크되었는지 확인한다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="parameter">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">TestObject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">web element를 나타낸다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">timeout</td>
+      <td style="text-align: center">int</td>
+      <td style="text-align: center">Requried</td>
+      <td style="text-align: center">시스템은 결과를 리턴하기 위해 타임아웃(초단위)때 까지 기다린다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="returns">Returns</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param Types</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">boolean</td>
+      <td style="text-align: center">verification 결과</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">(true: element checked, false: element unchecked)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="n">WebUI</span><span class="o">.</span><span class="na">verifyElementChecked</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/chk_Medicaid'</span><span class="o">),</span> <span class="mi">10</span><span class="o">)</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-2">Example 2</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s2">"https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox"</span><span class="o">)</span>
+
+<span class="n">isChecked</span> <span class="o">=</span> <span class="n">WebUI</span><span class="o">.</span><span class="na">verifyElementChecked</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'</span><span class="o">),</span> <span class="mi">5</span><span class="o">)</span>
+
+<span class="n">println</span><span class="o">(</span><span class="n">isChecked</span><span class="o">)</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-deselect-all-option">2 Deselect All Option</h2>
+
+<ul>
+  <li>
+    <h2 id="description-1">Description</h2>
+    <p>콤보박스에서 모든 옵션을 선택 해제한다.</p>
+  </li>
+  <li>
+    <h2 id="parameter-1">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">TestObject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">web element를 나타낸다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-1">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="s1">'Deselect all options on \'Facility\' list'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">deselectAllOption</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">))</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-deselect-option-by-index">3 Deselect Option By Index</h2>
+
+<ul>
+  <li>
+    <h2 id="description-2">Description</h2>
+    <p>콤보박스에서 주어진 인덱스의 옵션을 선택 해제 한다. 인덱스는 0부터 시작한다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="parameter-2">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">TestObject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">web element를 나타낸다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">range</td>
+      <td style="text-align: center">Object</td>
+      <td style="text-align: center">Reqruied</td>
+      <td style="text-align: center">선택해제할 인덱스 범위</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2 - 인덱스2 , “2,3” - 인덱스 2와 3, “2-5” - 인덱스 2에서 5까지 즉 2,3,4,5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-2">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="s1">'Deselect option 1 on \'Facility\' list'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">deselectOptionByIndex</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">),</span> <span class="mi">1</span><span class="o">)</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-deselect-option-by-label">4 Deselect Option By Label</h2>
+
+<ul>
+  <li>
+    <h2 id="description-3">Description</h2>
+    <p>콤보박스에서 지정된 레이블(보여지는 텍스트)를 사용하여 옵션을 선택 해제한다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="parameter-3">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">TestObject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">web element를 나타낸다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">labelText</td>
+      <td style="text-align: center">String</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">선택해제할 옵션의 표시된 텍스트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">isRegex</td>
+      <td style="text-align: center">boolean</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">true: 레이블 값이 일반적인 표현식일때, false: true 외의 모든 상황</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-3">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="s1">'Select \"Hongkong CURA Healthcare Center\" option'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">selectOptionByValue</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">),</span> <span class="s1">'Hongkong CURA Healthcare Center'</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+
+<span class="s1">'Deselect \"Hongkong CURA Healthcare Center\" option'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">deselectOptionByLabel</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">),</span> <span class="s1">'Hongkong CURA Healthcare Center'</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-get-number-of-selected-option">5 Get Number Of Selected Option</h2>
+
+<ul>
+  <li>
+    <h2 id="description-4">Description</h2>
+    <p>주어진 콤보박스 web element 에서 선택된 옵션의 수를 센다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="parameter-4">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">Testobject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">Represent a web element</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="returns-1">Returns</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">int</td>
+      <td style="text-align: center">선택된 옵션의 수</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-4">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="s1">'Select \"Hongkong CURA Healthcare Center\" option'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">selectOptionByValue</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">),</span> <span class="s1">'Hongkong CURA Healthcare Center'</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+
+<span class="s1">'Get number of selected option in Facility list'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">getNumberOfSelectedOption</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/lst_Facility'</span><span class="o">))</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6--get-number-of-total-option">6  Get Number Of Total Option</h2>
+
+<ul>
+  <li>
+    <h2 id="description-5">Description</h2>
+    <p>주어진 콤보박스 web element가 가진 옵션의 총 수를 센다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="parameter-5">Parameter</h2>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Param</th>
+      <th style="text-align: center">Param Type</th>
+      <th style="text-align: center">Mandatory</th>
+      <th style="text-align: center">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">to</td>
+      <td style="text-align: center">Testobject</td>
+      <td style="text-align: center">Required</td>
+      <td style="text-align: center">Represent a web element</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">flowControl</td>
+      <td style="text-align: center">FailureHandling</td>
+      <td style="text-align: center">Optional</td>
+      <td style="text-align: center">failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+    <h2 id="returns-2">Returns</h2>
+    <p>| Param Type | Description |
+|:———-:|:————:|
+| int | 총 옵션의 수 |</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h2 id="example-5">Example</h2>
+  </li>
+</ul>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Open browser and navigate to demo AUT site'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">openBrowser</span><span class="o">(</span><span class="s1">'http://demoaut.katalon.com/'</span><span class="o">)</span>
+
+<span class="s1">'Click on \'Make Appointment\' button'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_CuraAppointment/btn_BookAppointment'</span><span class="o">))</span>
+
+<span class="s1">'Get number of total option in Facility list'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">getNumberOfTotalOption</span><span class="o">(</span><span class="n">findTestObject</span><span class="o">(</span><span class="s1">'Page_AppointmentConfirmation/lbl_Facility'</span><span class="o">))</span>
+
+<span class="s1">'Close Browser'</span>
+<span class="n">WebUI</span><span class="o">.</span><span class="na">closeBrowser</span><span class="o">()</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Mem Learning</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+                </section>
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card  no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/assertions">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">Assertions</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/delete-all-cookies">
+                <div class="post-card-image" style="background-image: url(/assets/images/katalonlogo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/delete-all-cookies">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Katalon-studio</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">WebUI Keywords</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p></p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Memi" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/mem/">Memi</a>
+                        </span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>Mem Learning</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Verify Element Checked</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Verify+Element+Checked&amp;url=https://GHHM.github.io/verify-element-checked"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://GHHM.github.io/verify-element-checked"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">Mem Learning</a> &copy; 2019</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Subscribe to Mem Learning</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

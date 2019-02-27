@@ -1,0 +1,1939 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/distributed-system/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:31:42+09:00</updated>
+  <id>http://localhost:4000/tag/distributed-system/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Mem Learning | </title>
+  
+
+  
+    <subtitle>What I learned Today</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">결함 허용</title>
+      <link href="http://localhost:4000/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
+      <published>2017-12-01T00:00:00+09:00</published>
+      <updated>2017-12-01T00:00:00+09:00</updated>
+      <id>http://localhost:4000/Fault%20Tolerance</id>
+      <content type="html" xml:base="http://localhost:4000/Fault-Tolerance">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default03&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;서문&lt;/p&gt;
+&lt;p&gt;Failure는 옵션 사항이 아니다. 꼭 고려해야함.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Failure&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다.&lt;/p&gt;
+&lt;p&gt;분산 시스템: 하나의 시스템에 부분 실패 (&lt;strong&gt;partial failure&lt;/strong&gt;)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tolerance and Recovery&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;분산 시스템에서 가장 중요한 목표는&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;전반적인 수행에 심각한 영향을 미치기 전에 &lt;span style=&quot;text-decoration: underline;&quot;&gt;partial failure으로부터 자동 복구&lt;/span&gt;시키는 것&lt;/li&gt;
+&lt;li&gt;failure가 발생해도, 시스템은 &lt;span style=&quot;text-decoration: underline;&quot;&gt;지속적으로 작동하&lt;/span&gt;면서 수리해야한다.&lt;/li&gt;
+&lt;li&gt;다른 말로하면, 분산 시스템은&lt;strong&gt; fault tolerant&lt;/strong&gt; 해야한다는 뜻이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;1. Basic Concepts&lt;/h2&gt;
+&lt;h3&gt;1-1. Dependability&lt;/h3&gt;
+&lt;p&gt;Dependable system (신뢰할 수 있는 시스템)&lt;/p&gt;
+&lt;p&gt;Properties&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Availability&lt;/strong&gt;: 지금 바로 사용할 수 있는 확률, 이 순간에 문제 없이 동작될 확률 (%)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reliability&lt;/strong&gt;: 문제 없이 연속적으로 사용될 수 있는 시간 (time)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mean Time To Failure(MTTF): 하드디스크의 성능을 나타낼 때 많이 사용되는데, 구성 요소가 fail이 날 때 까지의 평균 시간이다. &lt;/li&gt;
+&lt;li&gt;Availability vs Reliability&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;매 시간당 1ms 씩 시스템이 다운된다. (availability: 99.999%, reliability: under 1 hour)&lt;/li&gt;
+&lt;li&gt;시스템은 일 년에 한 번씩 36일간 다운된다. (availability: low, reliability: high)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Safty&lt;/strong&gt;: low probability of catastrophes&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fail이 일어나도 재앙이 안 일어나게 한다.&lt;/li&gt;
+&lt;li&gt;ex) 원자력 발전소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Maintainability&lt;/strong&gt;: 얼마나 쉽게 수리/복구 할 수있는지&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;high maintainable = high degree of availability &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default03&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 12pt;&quot;&gt;&lt;strong&gt;Terminology&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Failure&lt;/strong&gt;: A system fails when it cannot provide one or more of its services&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;더 이상 서비스를 제공하지 못하여 작동하지 않는 시스템&lt;/li&gt;
+&lt;li&gt;ex) 웹 서버가 더이상 웹페이지를 주지 못함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Error&lt;/strong&gt;: The part of a system state that can lead to a failure&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;failure가 일어나게 된 어떤 특정한 시스템 상태&lt;/li&gt;
+&lt;li&gt;ex) 에러가 있는 패킷을 받게됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Fault&lt;/strong&gt;: The cause of an error&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ex) 패킷 에러가 난 원인으로 노이즈나 interference&lt;/li&gt;
+&lt;li&gt;ex) 프로그램 버그(programming error), 크래쉬 프로그램(failure))&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Fault tolerance&lt;/strong&gt;: a system can provide its services in the presence of faults&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fault가 있어도 서비스를 제공할 수 있는 시스템&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;결과적으로 system fault가 error을 발생시키고, error는 failure로 이어진다. 이런 경우가 발생하더라도 시스템이 문제 없이 작동할 수 있다면 fault tolerance이다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;1-2. Failure Models&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1. Crash failures&lt;/strong&gt;: 서버가 멈췄는데(halt), 멈추기 전에는 정상적으로 동작함&lt;br /&gt;&lt;strong&gt;2. Omission fialures&lt;/strong&gt;: 서버에 어떠한 request가 도착했는데 적절한 응답을 보내지 못하는 상태&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Receive omission: 메시지 받기 실패 - 클라이언트의 요청에 응답 실패&lt;/li&gt;
+&lt;li&gt;Send omission 메시지 보내기 실패 - 리퀘스트를 받고 작업도 했지만 어떤 이유에서 응답을 못함.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;3. Timing failures&lt;/strong&gt;: 서버의 output은 맞지만, 주어진 제한 시간 안에 수행하지 못하는 상태&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ex) 스트리밍 비디오 데이터가 제 시간에 도착하지 않음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;4. Response failures&lt;/strong&gt;: 서버의 응답이 요구에 맞지 않음 (incorrect)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Value failure: 맞지 않은 값이 나옴
+&lt;ul&gt;
+&lt;li&gt;ex) 웹서치 키워드를 입력했을 때 엉뚱한 결과가 나옴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;State transition failure: 서버는 리퀘스트가 오면 규칙에 따른 응답이 있는데 엉뚱한 리퀘스트가 와서 exception이 발생해 엉뚱한 결과로 빠지는 경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;5. Aribitrary (Byzantine) failures&lt;/strong&gt;: 서버가 연산에 대한 답을 구했는데 엉뚱한 답이 나오는 경우, 의도적으로 잘못된 결과를 보내는 경우, 원인을 매우 찾기 어렵다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ex) 서버는 절대 나올 수 없는 결과를 냈지만 틀렸다는 것을 감지하기 어렵다.&lt;/li&gt;
+&lt;li&gt;ex) 결함이 있는 서버는 의도적으로 잘못된 답을 도출하기 위해 악의적으로 같이 작업한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;참고: Crash failures (least severe) to arbitrary failrues (worst)&lt;/p&gt;
+&lt;h3&gt;1-3. Fault Tolerance를 얻기 위해 failure에 대처하는 방법&lt;/h3&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Failure가 났다는 사실을 숨긴다. (redundancy)&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Information redundancy&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;FEC(Forward Error Correction): 전송하는 데이터의 패킷 에러를 복구하기 위한 코드&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time redundancy&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;다시 수행: retransmission&lt;/li&gt;
+&lt;li&gt;epecially helpful for transient or intermittent faults.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Physical redundancy&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Software (프로세스 복제), Hardware&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h4&gt;&lt;strong&gt;Triple modular redundancy(TMR)&lt;/strong&gt;&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Q1. A2가 fail 되면?&lt;/p&gt;
+&lt;p&gt;A1. V1은 A1, A3의 맞는 답을 받았기 때문에 정상적으로 동작한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Q2. A2, B1 그리고 C1이 fail 되면?&lt;/p&gt;
+&lt;p&gt;A2. 각 component에서 하나씩 fail이 나는 것은 상관 없고 정상적으로 동작한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Q3. V1이 fail 나면?&lt;/p&gt;
+&lt;p&gt;A3. V1의 fail은 B1의 fail과 같기 때문에, 상관없이 정상적으로 동작한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Q4. V1과 B2가 fail 나면?&lt;/p&gt;
+&lt;p&gt;A4. 잘못된 값을 얻는다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Q5. 2개가 오류나도 괜찮으려면?&lt;/p&gt;
+&lt;p&gt;A5. 5개의 component가 있으면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/5a16cc5f1f16b32652214ba4&quot; /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;2. Process Resilience&lt;/h2&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;failure를 방지하기 위해 프로세스를 복제하여 그룹으로 만들자.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;2-1. Process Group&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;똑같은(identical) 프로세스를 여러 개 두는 것이다.&lt;/li&gt;
+&lt;li&gt;그룹 내 하나의 프로세스가 fail 되면 다른 것들로 대체 가능하다.&lt;/li&gt;
+&lt;li&gt;그룹 내 프로세스는 동적이다 : 프로세스는 시스템이 작동하는 동안 그룹에 참여하거나 떠나는 것이 가능하다.&lt;/li&gt;
+&lt;li&gt;그룹으로 보내진 메시지는 모든 그룹 맴버들이 받는다.&lt;/li&gt;
+&lt;li&gt;하나의 그룹은 하나의 프로세스(single logical process)로 보여진다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;2-2. Group Organization&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Flat groups
+&lt;ul&gt;
+&lt;li&gt;fault tolerance에 좋다: 그룹 맴버들 간의 정보 교환이 즉시 이루어진다.&lt;/li&gt;
+&lt;li&gt;통제가 완전히 분산되기 때문에 더 많은 오버헤드가 부과될 수 있다.&lt;/li&gt;
+&lt;li&gt;ex) 분산 시스템 에서의 mutual exclusion &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Hierarchical groups
+&lt;ul&gt;
+&lt;li&gt;모든 대화는 하나의 coordinator를 통한다. (효율적임)&lt;/li&gt;
+&lt;li&gt;fault tolerant, scalable 하지 않지만(coordinator가 fail되면 더 이상 동작하지 않음) 구현이 쉽다.&lt;/li&gt;
+&lt;li&gt;ex) centralized algorithm for mutual exclusion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;2-3. Process Replication&lt;/h3&gt;
+&lt;p&gt;그룹 내 프로세스 맴버들은 consistency를 유지해야하기 떄문에 동일한 일을 해야한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Primary-based protocol
+&lt;ul&gt;
+&lt;li&gt;heirarchical 구성의 그룹 (초기의 coordinator가 write 작업을 관리한다.)&lt;/li&gt;
+&lt;li&gt;primary 가 붕괴되면 election algorithm을 통해 새로운 primary가 선택된다. (Election by Bullying)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Quorum-based protocol
+&lt;ul&gt;
+&lt;li&gt; 동일한 프로세스의 집합인 flat 그룹&lt;/li&gt;
+&lt;li&gt;no single point of failure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;2-4. Groups and Failure Masking&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;k-fault tolerant&lt;/strong&gt; 그룹은&lt;span style=&quot;text-decoration: underline;&quot;&gt; k concurrent member failures를 숨기는 것(mask)이 가능&lt;/span&gt;하다. (k: degree of fault dolerance)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;문제점: k-fault tolerant 그룹은 어느 정도의 규모를 필요로 하는가?
+&lt;ul&gt;
+&lt;li&gt;crash failure semantics: k개의 failure을 견디기 위해서는 총 k+1 맴버가 필요하다.(k개의 프로세스가 망가진다면, 남은 하나가 사용된다.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;arbitrary failure semantics&lt;/strong&gt;, &lt;strong&gt;결과가 클라이언트의 투표로 결정되는 경우&lt;/strong&gt; : k개의 failure을 견디기 위해 총 &lt;span style=&quot;text-decoration: underline;&quot;&gt;3k+1&lt;/span&gt; 맴버가 필요하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Byzantine General's Problem&lt;/h4&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;2-5. Failure Detection&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;프로세스 failure 찾기
+&lt;ul&gt;
+&lt;li&gt;&quot;너 살아있니?&quot; 하고 물어보고 답을 기다린다. (active pinging)&lt;/li&gt;
+&lt;li&gt;혹은 alive message를 패시브하게 기다린다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;timeout 매커니즘을 통해 찾기
+&lt;ul&gt;
+&lt;li&gt;timeout을 적절하게 정하는 것은 어렵고 애플리케이션에 따라 다르다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;False positive&lt;/strong&gt;: network failure과 process failure를 구별하는 것은 쉽지않다.&lt;/li&gt;
+&lt;li&gt;Solution: &lt;strong&gt;Gossiping/active probing&lt;/strong&gt;: 그룹 내 이웃끼리 정기적으로 정보를 주고받는다. &quot;나 살아있어~&quot; &quot;너 살아있니~?&quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3. Reliable Client-Server Communication&lt;/h2&gt;
+&lt;h3&gt;3-1. Reliable Communication&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Error detection
+&lt;ul&gt;
+&lt;li&gt;bit 에러를 찾아낼 수 있도록 패킷의 구조를 구성하며 checksum (e.g. CRC)을 이용한다.&lt;/li&gt;
+&lt;li&gt;frame numbering (프레임에 번호를 붙임)을 하여 packet lost를 감지&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Error correction
+&lt;ul&gt;
+&lt;li&gt;redundancy bits를 추가하여 패킷의 손상을 자동으로 고침 (네트워크 상에서는 bit error가 발생할 확률이 높다. error correction code를 이용해 복구 가능하게 한다.)&lt;/li&gt;
+&lt;li&gt;잃어버린 패킷의 retransmission을 요청한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3-2. Reliable RPC&lt;/h3&gt;
+&lt;p&gt;Remote Procedure Call (RPC): remote procedure call을 숨겨서 로컬에서 작동하는 것 처럼 보이게 한다. (client stub/server stub)&lt;/p&gt;
+&lt;p&gt;에러가 발생하면 local과 remote call의 다른점을 숨기기가 항상 쉬운 일만은 아니다.&lt;/p&gt;
+&lt;p&gt;발생 가능 문제&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Client cannot locate server&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;모든 서버가 다운되었거나 업그레이드 되었을 때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Client request is lost
+&lt;ul&gt;
+&lt;li&gt;OS 혹은 클라이언트 stub이 요청을 보내면서 타이머를 시작&lt;/li&gt;
+&lt;li&gt;응답이 오기 전에 타이머 만료되면 요청을 재전송(retransmit) : TCP 단계에서 retransmission과 다른 것임&lt;/li&gt;
+&lt;li&gt;너무 많은 요청을 잃어버리면 클라이언트는 포기함..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Server crashes&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/5a20bf0c9972d82d054a6842&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;(a) normal case, (b) Crash after execution, (c) Crash before execution&lt;/li&gt;
+&lt;li&gt;서버 크래쉬는 서버가 일을 실행시킨 후 발생했는지 전인지 알기 힘들다.&lt;/li&gt;
+&lt;li&gt;문제점: 서버가 기대하는 상황을 정할 필요가 있다.
+&lt;ul&gt;
+&lt;li&gt;At-least-once-semantics: The server guarantees it will carry out an operation at least once, no matter what. 적어도 한 번은 실행시켜야하므로 리퀘스트를 보내야한다. 두 번 실행되도 괜찮기 때문.&lt;/li&gt;
+&lt;li&gt;At-most-once-semantics: The server guarantees it will carry out an operation at most once, but possibly none at all. 최대 한 번만 수행해야하므로 리퀘스트를 보내지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Example
+&lt;ul&gt;
+&lt;li&gt;Printing Server&lt;/li&gt;
+&lt;li&gt;Assumption&lt;/li&gt;
+&lt;li&gt;Server strategy&lt;/li&gt;
+&lt;li&gt;Client strategy&lt;/li&gt;
+&lt;li&gt;설명 추가 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Server response is lost
+&lt;ul&gt;
+&lt;li&gt;클라이언트 입장에서는 리퀘스트를 잃어버린건지 서버에 문제가 있는 것인지 알 수 없다. Time out으로 밖에 찾아낼 수 없음&lt;/li&gt;
+&lt;li&gt;sequence number로 해결 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Client crashes 
+&lt;ul&gt;
+&lt;li&gt;orphan process: RPC가 이중, 삼중으로 겹칠 수 있는데 리소스를 lock한 상태라면 다른 프로세스도 쓰지 못함&lt;/li&gt;
+&lt;li&gt;클라이언트가 reboot되어서 새로운 메시지를 보내면 기존의 orphan process는 종료&lt;/li&gt;
+&lt;li&gt;Time out을 둔다. 일정 시간동안 응답이 없으면 죽임.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;4. Reliable Group Communication&lt;/h2&gt;
+&lt;p&gt;그룹 내 프로세스는 synchronization, replication 등등의 작업을 할 것이다. 이들 사이의 reliable한 통신이 가능하게 하려면?&lt;/p&gt;
+&lt;p&gt;Unicast vs Multicast vs Broadcast&lt;/p&gt;
+&lt;h3&gt;4-1. Reliable Multicast&lt;/h3&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;부연 설명 필요&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;ACK을 사용할 때 문제점: ACK implosion&lt;br /&gt;NACK만 사용하는 것으로 해결 (scalability)&lt;br /&gt;NACK을 사용할 때 문제점: 언제까지 데이터 패킷을 가지고 있어야하는지 알 수 없다, NACK implosion이 발생할 수 있다.&lt;br /&gt;SRM으로 해결 (random delay만큼 기다려서 NACK을 multicast함)&lt;/p&gt;
+&lt;h4&gt;Hierarchical Feedback Control&lt;/h4&gt;
+&lt;p&gt;multicast를 scalable하게 하기 위해&lt;/p&gt;
+&lt;p&gt;붙어있는 이웃 노드와 ACK을 주고받는다.&lt;/p&gt;
+&lt;p&gt;ACK-based&lt;/p&gt;
+&lt;p&gt;NACK-based&lt;/p&gt;
+&lt;h4&gt;Receiving vs Delivering a message&lt;/h4&gt;
+&lt;p&gt;Receiving: Network layer에서 받음&lt;/p&gt;
+&lt;p&gt;Delivering: 패킷을 풀어서 Application layer로 전달함&lt;/p&gt;
+&lt;h4&gt;문제점: Process failures&lt;/h4&gt;
+&lt;p&gt;해결방안: Atomic Multicast (Virtually synchronous, Message ordering)&lt;/p&gt;
+&lt;p&gt;모두 제대로 된 정보를 받거나, 모두 받지 못하면 된다.&lt;/p&gt;
+&lt;h3&gt;4-2. Virtually synchronous&lt;/h3&gt;
+&lt;p&gt;어떠한 protocol이 동작하여 프로세스가 crash되었는지 아닌지 확인하여 모든 프로세스가 제대로 받았으면 deliver하고, 하나의 프로세스라도 crash가 나면 모든 프로세스에서 deliver하지 않는다.&lt;/p&gt;
+&lt;p&gt;모든 프로세스에 전달하지 않는 것은 reliable하다. why? Atomic multicast이기 때문&lt;/p&gt;
+&lt;p&gt;Virtual Synchrony&lt;/p&gt;
+&lt;p&gt;Group view: 그룹 내 모든 프로세스는 multicast가 끝날 때 까지 같은 view를 가지고 있어야한다.&lt;/p&gt;
+&lt;p&gt;View change: 프로세스가 그룹에 참여하거나 빠질 수 있다, multicast 중간에는 view change가 일어날 수 없다, multicast가 일어나지 않을 때만 발생함.&lt;/p&gt;
+&lt;h3&gt;4-3. Message ordering&lt;/h3&gt;
+&lt;p&gt;virtual synchronous와는 독립적으로, deliver 순서 결정시 사용.&lt;/p&gt;
+&lt;h4&gt;Unordered multicasts&lt;/h4&gt;
+&lt;h4&gt;FIFO-ordered multicasts&lt;/h4&gt;
+&lt;p&gt;같은 프로세스에서 보낸 순서 그대로 다른 프로세스로 받아야한다. (다른 프로세스에서 보낸 것은 제한이 없음)&lt;/p&gt;
+&lt;h4&gt;Causally-ordered multicasts&lt;/h4&gt;
+&lt;p&gt;happened-before 관계의 causally related한 순서가 있다면 그 순서대로 받아야한다.&lt;/p&gt;
+&lt;p&gt;FIFO-ordered가 전제로 있어야함. 즉, Causally related 되었다면 FIFO도 되는 것이다.&lt;/p&gt;
+&lt;p&gt;Causal ordering이 되었다고 total ordering이 될 수는 없다.&lt;/p&gt;
+&lt;h4&gt;Totally-ordered multicasts&lt;/h4&gt;
+&lt;p&gt;보낸 순서에 관계없이 받은 순서가 같아야한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Atomic Multicast&lt;/p&gt;
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Multicast&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Basic message ordering&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Reliable multicast&lt;/td&gt;
+&lt;td&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FIFO multicast&lt;/td&gt;
+&lt;td&gt;FIFO-ordered delivery&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Causal multicast&lt;/td&gt;
+&lt;td&gt;Causla-ordered delivery&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Atomic multicast&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;TO-ordered&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/5a20da83f03f6b0e05859bed&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;(1) FIFO? Irrlevant&lt;/p&gt;
+&lt;p&gt;(2) Causal? NO, happened-before relationship: M1-&amp;gt;M2 성립 안함&lt;/p&gt;
+&lt;p&gt;(3) Total? NO, 모든 프로세스에서 다른 순서로 보고 있기 때문에 성립 안함&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/5a20db69f03f6b0e05859bf4&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;(1) T1과 T2는 Totally ordered? YES, 모든 프로세스가 T2-&amp;gt;T1 순서로 받음&lt;/p&gt;
+&lt;p&gt;(2) F1과 F2는 FIFO-related messages? YES 같은 프로세스에서 보낸 순서가 맞아야하므로 F1-&amp;gt;F2 순서로 보나 보면 된다. &lt;/p&gt;
+&lt;p&gt;(3) C1와 C3는 Causally realated message? YES happened-before: C1-&amp;gt;C2, C1-&amp;gt;C3&lt;/p&gt;
+&lt;p&gt;(4) C1,C2,C3는 Totally ordered? NO&lt;/p&gt;
+&lt;h2&gt;5. Distributed Commit&lt;/h2&gt;
+&lt;h3&gt;5-1. 2-phase Commit (2PC)&lt;/h3&gt;
+&lt;p&gt;하나의 coordinator, N개의 worker&lt;/p&gt;
+&lt;p&gt;Coordinator는 모든 worker들에게 commit 되냐구 물어본다.(VOTE-REQ)&lt;/p&gt;
+&lt;p&gt;모든 worker로부터 VOTE-COMMIT을 받으면 GLOBAL-COMMIT 을 방송한다.&lt;/p&gt;
+&lt;p&gt;한 명이라도 보내지 않으면 GLOBAL-ABORT&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/5a20dfbbf03f6b0e05859c12&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;5-2. 3PC&lt;/h3&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">서문 Failure는 옵션 사항이 아니다. 꼭 고려해야함. Failure 단일 시스템: 모든 요소에 영향을 미친다. 전체 시스템을 붕괴시키기 쉽다. 분산 시스템: 하나의 시스템에 부분 실패 (partial failure)가 일어나더라도 다른 부분에서 작업을 계속하고 있을 수 있다. Tolerance and Recovery 분산 시스템에서 가장 중요한 목표는 전반적인 수행에 심각한 영향을 미치기 전에 partial failure으로부터 자동 복구시키는 것 failure가 발생해도, 시스템은 지속적으로 작동하면서 수리해야한다. 다른 말로하면, 분산 시스템은 fault tolerant 해야한다는 뜻이다. 1. Basic Concepts 1-1. Dependability Dependable system (신뢰할 수 있는 시스템) Properties Availability: 지금 바로 사용할 수 있는 확률, 이 순간에 문제 없이 동작될 확률 (%) Reliability: 문제 없이 연속적으로 사용될 수 있는 시간 (time) Mean Time To Failure(MTTF): 하드디스크의 성능을 나타낼 때 많이 사용되는데, 구성 요소가 fail이 날 때 까지의 평균 시간이다.  Availability vs Reliability 매 시간당 1ms 씩 시스템이 다운된다. (availability: 99.999%, reliability: under 1 hour) 시스템은 일 년에 한 번씩 36일간 다운된다. (availability: low, reliability: high) Safty: low probability of catastrophes fail이 일어나도 재앙이 안 일어나게 한다. ex) 원자력 발전소 Maintainability: 얼마나 쉽게 수리/복구 할 수있는지 high maintainable = high degree of availability  Terminology Failure: A system fails when it cannot provide one or more of its services 더 이상 서비스를 제공하지 못하여 작동하지 않는 시스템 ex) 웹 서버가 더이상 웹페이지를 주지 못함 Error: The part of a system state that can lead to a failure failure가 일어나게 된 어떤 특정한 시스템 상태 ex) 에러가 있는 패킷을 받게됨 Fault: The cause of an error ex) 패킷 에러가 난 원인으로 노이즈나 interference ex) 프로그램 버그(programming error), 크래쉬 프로그램(failure)) Fault tolerance: a system can provide its services in the presence of faults fault가 있어도 서비스를 제공할 수 있는 시스템 결과적으로 system fault가 error을 발생시키고, error는 failure로 이어진다. 이런 경우가 발생하더라도 시스템이 문제 없이 작동할 수 있다면 fault tolerance이다. 1-2. Failure Models 1. Crash failures: 서버가 멈췄는데(halt), 멈추기 전에는 정상적으로 동작함2. Omission fialures: 서버에 어떠한 request가 도착했는데 적절한 응답을 보내지 못하는 상태 Receive omission: 메시지 받기 실패 - 클라이언트의 요청에 응답 실패 Send omission 메시지 보내기 실패 - 리퀘스트를 받고 작업도 했지만 어떤 이유에서 응답을 못함. 3. Timing failures: 서버의 output은 맞지만, 주어진 제한 시간 안에 수행하지 못하는 상태 ex) 스트리밍 비디오 데이터가 제 시간에 도착하지 않음 4. Response failures: 서버의 응답이 요구에 맞지 않음 (incorrect) Value failure: 맞지 않은 값이 나옴 ex) 웹서치 키워드를 입력했을 때 엉뚱한 결과가 나옴 State transition failure: 서버는 리퀘스트가 오면 규칙에 따른 응답이 있는데 엉뚱한 리퀘스트가 와서 exception이 발생해 엉뚱한 결과로 빠지는 경우 5. Aribitrary (Byzantine) failures: 서버가 연산에 대한 답을 구했는데 엉뚱한 답이 나오는 경우, 의도적으로 잘못된 결과를 보내는 경우, 원인을 매우 찾기 어렵다. ex) 서버는 절대 나올 수 없는 결과를 냈지만 틀렸다는 것을 감지하기 어렵다. ex) 결함이 있는 서버는 의도적으로 잘못된 답을 도출하기 위해 악의적으로 같이 작업한다. 참고: Crash failures (least severe) to arbitrary failrues (worst) 1-3. Fault Tolerance를 얻기 위해 failure에 대처하는 방법 Failure가 났다는 사실을 숨긴다. (redundancy) Information redundancy FEC(Forward Error Correction): 전송하는 데이터의 패킷 에러를 복구하기 위한 코드 Time redundancy 다시 수행: retransmission epecially helpful for transient or intermittent faults. Physical redundancy Software (프로세스 복제), Hardware Triple modular redundancy(TMR) Q1. A2가 fail 되면? A1. V1은 A1, A3의 맞는 답을 받았기 때문에 정상적으로 동작한다. Q2. A2, B1 그리고 C1이 fail 되면? A2. 각 component에서 하나씩 fail이 나는 것은 상관 없고 정상적으로 동작한다. Q3. V1이 fail 나면? A3. V1의 fail은 B1의 fail과 같기 때문에, 상관없이 정상적으로 동작한다. Q4. V1과 B2가 fail 나면? A4. 잘못된 값을 얻는다. Q5. 2개가 오류나도 괜찮으려면? A5. 5개의 component가 있으면 된다. 2. Process Resilience failure를 방지하기 위해 프로세스를 복제하여 그룹으로 만들자. 2-1. Process Group 똑같은(identical) 프로세스를 여러 개 두는 것이다. 그룹 내 하나의 프로세스가 fail 되면 다른 것들로 대체 가능하다. 그룹 내 프로세스는 동적이다 : 프로세스는 시스템이 작동하는 동안 그룹에 참여하거나 떠나는 것이 가능하다. 그룹으로 보내진 메시지는 모든 그룹 맴버들이 받는다. 하나의 그룹은 하나의 프로세스(single logical process)로 보여진다. 2-2. Group Organization Flat groups fault tolerance에 좋다: 그룹 맴버들 간의 정보 교환이 즉시 이루어진다. 통제가 완전히 분산되기 때문에 더 많은 오버헤드가 부과될 수 있다. ex) 분산 시스템 에서의 mutual exclusion  Hierarchical groups 모든 대화는 하나의 coordinator를 통한다. (효율적임) fault tolerant, scalable 하지 않지만(coordinator가 fail되면 더 이상 동작하지 않음) 구현이 쉽다. ex) centralized algorithm for mutual exclusion 2-3. Process Replication 그룹 내 프로세스 맴버들은 consistency를 유지해야하기 떄문에 동일한 일을 해야한다. Primary-based protocol heirarchical 구성의 그룹 (초기의 coordinator가 write 작업을 관리한다.) primary 가 붕괴되면 election algorithm을 통해 새로운 primary가 선택된다. (Election by Bullying) Quorum-based protocol  동일한 프로세스의 집합인 flat 그룹 no single point of failure 2-4. Groups and Failure Masking k-fault tolerant 그룹은 k concurrent member failures를 숨기는 것(mask)이 가능하다. (k: degree of fault dolerance) 문제점: k-fault tolerant 그룹은 어느 정도의 규모를 필요로 하는가? crash failure semantics: k개의 failure을 견디기 위해서는 총 k+1 맴버가 필요하다.(k개의 프로세스가 망가진다면, 남은 하나가 사용된다.) arbitrary failure semantics, 결과가 클라이언트의 투표로 결정되는 경우 : k개의 failure을 견디기 위해 총 3k+1 맴버가 필요하다. Byzantine General's Problem 2-5. Failure Detection 프로세스 failure 찾기 &quot;너 살아있니?&quot; 하고 물어보고 답을 기다린다. (active pinging) 혹은 alive message를 패시브하게 기다린다. timeout 매커니즘을 통해 찾기 timeout을 적절하게 정하는 것은 어렵고 애플리케이션에 따라 다르다. False positive: network failure과 process failure를 구별하는 것은 쉽지않다. Solution: Gossiping/active probing: 그룹 내 이웃끼리 정기적으로 정보를 주고받는다. &quot;나 살아있어~&quot; &quot;너 살아있니~?&quot; 3. Reliable Client-Server Communication 3-1. Reliable Communication Error detection bit 에러를 찾아낼 수 있도록 패킷의 구조를 구성하며 checksum (e.g. CRC)을 이용한다. frame numbering (프레임에 번호를 붙임)을 하여 packet lost를 감지 Error correction redundancy bits를 추가하여 패킷의 손상을 자동으로 고침 (네트워크 상에서는 bit error가 발생할 확률이 높다. error correction code를 이용해 복구 가능하게 한다.) 잃어버린 패킷의 retransmission을 요청한다. 3-2. Reliable RPC Remote Procedure Call (RPC): remote procedure call을 숨겨서 로컬에서 작동하는 것 처럼 보이게 한다. (client stub/server stub) 에러가 발생하면 local과 remote call의 다른점을 숨기기가 항상 쉬운 일만은 아니다. 발생 가능 문제 Client cannot locate server 모든 서버가 다운되었거나 업그레이드 되었을 때 Client request is lost OS 혹은 클라이언트 stub이 요청을 보내면서 타이머를 시작 응답이 오기 전에 타이머 만료되면 요청을 재전송(retransmit) : TCP 단계에서 retransmission과 다른 것임 너무 많은 요청을 잃어버리면 클라이언트는 포기함.. Server crashes (a) normal case, (b) Crash after execution, (c) Crash before execution 서버 크래쉬는 서버가 일을 실행시킨 후 발생했는지 전인지 알기 힘들다. 문제점: 서버가 기대하는 상황을 정할 필요가 있다. At-least-once-semantics: The server guarantees it will carry out an operation at least once, no matter what. 적어도 한 번은 실행시켜야하므로 리퀘스트를 보내야한다. 두 번 실행되도 괜찮기 때문. At-most-once-semantics: The server guarantees it will carry out an operation at most once, but possibly none at all. 최대 한 번만 수행해야하므로 리퀘스트를 보내지 않는다. Example Printing Server Assumption Server strategy Client strategy 설명 추가 필요 Server response is lost 클라이언트 입장에서는 리퀘스트를 잃어버린건지 서버에 문제가 있는 것인지 알 수 없다. Time out으로 밖에 찾아낼 수 없음 sequence number로 해결 가능 Client crashes  orphan process: RPC가 이중, 삼중으로 겹칠 수 있는데 리소스를 lock한 상태라면 다른 프로세스도 쓰지 못함 클라이언트가 reboot되어서 새로운 메시지를 보내면 기존의 orphan process는 종료 Time out을 둔다. 일정 시간동안 응답이 없으면 죽임. 4. Reliable Group Communication 그룹 내 프로세스는 synchronization, replication 등등의 작업을 할 것이다. 이들 사이의 reliable한 통신이 가능하게 하려면? Unicast vs Multicast vs Broadcast 4-1. Reliable Multicast 부연 설명 필요 ACK을 사용할 때 문제점: ACK implosionNACK만 사용하는 것으로 해결 (scalability)NACK을 사용할 때 문제점: 언제까지 데이터 패킷을 가지고 있어야하는지 알 수 없다, NACK implosion이 발생할 수 있다.SRM으로 해결 (random delay만큼 기다려서 NACK을 multicast함) Hierarchical Feedback Control multicast를 scalable하게 하기 위해 붙어있는 이웃 노드와 ACK을 주고받는다. ACK-based NACK-based Receiving vs Delivering a message Receiving: Network layer에서 받음 Delivering: 패킷을 풀어서 Application layer로 전달함 문제점: Process failures 해결방안: Atomic Multicast (Virtually synchronous, Message ordering) 모두 제대로 된 정보를 받거나, 모두 받지 못하면 된다. 4-2. Virtually synchronous 어떠한 protocol이 동작하여 프로세스가 crash되었는지 아닌지 확인하여 모든 프로세스가 제대로 받았으면 deliver하고, 하나의 프로세스라도 crash가 나면 모든 프로세스에서 deliver하지 않는다. 모든 프로세스에 전달하지 않는 것은 reliable하다. why? Atomic multicast이기 때문 Virtual Synchrony Group view: 그룹 내 모든 프로세스는 multicast가 끝날 때 까지 같은 view를 가지고 있어야한다. View change: 프로세스가 그룹에 참여하거나 빠질 수 있다, multicast 중간에는 view change가 일어날 수 없다, multicast가 일어나지 않을 때만 발생함. 4-3. Message ordering virtual synchronous와는 독립적으로, deliver 순서 결정시 사용. Unordered multicasts FIFO-ordered multicasts 같은 프로세스에서 보낸 순서 그대로 다른 프로세스로 받아야한다. (다른 프로세스에서 보낸 것은 제한이 없음) Causally-ordered multicasts happened-before 관계의 causally related한 순서가 있다면 그 순서대로 받아야한다. FIFO-ordered가 전제로 있어야함. 즉, Causally related 되었다면 FIFO도 되는 것이다. Causal ordering이 되었다고 total ordering이 될 수는 없다. Totally-ordered multicasts 보낸 순서에 관계없이 받은 순서가 같아야한다. Atomic Multicast Multicast Basic message ordering Reliable multicast None FIFO multicast FIFO-ordered delivery Causal multicast Causla-ordered delivery Atomic multicast TO-ordered (1) FIFO? Irrlevant (2) Causal? NO, happened-before relationship: M1-&amp;gt;M2 성립 안함 (3) Total? NO, 모든 프로세스에서 다른 순서로 보고 있기 때문에 성립 안함 (1) T1과 T2는 Totally ordered? YES, 모든 프로세스가 T2-&amp;gt;T1 순서로 받음 (2) F1과 F2는 FIFO-related messages? YES 같은 프로세스에서 보낸 순서가 맞아야하므로 F1-&amp;gt;F2 순서로 보나 보면 된다.  (3) C1와 C3는 Causally realated message? YES happened-before: C1-&amp;gt;C2, C1-&amp;gt;C3 (4) C1,C2,C3는 Totally ordered? NO 5. Distributed Commit 5-1. 2-phase Commit (2PC) 하나의 coordinator, N개의 worker Coordinator는 모든 worker들에게 commit 되냐구 물어본다.(VOTE-REQ) 모든 worker로부터 VOTE-COMMIT을 받으면 GLOBAL-COMMIT 을 방송한다. 한 명이라도 보내지 않으면 GLOBAL-ABORT 5-2. 3PC</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">일관성과 복제</title>
+      <link href="http://localhost:4000/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
+      <published>2017-11-17T00:00:00+09:00</published>
+      <updated>2017-11-17T00:00:00+09:00</updated>
+      <id>http://localhost:4000/consistencyAndReplication</id>
+      <content type="html" xml:base="http://localhost:4000/consistencyAndReplication">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Replication : 데이터나 서비스의 복사본을 다수 만들는 것. 같은 데이터가 다수의 저장 장치에 저장되는 것을 data replication 이라고 함(wev site mirror, browser cache, DNS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Replication&lt;/td&gt;
+&lt;td&gt;Duplication&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;한 쪽이 업데이트 되면 다른 한 쪽도 반드시 업데이트 되어야함. 똑같이 사용할 수 있는 저장소.&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;반드시 양쪽 저장소에 같은 데이터가 저장되어야하는 것은 아니다. (e.g.일주일에 한 번씩 백업)&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why Replication?
+&lt;ul&gt;
+&lt;li&gt;Improve &lt;strong&gt;reliability&lt;/strong&gt; (data sruvival, availability, confidence)&lt;/li&gt;
+&lt;li&gt;Improve &lt;strong&gt;performance&lt;/strong&gt; (scalability)
+&lt;ul&gt;
+&lt;li&gt;유저 수 증가에 따라 여러 개의 서버가 같은 데이터를 갖게함&lt;/li&gt;
+&lt;li&gt;유저는 전 세계에 다양하게 있으므로 유저의 access time을 향상시키기 위함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;If Replication is so good, why not just use it?
+&lt;ul&gt;
+&lt;li&gt;다수의 복사본(replica)이 있다는 것은 원본이 업데이트가 될 때 복사본도 업데이트 되어야한다.&lt;/li&gt;
+&lt;li&gt;Consistency Problem
+&lt;ul&gt;
+&lt;li&gt;어떻게 업데이트 할 것인가?&lt;/li&gt;
+&lt;li&gt;복사본이 수정되면 나머지 복사본과 다르게 된다.&lt;/li&gt;
+&lt;li&gt;consisteny를 유지하기 위해 정보가 변형되면 다른 복사본들에게도 정보가 전달되어야한다.&lt;/li&gt;
+&lt;li&gt;언제 어떻게 정보를 전달할 것인가?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Example
+&lt;ul&gt;
+&lt;li&gt;웹페이지 업데이트
+&lt;ul&gt;
+&lt;li&gt;브라우저 로컬 캐쉬: html, images&lt;/li&gt;
+&lt;li&gt;서버에서 업데이트 한 내용이 로컬 캐쉬에 없다면 클라이언트는 업데이트 된 내용을 받지 못한다.&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;예시 더 있음&lt;/span&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1-1. Conditional HTTP GET&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;장점&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;object transmission delay가 없다.&lt;/p&gt;
+&lt;p&gt;link utilization을 낮출 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;HTTP request에서 복사본을 캐쉬한 날짜를 명시한다.&lt;/p&gt;
+&lt;p&gt;If-modified-since:&amp;lt;date&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;server
+&lt;ul&gt;
+&lt;li&gt;응답에는 obejct가 아니라 cache가 가진 복사본과 비교한 결과를 가져온다.
+&lt;ul&gt;
+&lt;li&gt;HTTP/1.0 304 Not modified&lt;/li&gt;
+&lt;li&gt;HTTP/1.0 200 OK &amp;lt;data&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;1-2. Foward Web Proxy&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;클라이언트 근처에서(같은 라우터 내에 위치) 동작하는 웹 서버&lt;/li&gt;
+&lt;li&gt;response time과 access link traffic을 줄일 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3&gt;1-3. Reverse Web Proxy&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;서버에 위치하고 있으며 데이터 서버의 현관문 역할을 한다.&lt;/li&gt;
+&lt;li&gt;performace optimization
+&lt;ul&gt;
+&lt;li&gt;검색 결과 캐싱&lt;/li&gt;
+&lt;li&gt;공통한 쿼리 캐싱&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;load balancing: 웹 서버를 골고루 분산&lt;/li&gt;
+&lt;li&gt;security: 웹서버에 직접적으로 도스 공격을 못하게함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scalability vs Overhead
+&lt;ul&gt;
+&lt;li&gt;복사본을 클라이언트 근처에 둔다면 access time이 줄어든다.&lt;/li&gt;
+&lt;li&gt;반면에 업데이트할 것이 더 많다면 오버헤드가 많이 든다. (주식같은 경우에는 서버 근처에 있어야함)&lt;/li&gt;
+&lt;li&gt;네트워크 bandwidth을 고려했을 때 업데이트를 자주한다면 서버쪽에 relica를 두는 것이 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;1-4. Tight Consistency&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;2. Data-centric consistency models&lt;/h2&gt;
+&lt;p&gt;Tight Consistency&lt;/p&gt;
+&lt;p&gt;Sequential Consistency&lt;/p&gt;
+&lt;p&gt;Causal Consistency&lt;/p&gt;
+&lt;h2&gt;3. Client-centric consistency models&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;4. Replica management&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;5. Consistency protocols&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Introduction Replication : 데이터나 서비스의 복사본을 다수 만들는 것. 같은 데이터가 다수의 저장 장치에 저장되는 것을 data replication 이라고 함(wev site mirror, browser cache, DNS) Replication Duplication 한 쪽이 업데이트 되면 다른 한 쪽도 반드시 업데이트 되어야함. 똑같이 사용할 수 있는 저장소. 반드시 양쪽 저장소에 같은 데이터가 저장되어야하는 것은 아니다. (e.g.일주일에 한 번씩 백업) Why Replication? Improve reliability (data sruvival, availability, confidence) Improve performance (scalability) 유저 수 증가에 따라 여러 개의 서버가 같은 데이터를 갖게함 유저는 전 세계에 다양하게 있으므로 유저의 access time을 향상시키기 위함 If Replication is so good, why not just use it? 다수의 복사본(replica)이 있다는 것은 원본이 업데이트가 될 때 복사본도 업데이트 되어야한다. Consistency Problem 어떻게 업데이트 할 것인가? 복사본이 수정되면 나머지 복사본과 다르게 된다. consisteny를 유지하기 위해 정보가 변형되면 다른 복사본들에게도 정보가 전달되어야한다. 언제 어떻게 정보를 전달할 것인가? Example 웹페이지 업데이트 브라우저 로컬 캐쉬: html, images 서버에서 업데이트 한 내용이 로컬 캐쉬에 없다면 클라이언트는 업데이트 된 내용을 받지 못한다. 예시 더 있음 1-1. Conditional HTTP GET 장점 object transmission delay가 없다. link utilization을 낮출 수 있다. cache HTTP request에서 복사본을 캐쉬한 날짜를 명시한다. If-modified-since:&amp;lt;date&amp;gt; server 응답에는 obejct가 아니라 cache가 가진 복사본과 비교한 결과를 가져온다. HTTP/1.0 304 Not modified HTTP/1.0 200 OK &amp;lt;data&amp;gt; 1-2. Foward Web Proxy 클라이언트 근처에서(같은 라우터 내에 위치) 동작하는 웹 서버 response time과 access link traffic을 줄일 수 있다. 1-3. Reverse Web Proxy 서버에 위치하고 있으며 데이터 서버의 현관문 역할을 한다. performace optimization 검색 결과 캐싱 공통한 쿼리 캐싱 load balancing: 웹 서버를 골고루 분산 security: 웹서버에 직접적으로 도스 공격을 못하게함 Scalability vs Overhead 복사본을 클라이언트 근처에 둔다면 access time이 줄어든다. 반면에 업데이트할 것이 더 많다면 오버헤드가 많이 든다. (주식같은 경우에는 서버 근처에 있어야함) 네트워크 bandwidth을 고려했을 때 업데이트를 자주한다면 서버쪽에 relica를 두는 것이 좋다. 1-4. Tight Consistency 2. Data-centric consistency models Tight Consistency Sequential Consistency Causal Consistency 3. Client-centric consistency models 4. Replica management 5. Consistency protocols</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">동기화</title>
+      <link href="http://localhost:4000/synchronization" rel="alternate" type="text/html" title="동기화" />
+      <published>2017-11-16T00:00:00+09:00</published>
+      <updated>2017-11-16T00:00:00+09:00</updated>
+      <id>http://localhost:4000/synchronization</id>
+      <content type="html" xml:base="http://localhost:4000/synchronization">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default03&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&amp;gt;=A)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;&lt;br /&gt;1. Clock Synchronization&lt;/h2&gt;
+&lt;h3&gt;1-1. Physical Clocks&lt;/h3&gt;
+&lt;p&gt;Timer: 높은 진동수의 진동자 (quartz crystal)&lt;/p&gt;
+&lt;p&gt;하나의 컴퓨터라면 각각의 프로세스는 같은 클락을 사용하기에 문제가 되지 않는다.&lt;/p&gt;
+&lt;p&gt;하지만 네트워크 상에서는 클락이 다를것이기 때문에 시간의 오차(clock skew)가 존재한다. 클락은 아주 미세하지만 다른 속도(rate)로 왕복운동(oscillate)한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;이 때 두 가지 문제가 있는데,&lt;/p&gt;
+&lt;p&gt;1. 서로 어떻게 동기화 할 것인가?&lt;/p&gt;
+&lt;p&gt;2. 다수의 클락과 실제 시간을 어떻게 동기화 할 것인가?&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;간단히 실제 시간을 알고 싶을 때&lt;/p&gt;
+&lt;p&gt;Universal Coordinated Time (UTC): 인공 위성은 각자의 원자 시계를 가지고 있다. UTC는 GPS 위성과 동기화되어 시간을 방송한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;1-2. GPS&lt;/h3&gt;
+&lt;p&gt;Global Positioning System&lt;/p&gt;
+&lt;p&gt;인공 위성 기반 분산 시스템&lt;/p&gt;
+&lt;p&gt;31개의 인공 위성은 대략 20,000km 높이의 궤도를 돌고있다.&lt;/p&gt;
+&lt;p&gt;각각의 인공위성은 3개의 원자 시계를 가지고 있다.(매우 정확함)&lt;/p&gt;
+&lt;p&gt;메시지를 지속적으로 방송한다&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;위치(position)&lt;/li&gt;
+&lt;li&gt;타임 스탬프&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Time-of-Arribal (ToA)&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;인공 위성으로부터 GPS receiver까지의 거리는 어떻게 구할까?&lt;/strong&gt;&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;신호를 보냈을 때 시간과 받았을 때 시간차를 이용해 거리를 구할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;신호의 속도 c: 빛의 속도 (3x10^8m/s)&lt;/li&gt;
+&lt;li&gt;인공 위성에서의 타임 스탬프: Ti&lt;/li&gt;
+&lt;li&gt;GPS receiver 에서 받았을 때 타임 스탬프: Tnow&lt;/li&gt;
+&lt;li&gt;인공위성 i 에서부터 여기까지의 거리
+&lt;ul&gt;
+&lt;li&gt;di=c * (Tnow-Ti)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Trilatertation&lt;/h4&gt;
+&lt;p&gt;3개의 인공위치의 위치를 알고 타임스탬프를 안다면 우리의 실제 위치를 구할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;문제점: 모든 시계가 정확하고 동기화되어 있다는 가정이 필요하다.
+&lt;ul&gt;
+&lt;li&gt;receiver의 시계는 보통 위성과 동기화 되어있지 않다.&lt;/li&gt;
+&lt;li&gt;신호가 receiver에 도달하는데 시간이 걸린다.&lt;/li&gt;
+&lt;li&gt;해결방법: Unsynchronized clock at receiver&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Unsynchronized clock at receiver&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Δdelay i= ( Tnow + Δr ) − Ti= ( Tnow − Ti) + Δr&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Δr: receiver의 clock skew (아직 모름)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Ti: 인공위성 i에서의 타임 스탬프&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;c * Δdelay i (정확한 거리) = c( Tnow − Ti) + cΔr (clock skew로 인해 잘못 구한 거리)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;c: 빛의 속도&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;즉, 정확한 위치를 구하기 위해서는 오차를 빼줘야한다.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;di=c Δdelay Δdelay i− c Δr =  &lt;span class=&quot;AM&quot; title=&quot;sqrt(a)&quot;&gt;`sqrt(a)`&lt;/span&gt;  (a: (xi−xr)2+(yi−yr)2)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이 때 , xr, yr은 receiver의 2D 좌표이다. (아직 모름)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;3개의 인공위성: Trilateration을 이용해 pinpoint (x,y)를 특정하여 receiver의 정확한 시각을 구할 수 있다.&lt;/p&gt;
+&lt;p&gt;4개의 인공위성: clock skew를 구하기 위한 식을 하나 더 가져올 수 잇다.&lt;/p&gt;
+&lt;h3&gt;1-3. Clock Synchronization Algorithms&lt;/h3&gt;
+&lt;p&gt;지상에 있는 서버가 정확한 시간을 알려줘 동기화 하는 방식&lt;/p&gt;
+&lt;h4&gt;NTP(Network Time Protocol)&lt;/h4&gt;
+&lt;p&gt;timer server로 부터 클라이언트가 현재 시간을 가져온다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Timer server는 원자 시계 등을 통해 정확한 시계를 가지고 있다.&lt;/li&gt;
+&lt;li&gt;문제점: propogation delay (서버에서 클라이언트로 전송될 때 걸리는 시간)&lt;/li&gt;
+&lt;li&gt;클라이언트가 아는 정보: 요청 send(T1)/receive(T2), 응답 &lt;span&gt;요청 send(T3)/receive(T4)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;A 라는 시계가 B 시계보다 θ만큼 느릴때  CB(t) = CA(t) + θ 가 성립하며 양 측을 오가는 propogation delay는 동일하다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;T2 – (T 1+ θ) = (T 4+ θ) -T3&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;따라서 clock skew θ = [(T 2-T1) + (T 3– T4)]/2&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;Review Question 추가 필요&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;2. Logical Clocks&lt;/h2&gt;
+&lt;p&gt;Lamport's Logical Clocks&lt;/p&gt;
+&lt;p&gt;Happen-Before (HB) Relation&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;내용 추가 필요&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;3. Distributed Mutual Exclusion&lt;/h2&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default03&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;~OS 복습~ Centralized System&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mutual Exclusion&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;동시에 실행되는 프로그램에서 critical section(CS)은 하나 이상의 스레드가 실행되면서 공유된 리소스에 접근할 때 동시에 접근하지 못하게 하는 코드이다. 공유된 리소스는 하나의 스레드만 사용할 수 있게 한다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mutual exclusion (ME, mutex) algorithm&lt;/strong&gt; 은 global 변수, critical section에 포함되는 코드 조각 같은 공통된 리소스에 동시 다발적인 접근을 박는다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Distributed Mutual Exclusion&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;3-1. Centralized Algorithm&lt;/h3&gt;
+&lt;p&gt;Coordinator가 각각의 프로세서 시스템에게 뭘 해야할지 지시함. (coordinator는 election algorithm으로 결정)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Step1: 프로세스1이 coordinator에게 공유된 리소스에 접근할 수 있을지 허락을 구한다. queue가 비었기 때문에 승인된다.&lt;/p&gt;
+&lt;p&gt;Step2: 프로세스2가 같은 리소스에 접근할 수 있는지 물어본다. coordinator는 답(reply)를 보내지 않음. (다른 방법으로는 사용하지 못한다(no)는 답을 보낼 수 있다. 이 경우, 기다리라는 건지 single point failure인지 구분하여 해결할 수 있음.)&lt;/p&gt;
+&lt;p&gt;Step3: 프로세스1이 리소스를 다 쓰고 해제하면 coordinator에게 말해주고, 이 때 프로세스2는 써도 된다는 답을 받게 된다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;장점: ME(mutual exclusion) 보장, 공평하다 (no starvation), 구현이 쉽다.&lt;/li&gt;
+&lt;li&gt;단점: single-point failure(coordinator가 죽어버린 경우, permission이 거절될 경우),  coordinator의 퍼포먼스가 병목(bottleneck)될 수 있다. &lt;/li&gt;
+&lt;li&gt;ME entry/exit 당 메시지 수 : 3 (request/OK/release)&lt;/li&gt;
+&lt;li&gt;entry이전의 딜레이: 2 (request/OK)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;3-2. Token Ring&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/api/File/Real/5a0d4ba1bf9a757778a897e5&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;링이 만들어지면 프로세스0에게 토큰을 준다.&lt;/li&gt;
+&lt;li&gt;토큰은 point-to-point 메시지를 통해 링을 돌게된다.&lt;/li&gt;
+&lt;li&gt;프로세스가 CS(critical section)에 입장하고 싶다면 토큰을 가질 때 까지 기다린다. 사용할 땐 토큰을 가지고 있다가 다 썼으면 토큰을 패스한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Mutual Exclusion? 지켜진다.&lt;/li&gt;
+&lt;li&gt;Starvation? 발생하지 않는다. 언젠가 토큰을 가질 수 있게되는 구조이기 때문&lt;/li&gt;
+&lt;li&gt;Lost tocken? 여기서 토큰이란, 특수한 토큰인데 전달 과정에서 잃어버리게 된다면 어떤 프로세스가 토큰을 새로 생성해야한다는 문제가 발생한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Token-based&lt;/p&gt;
+&lt;p&gt;Token: 프로세스 사이를 넘나드는 특수한 메시지&lt;/p&gt;
+&lt;p&gt;하나의 토큰만 이용할 수 있다.&lt;/p&gt;
+&lt;p&gt;토큰을 가진 프로세스만이 공유된 리소스에 접근 가능하다.&lt;/p&gt;
+&lt;p&gt;장점: starvation, deadlocks 발생하지 않음&lt;/p&gt;
+&lt;p&gt;단점: 토큰을 잃어버리게 되면 새로 토큰을 생성해야 한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;ME entry/exit 당 메시지 수: 1 에서 무한대 (예시의 경우 최대 8)&lt;/p&gt;
+&lt;p&gt;entry 딜레이: 0(마침 내가 들고 있을 때) 에서 n-1(방금 전에 지나갔을 때)&lt;/p&gt;
+&lt;p&gt;평균 딜레이: (n-1)/2&lt;/p&gt;
+&lt;h3&gt;3-3. Distributed Algorithm&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/api/File/Real/5a0d549fbf9a757778a89816&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;모든 프로세스가 다 coordinator라고 할 수 있다. 모든 프로세스가 허락 해줘야 사용할 수 있음.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;프로세스가 리소스를 사용하길 원할 때, &lt;span style=&quot;text-decoration: underline;&quot;&gt;리소스의 이름, 해당 프로세스의 넘버, 현재 logical time&lt;/span&gt;를 쓴 메시지를 만든다.&lt;/li&gt;
+&lt;li&gt;모든 프로세스에게 메시지를 보내고 모든 프로세스로부터 OK 메시지를 받을 때 까지 기다린다.&lt;/li&gt;
+&lt;li&gt;각 프로세스가 메시지를 받았을 때:
+&lt;ol style=&quot;list-style-type: lower-alpha;&quot;&gt;
+&lt;li&gt;receiver 프로세스가 리소스에 접근하지도 않고, 접근하려고 시도하지도 않을 때 OK 메시지를 sender 프로세스에게 보낸다. &quot;너 그 리소스 써도된다!&quot;&lt;/li&gt;
+&lt;li&gt;receiver 프로세스가 리소스를 이미 가지고 있을 때, 답(reply)를 보내지 않는다. 그 대신, 그 프로세스의 큐에 리퀘스트를 쌓는다. &quot;지금 쓰고 있기 때문에, 일이 다 끝나면 OK 라고 알려줄게!&quot;&lt;/li&gt;
+&lt;li&gt;receiver 프로세스도 해당 리소스를 사용하고 싶지만 아직 사용하고있지 않을 경우, 메시지에 적힌 타임스탬프를 비교해서 더 빨리 온 것(수가 적은 쪽)을 보낸다. (타임스탬프는 logical time이라 정확하진 않지만 사용에 무리없다.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;허락을 얻기 위한 요청 메시지를 보낸 후에는 모든 프로세스로부터 허락(OK 메시지)받을 때 까지 기다린다. 허락을 받은 후에는 리소스를 사용하고 다 사용하고 난 후에는 OK 메시지를 큐에 있는 모든 프로세스에게 보낸다. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Centralized Algorithm&lt;/td&gt;
+&lt;td&gt;Distributed Algorithm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Single point of failure&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;n points of failure : n개 중에서 아무나 하나가 문제가 생기면 동작을 안한다.(;;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;n개의 노드 중 하나만 크래쉬가 나도 ok message를 보내지 못하고 모든 리소스가 block된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;centralized algorithm에 비해 최소 n 배의 메시지가 필요하다.(계속 실패할 경우)&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;ME entry/exit 당 메시지 수: 2(n-1)&lt;/p&gt;
+&lt;p&gt;entry 딜레이: 2(n-1)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;3-4. Decentralized(Voting) Algorithm&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/api/File/Real/5a0d5711bf9a757778a89829&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;각각의 리소스는 n개의 coordinator를 갖는다.&lt;/li&gt;
+&lt;li&gt;클라이언트는 n개의 coordinator에게 리퀘스트를 보내 허락을 구한다.
+&lt;ol style=&quot;list-style-type: lower-alpha;&quot;&gt;
+&lt;li&gt;만일 m(&amp;gt;n/2)개의 coordinator로부터 승인(grant)으로 받으면 리소스를 얻을 수 있다.&lt;/li&gt;
+&lt;li&gt;과반수 이하일 경우 승인은 거절(deny)된다. (쓰고 싶으면 또 요청해야함)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Voting algorithm
+&lt;ol style=&quot;list-style-type: lower-alpha;&quot;&gt;
+&lt;li&gt;클라이언트는 n개의 리퀘스트를 보내고 n개의 응답을 받는다. (승인 혹은 거절)&lt;/li&gt;
+&lt;li&gt;클라이언트는 리소스를 다 사용하고 나서 n 개의 release 메시지를 보낸다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Reliability: coordinator가 fail 되어도 상관없이 다른 coordinator가 아직 동작하고 있기 때문에 역할을 대신해줄 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;단점: 많은 노드가 같은 리소스에 접근하려할 때, 어떤 노드도 허락을 얻지 못할 수 있다. (이 경우, 2N 개의 메시지가 낭비된다.), 그러면 노드들이 계속 리소스를 얻지 못하므로 starvation이 발생함.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;3-5. Comparision of four ME algorithms&lt;/h3&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Algorithm&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Total message per ME entry/exit&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Delay before entry (in message times)&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Problems&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Centralized&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Coordinator crash (single-point failure)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;
+&lt;p&gt;Decentralized&lt;/p&gt;
+&lt;p&gt;(m coordinators, k failures)&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2mk(failure)+m(permission)&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2mk&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Starvation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;
+&lt;p&gt;Distributed&lt;/p&gt;
+&lt;p&gt;(N nodes)&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2(N-1)&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2(N-1)&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;N points of failure&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;
+&lt;p&gt;Token Ring&lt;/p&gt;
+&lt;p&gt;(N nodes)&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;1 to infinite&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;0 to N-1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;Lost token, process crash&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;4. Election Algorithms&lt;/h2&gt;
+&lt;h3&gt;4-1. The Bully Algorithm&lt;/h3&gt;
+&lt;p&gt;프로세스 중에서 coordinator를 선정하는 방법&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;미리 정해진 순서 (initial state)&lt;/li&gt;
+&lt;li&gt;현재 coordinator가 fail 일때 등&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;참고: 많은 시스템에서 coordinator는 수기로 정해진다.(서버 파일) 이 경우 centalied solution(single point of failure의 솔루션) 이 될 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;각각의 프로세스는 우선순위(weight)가 있다. 높은 우선순위를 가진 프로세스가 coordinator로 선출된다.&lt;/p&gt;
+&lt;p&gt;어떻게 우선순위 높은 프로세스를 찾을 수 있을까?&lt;/p&gt;
+&lt;p&gt;어떤 프로세스 k 가 coordinator가 제 역할을 못한다고 판단하면, election message를 다른 프로세스들에게 보낸다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Election by Bullying&lt;/h4&gt;
+&lt;p&gt;Bully: 큰 놈만 맨날 이겨서...&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pk : ELECTION 메시지 전송. 이 때, k 보다 높은 우선 순위를 가진 프로세스에게 보낸다. (Pk+1, Pk+2, ... , Pn-1)&lt;/li&gt;
+&lt;li&gt;아무에게도 응답에 오지 않으면, Pk의 우선순위가 가장 높다는 말이기 때문에 coordinator가 된다. (더 높은 우선순위의 프로세스는 크래쉬 등의 이유로 될 수 없나보다.)&lt;/li&gt;
+&lt;li&gt;응답이 온다면 Pk의 일은 끝난다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/api/File/Real/5a0d5c52bf9a757778a89845&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;(a) 프로세스4는 7번에 문제가 생겼음을 발견하고 ELECTION 메시지를 보낸다. 4보다 우선순위가 높은 5,6,7에게 전송&lt;/p&gt;
+&lt;p&gt;(b) 프로세스5와 프로세스6는 프로세스4에게 OK 메시지를 보낸다. &quot;넌 안해도 된다!&quot; 이 때, 프로세스 7은 크래쉬되었기 때문에 OK 메시지를 보낼 수 없다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/api/File/Real/5a0d5e33bf9a757778a89852&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;프로세스5는 프로세스6,7에게 ELECTION 메시지를 보내 프로세스6에게 응답을 받음.&lt;/p&gt;
+&lt;p&gt;프로세스6은 프로세스7에게 ELECTION 메시지를 보내지면 응답 받지 못하므로 coordinator가 된다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;(c) coordinator가 선출 된 후 Coordinator 메시지를 다른 프로세스에게 보낸다. (?? 이 경우 브로드캐스트 아니면 우선순위가 낮은 노드에게만?)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;정리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;heavy 프로세스가 lighter 프로세스에게 election 메시지를 받으면 Ok 메시지를 보낸다.( lighter는 race에서 제외됨)&lt;/li&gt;
+&lt;li&gt;프로세스가 Ok 메시지를 받지 못하면 coordinator가 되고 다른 프로세스에게 coordinator 메시지를 보낸다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;text-decoration: line-through;&quot;&gt;Review Question 있음&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">Centralized system(a single machine system) 에서의 시간은 모호하지 않았다. 프로세스가 시간을 알고싶다면 시스템콜을 통하여 커널로부터 답을 들을 수 있었다. 만일, A라는 프로세스가 시간을 묻고, 조금 뒤에 B라는 프로세스가 시간을 물었다면, B의 시간 값은 A의 시간 값보다 클 것이다. (B&amp;gt;=A) 그렇다면 분산 시스템 환경(Multi-computer system)에서는 어떨까? 1. Clock Synchronization 1-1. Physical Clocks Timer: 높은 진동수의 진동자 (quartz crystal) 하나의 컴퓨터라면 각각의 프로세스는 같은 클락을 사용하기에 문제가 되지 않는다. 하지만 네트워크 상에서는 클락이 다를것이기 때문에 시간의 오차(clock skew)가 존재한다. 클락은 아주 미세하지만 다른 속도(rate)로 왕복운동(oscillate)한다. 이 때 두 가지 문제가 있는데, 1. 서로 어떻게 동기화 할 것인가? 2. 다수의 클락과 실제 시간을 어떻게 동기화 할 것인가? 간단히 실제 시간을 알고 싶을 때 Universal Coordinated Time (UTC): 인공 위성은 각자의 원자 시계를 가지고 있다. UTC는 GPS 위성과 동기화되어 시간을 방송한다. 1-2. GPS Global Positioning System 인공 위성 기반 분산 시스템 31개의 인공 위성은 대략 20,000km 높이의 궤도를 돌고있다. 각각의 인공위성은 3개의 원자 시계를 가지고 있다.(매우 정확함) 메시지를 지속적으로 방송한다 위치(position) 타임 스탬프 Time-of-Arribal (ToA) 인공 위성으로부터 GPS receiver까지의 거리는 어떻게 구할까? 신호를 보냈을 때 시간과 받았을 때 시간차를 이용해 거리를 구할 수 있다. 신호의 속도 c: 빛의 속도 (3x10^8m/s) 인공 위성에서의 타임 스탬프: Ti GPS receiver 에서 받았을 때 타임 스탬프: Tnow 인공위성 i 에서부터 여기까지의 거리 di=c * (Tnow-Ti) Trilatertation 3개의 인공위치의 위치를 알고 타임스탬프를 안다면 우리의 실제 위치를 구할 수 있다. 문제점: 모든 시계가 정확하고 동기화되어 있다는 가정이 필요하다. receiver의 시계는 보통 위성과 동기화 되어있지 않다. 신호가 receiver에 도달하는데 시간이 걸린다. 해결방법: Unsynchronized clock at receiver Unsynchronized clock at receiver Δdelay i= ( Tnow + Δr ) − Ti= ( Tnow − Ti) + Δr Δr: receiver의 clock skew (아직 모름) Ti: 인공위성 i에서의 타임 스탬프 c * Δdelay i (정확한 거리) = c( Tnow − Ti) + cΔr (clock skew로 인해 잘못 구한 거리) c: 빛의 속도 즉, 정확한 위치를 구하기 위해서는 오차를 빼줘야한다. di=c Δdelay Δdelay i− c Δr =  `sqrt(a)`  (a: (xi−xr)2+(yi−yr)2) 이 때 , xr, yr은 receiver의 2D 좌표이다. (아직 모름) 3개의 인공위성: Trilateration을 이용해 pinpoint (x,y)를 특정하여 receiver의 정확한 시각을 구할 수 있다. 4개의 인공위성: clock skew를 구하기 위한 식을 하나 더 가져올 수 잇다. 1-3. Clock Synchronization Algorithms 지상에 있는 서버가 정확한 시간을 알려줘 동기화 하는 방식 NTP(Network Time Protocol) timer server로 부터 클라이언트가 현재 시간을 가져온다. Timer server는 원자 시계 등을 통해 정확한 시계를 가지고 있다. 문제점: propogation delay (서버에서 클라이언트로 전송될 때 걸리는 시간) 클라이언트가 아는 정보: 요청 send(T1)/receive(T2), 응답 요청 send(T3)/receive(T4) A 라는 시계가 B 시계보다 θ만큼 느릴때  CB(t) = CA(t) + θ 가 성립하며 양 측을 오가는 propogation delay는 동일하다. T2 – (T 1+ θ) = (T 4+ θ) -T3 따라서 clock skew θ = [(T 2-T1) + (T 3– T4)]/2 Review Question 추가 필요 2. Logical Clocks Lamport's Logical Clocks Happen-Before (HB) Relation 내용 추가 필요 3. Distributed Mutual Exclusion ~OS 복습~ Centralized System Mutual Exclusion 동시에 실행되는 프로그램에서 critical section(CS)은 하나 이상의 스레드가 실행되면서 공유된 리소스에 접근할 때 동시에 접근하지 못하게 하는 코드이다. 공유된 리소스는 하나의 스레드만 사용할 수 있게 한다. Mutual exclusion (ME, mutex) algorithm 은 global 변수, critical section에 포함되는 코드 조각 같은 공통된 리소스에 동시 다발적인 접근을 박는다. Distributed Mutual Exclusion 3-1. Centralized Algorithm Coordinator가 각각의 프로세서 시스템에게 뭘 해야할지 지시함. (coordinator는 election algorithm으로 결정) Step1: 프로세스1이 coordinator에게 공유된 리소스에 접근할 수 있을지 허락을 구한다. queue가 비었기 때문에 승인된다. Step2: 프로세스2가 같은 리소스에 접근할 수 있는지 물어본다. coordinator는 답(reply)를 보내지 않음. (다른 방법으로는 사용하지 못한다(no)는 답을 보낼 수 있다. 이 경우, 기다리라는 건지 single point failure인지 구분하여 해결할 수 있음.) Step3: 프로세스1이 리소스를 다 쓰고 해제하면 coordinator에게 말해주고, 이 때 프로세스2는 써도 된다는 답을 받게 된다. 장점: ME(mutual exclusion) 보장, 공평하다 (no starvation), 구현이 쉽다. 단점: single-point failure(coordinator가 죽어버린 경우, permission이 거절될 경우),  coordinator의 퍼포먼스가 병목(bottleneck)될 수 있다.  ME entry/exit 당 메시지 수 : 3 (request/OK/release) entry이전의 딜레이: 2 (request/OK) 3-2. Token Ring 링이 만들어지면 프로세스0에게 토큰을 준다. 토큰은 point-to-point 메시지를 통해 링을 돌게된다. 프로세스가 CS(critical section)에 입장하고 싶다면 토큰을 가질 때 까지 기다린다. 사용할 땐 토큰을 가지고 있다가 다 썼으면 토큰을 패스한다. Mutual Exclusion? 지켜진다. Starvation? 발생하지 않는다. 언젠가 토큰을 가질 수 있게되는 구조이기 때문 Lost tocken? 여기서 토큰이란, 특수한 토큰인데 전달 과정에서 잃어버리게 된다면 어떤 프로세스가 토큰을 새로 생성해야한다는 문제가 발생한다. Token-based Token: 프로세스 사이를 넘나드는 특수한 메시지 하나의 토큰만 이용할 수 있다. 토큰을 가진 프로세스만이 공유된 리소스에 접근 가능하다. 장점: starvation, deadlocks 발생하지 않음 단점: 토큰을 잃어버리게 되면 새로 토큰을 생성해야 한다. ME entry/exit 당 메시지 수: 1 에서 무한대 (예시의 경우 최대 8) entry 딜레이: 0(마침 내가 들고 있을 때) 에서 n-1(방금 전에 지나갔을 때) 평균 딜레이: (n-1)/2 3-3. Distributed Algorithm 모든 프로세스가 다 coordinator라고 할 수 있다. 모든 프로세스가 허락 해줘야 사용할 수 있음. 프로세스가 리소스를 사용하길 원할 때, 리소스의 이름, 해당 프로세스의 넘버, 현재 logical time를 쓴 메시지를 만든다. 모든 프로세스에게 메시지를 보내고 모든 프로세스로부터 OK 메시지를 받을 때 까지 기다린다. 각 프로세스가 메시지를 받았을 때: receiver 프로세스가 리소스에 접근하지도 않고, 접근하려고 시도하지도 않을 때 OK 메시지를 sender 프로세스에게 보낸다. &quot;너 그 리소스 써도된다!&quot; receiver 프로세스가 리소스를 이미 가지고 있을 때, 답(reply)를 보내지 않는다. 그 대신, 그 프로세스의 큐에 리퀘스트를 쌓는다. &quot;지금 쓰고 있기 때문에, 일이 다 끝나면 OK 라고 알려줄게!&quot; receiver 프로세스도 해당 리소스를 사용하고 싶지만 아직 사용하고있지 않을 경우, 메시지에 적힌 타임스탬프를 비교해서 더 빨리 온 것(수가 적은 쪽)을 보낸다. (타임스탬프는 logical time이라 정확하진 않지만 사용에 무리없다.) 허락을 얻기 위한 요청 메시지를 보낸 후에는 모든 프로세스로부터 허락(OK 메시지)받을 때 까지 기다린다. 허락을 받은 후에는 리소스를 사용하고 다 사용하고 난 후에는 OK 메시지를 큐에 있는 모든 프로세스에게 보낸다.  Centralized Algorithm Distributed Algorithm Single point of failure n points of failure : n개 중에서 아무나 하나가 문제가 생기면 동작을 안한다.(;;) n개의 노드 중 하나만 크래쉬가 나도 ok message를 보내지 못하고 모든 리소스가 block된다. centralized algorithm에 비해 최소 n 배의 메시지가 필요하다.(계속 실패할 경우) ME entry/exit 당 메시지 수: 2(n-1) entry 딜레이: 2(n-1) 3-4. Decentralized(Voting) Algorithm 각각의 리소스는 n개의 coordinator를 갖는다. 클라이언트는 n개의 coordinator에게 리퀘스트를 보내 허락을 구한다. 만일 m(&amp;gt;n/2)개의 coordinator로부터 승인(grant)으로 받으면 리소스를 얻을 수 있다. 과반수 이하일 경우 승인은 거절(deny)된다. (쓰고 싶으면 또 요청해야함) Voting algorithm 클라이언트는 n개의 리퀘스트를 보내고 n개의 응답을 받는다. (승인 혹은 거절) 클라이언트는 리소스를 다 사용하고 나서 n 개의 release 메시지를 보낸다. Reliability: coordinator가 fail 되어도 상관없이 다른 coordinator가 아직 동작하고 있기 때문에 역할을 대신해줄 수 있다. 단점: 많은 노드가 같은 리소스에 접근하려할 때, 어떤 노드도 허락을 얻지 못할 수 있다. (이 경우, 2N 개의 메시지가 낭비된다.), 그러면 노드들이 계속 리소스를 얻지 못하므로 starvation이 발생함. 3-5. Comparision of four ME algorithms Algorithm Total message per ME entry/exit Delay before entry (in message times) Problems Centralized 3 2 Coordinator crash (single-point failure) Decentralized (m coordinators, k failures) 2mk(failure)+m(permission) 2mk Starvation Distributed (N nodes) 2(N-1) 2(N-1) N points of failure Token Ring (N nodes) 1 to infinite 0 to N-1 Lost token, process crash 4. Election Algorithms 4-1. The Bully Algorithm 프로세스 중에서 coordinator를 선정하는 방법 미리 정해진 순서 (initial state) 현재 coordinator가 fail 일때 등 참고: 많은 시스템에서 coordinator는 수기로 정해진다.(서버 파일) 이 경우 centalied solution(single point of failure의 솔루션) 이 될 수 있다. 각각의 프로세스는 우선순위(weight)가 있다. 높은 우선순위를 가진 프로세스가 coordinator로 선출된다. 어떻게 우선순위 높은 프로세스를 찾을 수 있을까? 어떤 프로세스 k 가 coordinator가 제 역할을 못한다고 판단하면, election message를 다른 프로세스들에게 보낸다. Election by Bullying Bully: 큰 놈만 맨날 이겨서... Pk : ELECTION 메시지 전송. 이 때, k 보다 높은 우선 순위를 가진 프로세스에게 보낸다. (Pk+1, Pk+2, ... , Pn-1) 아무에게도 응답에 오지 않으면, Pk의 우선순위가 가장 높다는 말이기 때문에 coordinator가 된다. (더 높은 우선순위의 프로세스는 크래쉬 등의 이유로 될 수 없나보다.) 응답이 온다면 Pk의 일은 끝난다. (a) 프로세스4는 7번에 문제가 생겼음을 발견하고 ELECTION 메시지를 보낸다. 4보다 우선순위가 높은 5,6,7에게 전송 (b) 프로세스5와 프로세스6는 프로세스4에게 OK 메시지를 보낸다. &quot;넌 안해도 된다!&quot; 이 때, 프로세스 7은 크래쉬되었기 때문에 OK 메시지를 보낼 수 없다. 프로세스5는 프로세스6,7에게 ELECTION 메시지를 보내 프로세스6에게 응답을 받음. 프로세스6은 프로세스7에게 ELECTION 메시지를 보내지면 응답 받지 못하므로 coordinator가 된다. (c) coordinator가 선출 된 후 Coordinator 메시지를 다른 프로세스에게 보낸다. (?? 이 경우 브로드캐스트 아니면 우선순위가 낮은 노드에게만?) 정리 heavy 프로세스가 lighter 프로세스에게 election 메시지를 받으면 Ok 메시지를 보낸다.( lighter는 race에서 제외됨) 프로세스가 Ok 메시지를 받지 못하면 coordinator가 되고 다른 프로세스에게 coordinator 메시지를 보낸다. Review Question 있음</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">8. 멀티미디어와 무선 시스템</title>
+      <link href="http://localhost:4000/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
+      <published>2017-10-20T00:00:00+09:00</published>
+      <updated>2017-10-20T00:00:00+09:00</updated>
+      <id>http://localhost:4000/multimediaWirelessSystems</id>
+      <content type="html" xml:base="http://localhost:4000/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Multimedia Streaming&lt;/h2&gt;
+&lt;p&gt;비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec)&lt;/p&gt;
+&lt;p&gt;디지털 이미지: array of pixels&lt;/p&gt;
+&lt;p&gt;코딩: 압축 바&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄.&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄.&lt;/p&gt;
+&lt;p&gt;CBR (constant bit rate)&lt;/p&gt;
+&lt;p&gt;VBR (variable bit rate)&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;MPEG1 (CD_ROM) 1.5 Mbps&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;MPEG2 (DVD) 3-6Mbps&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;MPEG4 (인터넷 환경에서 주로 쓰인다 , 1 Mbps 이하)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Streaming stored&lt;/p&gt;
+&lt;p&gt;streaming: 파일 전체를 다운 받기 전에 재생할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;1-1. Streaming stored video&lt;/h3&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default01&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;저장된 비디오를 스트리밍&lt;/p&gt;
+&lt;p&gt;(1) video recorded  (2) video sent  (3) video received, played out at client&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;(2)와 (3) 사이를 스트리밍이라고 한다.&lt;/p&gt;
+&lt;p&gt;비디오가 저장된 서버로 부터 인터넷을 거쳐 클라이언트로 온다.&lt;/p&gt;
+&lt;p&gt;모든 비디오 데이터를 받기 전에 클라이언트에서 재생할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;어느 정도의 데이터가 들어오면 비디오를 재생할 것인가?&lt;/p&gt;
+&lt;p&gt;Continuous playout constraint&lt;/p&gt;
+&lt;p&gt;바로바로 재생하면 좋겠지만 &lt;span style=&quot;text-decoration: underline;&quot;&gt;jitter&lt;/span&gt;가 있기 때문에 원래 시간대로 실행하기 위해서는 &lt;span style=&quot;text-decoration: underline;&quot;&gt;클라이언트에 버퍼&lt;/span&gt;가 필요하다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;jitter: 각 패킷에 대한 지연 변동 (delay for each packet fluctuates)&lt;/p&gt;
+&lt;p&gt;라우터에서 queueing delay가 일어나기 때문에 패킷이 도착하는 시간은 일정하지 않다.&lt;/p&gt;
+&lt;p&gt;video transmission과 비디오 데이터를 클라이언트에서 받는 사이에 딜레이가 존재하는데 이것이 네트워크 딜레이, 지터이다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;jitter를 줄이기위해 버퍼를 사용하자!&lt;/p&gt;
+&lt;p&gt;client-side buffering and playout delay: 클라이언트에서 버퍼링을 사용하기 때문에 비디오 실행에 딜레이가 걸린다. 네트워크 딜레이가 걸릴 것을 예상하고 대비하기 위함. (&lt;span&gt;playout delay: 비디오 데이터를 받은 후 부터 실행하기 까지 걸리는 시간)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;단점은?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span&gt;1-2. Streaming multimedia: HTTP&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;멀티미디어 파일은 HTTP를 통해 웹 상에서 가져온다.&lt;/p&gt;
+&lt;p&gt;TCP 최대 전송율 밑으로 전송 가능함.&lt;/p&gt;
+&lt;p&gt;버퍼의 한계는 TCP congestion control과 retransmission(순차 전송) 에 영향을 받는다.&lt;/p&gt;
+&lt;p&gt;Application playout buffer: 시작할 때 딜레이(playout delay)는 오래걸리지만 영상은 부드럽다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default03&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;&lt;strong&gt;왜 HTTP(TCP) 를 사용하는가?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;UDP TCP 차이&lt;/p&gt;
+&lt;p&gt;UDP: unreliable(no acks), lightweight(faster), smooth&lt;/p&gt;
+&lt;p&gt;TCPL reliable(use acks), heavyweight(slower), sawtooth pattern (congestion control)&lt;/p&gt;
+&lt;p&gt;이러한 특성들만 봤을 때 UDP를 사용해야하지만... TCP를 사용한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;UDP는 보안 문제로 방화벽에 막힘&lt;/p&gt;
+&lt;p&gt;비디오 스트리밍을 위해 서버를 따로 두어야함.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP는 방화벽을 뚫기 쉽다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;기존에 있던 웹 서버를 사용할 수 있다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCP sawtooth pattern은 application buffer를 통해 완화할 수 있다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;1-3. DASH: Dynamic, Adaptive Streaming over HTTP&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;서버&lt;/strong&gt;&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;여러 화질의 영상을 가지고 있다.(encoded different rates)&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;영상들은 청크(chunk)로 나누어져 있는데 하나의 청크는 1~15초의 비디오 영상 데이터이다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;클라이언트&lt;/strong&gt;&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;주기적으로 서버-클라이언트의 bandwidth을 측정&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;현재 bandwidth에서 받을 수 있는 가장 높은 부호화 속도를 선택&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;당시의 bandwidth에 따라 다른 속도를 선택할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;MPEG-DASH, Adobe, Apple, MS&lt;/p&gt;
+&lt;p&gt;각각의 청크가 존재하는 url에 접속&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;1-4. Voice-over-IP (VoIP)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;VoIP end-end-delay requirement&lt;/strong&gt;: 대화해야 하기 때문에 딜레이가 높아서는 안된다. 400 ms 이상 넘어가면 사람이 느낄 수 있음.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;network loss&lt;/strong&gt;: 네트워크가 혼잡하여 (라우터 오버플로우) IP datagram lost 가 발생할 수 있다. 이 때 재전송을 하게 되면 딜레이가 급격히 증가하기 때문에 대신에 FEC나 Interleaving을 사용함.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Forward Error Correction (FEC) vs. Interleaving&lt;/h4&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;FEC(=Compounding high-and-low resolution packets)&lt;/td&gt;
+&lt;td&gt;Interleaving (사이사이에 끼워넣는다는 의미)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p&gt;앞에 보낸 음성데이터를 저음질(low resolution)로 복제해서 piggyback&lt;/p&gt;
+&lt;p&gt;(1번 데이터를 저음질로 2번 데이터에 실어 보낸다.)&lt;/p&gt;
+&lt;/td&gt;
+&lt;td&gt;non interleaved transmission: 보낼 데이터를 순차적으로 패킷으로 묶어 보낸다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;패킷 로스가 발생하면 다음 패킷으로부터 저음질 데이터를 가져온다.&lt;/td&gt;
+&lt;td&gt;&lt;span&gt;interleaved transmission: 보낼 데이터를 세로로 묶은 순서로 보내고 수신자 측에서 재조합한다. 각 패킷에 1개씩 밖에 에러가 안난 것 처럼 하여 error correction&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p&gt;장점: delay가 낮다&lt;/p&gt;
+&lt;p&gt;단점: 패킷 하나만 로스났을 땐 복구 가능하지만, 연속적인 로스는 복구 불가능하다. 그리고 사실 패킷 하나만 로스나는 경우는 거의 없다.&lt;/p&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;장점: FEC에 비해 오버헤드가 줄어든다.&lt;/p&gt;
+&lt;p&gt;단점: Playout delay&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;non-consecutive loss: receiver can conceal loss&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;참고 사이트: 
+&lt;script src=&quot;https://ssl.pstatic.net/static.editor/static/dist/viewer/1508390393653/common/se.viewer.min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://blog.like.naver.com/static20171018143456/js/likeIt.list.main.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script id=&quot;gnb_clickcrD&quot; src=&quot;https://ssl.pstatic.net/static.gn/js/clickcrD.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/p&gt;
+&lt;div id=&quot;head-skin&quot;&gt;
+&lt;div class=&quot;on_highlight&quot; id=&quot;body&quot;&gt;
+&lt;div id=&quot;whole-border&quot;&gt;
+&lt;div id=&quot;whole-body&quot;&gt;
+&lt;div class=&quot;clearfix&quot; id=&quot;wrapper&quot;&gt;
+&lt;div class=&quot;clearfix&quot; id=&quot;twocols&quot;&gt;
+&lt;div id=&quot;content-area&quot;&gt;
+&lt;div id=&quot;post-area&quot;&gt;
+&lt;div id=&quot;postListBody&quot;&gt;
+&lt;div class=&quot;post _post_wrap _param(1)&quot; id=&quot;post_1&quot;&gt;
+&lt;div class=&quot;post-back&quot;&gt;
+&lt;table class=&quot;post-body&quot; id=&quot;printPost1&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;bcc&quot;&gt;
+&lt;div class=&quot;pcol2 _param(1) _postViewArea220733958064&quot; id=&quot;post-view220733958064&quot;&gt;
+&lt;div class=&quot;se_doc_viewer se_body_wrap se_theme_transparent &quot; id=&quot;SEDOC-1465682456753-614393654&quot; data-docversion=&quot;1.0&quot;&gt;
+&lt;div class=&quot;se_component_wrap&quot;&gt;
+&lt;div class=&quot;se_component se_documentTitle documentTitle_blog  is-fill&quot;&gt;
+&lt;div class=&quot;se_sectionArea is-fill se_align-left&quot;&gt;
+&lt;div class=&quot;se_post_function&quot;&gt;&lt;a class=&quot;copyTargetUrl&quot; href=&quot;http://blog.naver.com/PostView.nhn?blogId=no5100&amp;amp;logNo=220733958064&amp;amp;beginTime=0&amp;amp;jumpingVid=&amp;amp;from=search&amp;amp;redirect=Log&amp;amp;widgetTypeCall=true&amp;amp;topReferer=http%3A%2F%2Fsearch.naver.com%2Fsearch.naver%3Fsm%3Dtab_hty.top%26where%3Dpost%26query%3Dinterleaving%2B%25ED%258C%25A8%25ED%2582%25B7%26oquery%3Dinterleaving%26tqi%3DTPCuCdpVuEhssc8lOL4ssssssed-182906%26url%3Dhttp%253A%252F%252Fkimdongeun.com%252F220733958064%26ucs%3DFvcnkLT2X5%252B9&amp;amp;directAccess=false#&quot; alt=&quot;url&quot;&gt;http://kimdongeun.com/220733958064&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;2. Content Delivery Network (CDN)&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;3. Wireless/Mobile Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Multimedia Streaming 비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec) 디지털 이미지: array of pixels 코딩: 압축 바 temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄. spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄. CBR (constant bit rate) VBR (variable bit rate) MPEG1 (CD_ROM) 1.5 Mbps MPEG2 (DVD) 3-6Mbps MPEG4 (인터넷 환경에서 주로 쓰인다 , 1 Mbps 이하) Streaming stored streaming: 파일 전체를 다운 받기 전에 재생할 수 있다. 1-1. Streaming stored video 저장된 비디오를 스트리밍 (1) video recorded  (2) video sent  (3) video received, played out at client (2)와 (3) 사이를 스트리밍이라고 한다. 비디오가 저장된 서버로 부터 인터넷을 거쳐 클라이언트로 온다. 모든 비디오 데이터를 받기 전에 클라이언트에서 재생할 수 있다. 어느 정도의 데이터가 들어오면 비디오를 재생할 것인가? Continuous playout constraint 바로바로 재생하면 좋겠지만 jitter가 있기 때문에 원래 시간대로 실행하기 위해서는 클라이언트에 버퍼가 필요하다. jitter: 각 패킷에 대한 지연 변동 (delay for each packet fluctuates) 라우터에서 queueing delay가 일어나기 때문에 패킷이 도착하는 시간은 일정하지 않다. video transmission과 비디오 데이터를 클라이언트에서 받는 사이에 딜레이가 존재하는데 이것이 네트워크 딜레이, 지터이다. jitter를 줄이기위해 버퍼를 사용하자! client-side buffering and playout delay: 클라이언트에서 버퍼링을 사용하기 때문에 비디오 실행에 딜레이가 걸린다. 네트워크 딜레이가 걸릴 것을 예상하고 대비하기 위함. (playout delay: 비디오 데이터를 받은 후 부터 실행하기 까지 걸리는 시간) 단점은? 1-2. Streaming multimedia: HTTP 멀티미디어 파일은 HTTP를 통해 웹 상에서 가져온다. TCP 최대 전송율 밑으로 전송 가능함. 버퍼의 한계는 TCP congestion control과 retransmission(순차 전송) 에 영향을 받는다. Application playout buffer: 시작할 때 딜레이(playout delay)는 오래걸리지만 영상은 부드럽다. 왜 HTTP(TCP) 를 사용하는가? UDP TCP 차이 UDP: unreliable(no acks), lightweight(faster), smooth TCPL reliable(use acks), heavyweight(slower), sawtooth pattern (congestion control) 이러한 특성들만 봤을 때 UDP를 사용해야하지만... TCP를 사용한다. UDP는 보안 문제로 방화벽에 막힘 비디오 스트리밍을 위해 서버를 따로 두어야함. HTTP는 방화벽을 뚫기 쉽다. 기존에 있던 웹 서버를 사용할 수 있다. TCP sawtooth pattern은 application buffer를 통해 완화할 수 있다. 1-3. DASH: Dynamic, Adaptive Streaming over HTTP 서버 여러 화질의 영상을 가지고 있다.(encoded different rates) 영상들은 청크(chunk)로 나누어져 있는데 하나의 청크는 1~15초의 비디오 영상 데이터이다. 클라이언트 주기적으로 서버-클라이언트의 bandwidth을 측정 현재 bandwidth에서 받을 수 있는 가장 높은 부호화 속도를 선택 당시의 bandwidth에 따라 다른 속도를 선택할 수 있다. MPEG-DASH, Adobe, Apple, MS 각각의 청크가 존재하는 url에 접속 1-4. Voice-over-IP (VoIP) VoIP end-end-delay requirement: 대화해야 하기 때문에 딜레이가 높아서는 안된다. 400 ms 이상 넘어가면 사람이 느낄 수 있음. network loss: 네트워크가 혼잡하여 (라우터 오버플로우) IP datagram lost 가 발생할 수 있다. 이 때 재전송을 하게 되면 딜레이가 급격히 증가하기 때문에 대신에 FEC나 Interleaving을 사용함. Forward Error Correction (FEC) vs. Interleaving FEC(=Compounding high-and-low resolution packets) Interleaving (사이사이에 끼워넣는다는 의미) 앞에 보낸 음성데이터를 저음질(low resolution)로 복제해서 piggyback (1번 데이터를 저음질로 2번 데이터에 실어 보낸다.) non interleaved transmission: 보낼 데이터를 순차적으로 패킷으로 묶어 보낸다. 패킷 로스가 발생하면 다음 패킷으로부터 저음질 데이터를 가져온다. interleaved transmission: 보낼 데이터를 세로로 묶은 순서로 보내고 수신자 측에서 재조합한다. 각 패킷에 1개씩 밖에 에러가 안난 것 처럼 하여 error correction 장점: delay가 낮다 단점: 패킷 하나만 로스났을 땐 복구 가능하지만, 연속적인 로스는 복구 불가능하다. 그리고 사실 패킷 하나만 로스나는 경우는 거의 없다. 장점: FEC에 비해 오버헤드가 줄어든다. 단점: Playout delay non-consecutive loss: receiver can conceal loss 참고 사이트:  http://kimdongeun.com/220733958064 2. Content Delivery Network (CDN) 3. Wireless/Mobile Architecture</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">7. 네트워크 구조</title>
+      <link href="http://localhost:4000/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
+      <published>2017-10-20T00:00:00+09:00</published>
+      <updated>2017-10-20T00:00:00+09:00</updated>
+      <id>http://localhost:4000/networkArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/networkArchitecture">1. Internet Architecture
+IPv4 -&gt; (solution) NAT,IPv6
+
+Network Congestion
+많은 사람들이 네트워크 자원을 공유해서!
+
+네트워크 자원은?
+
+Link bandwidth, Router 나 Switch의 버퍼 공간
+
+만약에 너무 많은 패킷이 하나의 링크를 공유하려하면 큐가 넘치고 패킷은 없어질 것이다.
+
+Solution: Flow control and Congestion control
+
+
+
+Flow control &amp; Congestion control
+Flow control: 빠른 sender와 느린 receiver가 있을 때 transmitter가 속도를 조절한다. receiver의 capacity를 고려함.
+
+Congestion control: sender가 스피드를 조절한다. router의 buffer size를 고려하는 것. (sending rate을 조절)
+
+TCP window
+
+라우터의 버퍼 크기를 고려한다.
+
+TCP sender는 min(cwnd, awnd)중 작은 것을 선택 (cwnd: congestionwindow, awnd: advertised window)
+
+
+
+데이터를 보내고 ACK이 잘 오냐 안오냐로 판단한다. ACK이 계속 온다면 congestion이 발생하지 않는다고 판단.
+
+
+
+TCP Slow Start: exponentially increase (1, 2, 4, 8..)
+
+TCP congestion avoidance: ssthresh(the slow start threshold value) 지점을 지난 후 부터 linear increase
+
+TCP fast recovery (3 duplicate ACKs): 
+
+
+
+
+
+2. Multipath TCP
+
+
+3. Type of Communication
+
+
+4. RPC (Remote Procedure Call)</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Internet Architecture IPv4 -&gt; (solution) NAT,IPv6</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">6. 프로세스</title>
+      <link href="http://localhost:4000/processing" rel="alternate" type="text/html" title="6. 프로세스" />
+      <published>2017-09-28T00:00:00+09:00</published>
+      <updated>2017-09-28T00:00:00+09:00</updated>
+      <id>http://localhost:4000/processing</id>
+      <content type="html" xml:base="http://localhost:4000/processing">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Virtualization (가상화)&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;분산 시스템에서 가상화의 역할&lt;/p&gt;
+&lt;p&gt;1 Virtualization can help here by porting the legacy interfaces to the new platforms and thus immediately opening up the latter for large classes of existing programs.&lt;/p&gt;
+&lt;p&gt;2. that system administrators maintain a large and heterogeneous collection of server computers, each one running very different applications, which can be accessed by clients. 현대 컴퓨터는 대부분 인터넷 네트워크 서비스를 지원하기 때문에 각 클라이언트는 서로 다른 많은 서버 컴퓨터들에 접근이 가능해야한다. (라이브러리, OS 가 달라도 공통된 플랫폼에서 어플리케이션이 돌아가야함.)&lt;/p&gt;
+&lt;p&gt;3. virtualization provides a high degree of portability and flexibility.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;컴퓨터 시스템은 보통 4가지 interface로 구성되어있다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;2. Google DCN Virtualization &amp;amp; SDN&lt;/h2&gt;
+&lt;p&gt;1. MapReduce: divide and conquer&lt;/p&gt;
+&lt;p&gt;2. Google File System&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;B4&lt;/li&gt;
+&lt;li&gt;GGC&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Jupiter : 데이터 센터 안의 네트워크가 어떻게 구성되어 있나!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Freedome&lt;/li&gt;
+&lt;li&gt;Andromeda&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3. Big Table&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Jupiter&lt;/h3&gt;
+&lt;p&gt;그 전까지는 비싼 라우터를 4개 정도 썼다. 하지만 확장성도 떨어져서 곧 쓸 수 없게 되었다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Clos Topology&lt;/strong&gt;: 저렴한 라우터(스위치)를 엄청 많이 사용하자. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Centralized Control Protocols&lt;/strong&gt;: 그러기 위해 &lt;strong&gt;Software Defined Networking(SDN)&lt;/strong&gt; 기술을 사용하겠다. Master Node가 link-state 정보를 네트워크를 통해 모으는 방식이다. 각각의 스위치는 자신만의 테이블을 계산한다. &lt;/p&gt;
+&lt;h3&gt;SDN&lt;/h3&gt;
+&lt;p&gt;라우터 마다 control plane을 가지고 있을 때, 다른 라우터와 정보를 교환해서 어디로 보낼지 정해주는 forwarding table을 작성했다.&lt;/p&gt;
+&lt;p&gt;하지만 control plane을 하나로 합쳐 controller 라는 서버로 두고, 라우터는 data plane의 일만 한다. CA(control agents)는 데이터를 보내는 일만 함. bandwidth이 커졌기 때문에 로컬상태에서 연결하는 것 같은 효과를 볼 수 있다.&lt;/p&gt;
+&lt;p&gt;장점: 네트워크 관리가 쉬워짐, 라우터가 forwarding table을 작성하는 부담이 줄었음, 새로운 알고리즘을 적용할 수 있음(open implementation)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;3. Clients/Servers&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;4. Code Migration&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;5. Cloud Computing: MapReduce&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Virtualization (가상화) 분산 시스템에서 가상화의 역할 1 Virtualization can help here by porting the legacy interfaces to the new platforms and thus immediately opening up the latter for large classes of existing programs. 2. that system administrators maintain a large and heterogeneous collection of server computers, each one running very different applications, which can be accessed by clients. 현대 컴퓨터는 대부분 인터넷 네트워크 서비스를 지원하기 때문에 각 클라이언트는 서로 다른 많은 서버 컴퓨터들에 접근이 가능해야한다. (라이브러리, OS 가 달라도 공통된 플랫폼에서 어플리케이션이 돌아가야함.) 3. virtualization provides a high degree of portability and flexibility. 컴퓨터 시스템은 보통 4가지 interface로 구성되어있다. 2. Google DCN Virtualization &amp;amp; SDN 1. MapReduce: divide and conquer 2. Google File System B4 GGC Jupiter : 데이터 센터 안의 네트워크가 어떻게 구성되어 있나! Freedome Andromeda 3. Big Table Jupiter 그 전까지는 비싼 라우터를 4개 정도 썼다. 하지만 확장성도 떨어져서 곧 쓸 수 없게 되었다. Clos Topology: 저렴한 라우터(스위치)를 엄청 많이 사용하자.  Centralized Control Protocols: 그러기 위해 Software Defined Networking(SDN) 기술을 사용하겠다. Master Node가 link-state 정보를 네트워크를 통해 모으는 방식이다. 각각의 스위치는 자신만의 테이블을 계산한다.  SDN 라우터 마다 control plane을 가지고 있을 때, 다른 라우터와 정보를 교환해서 어디로 보낼지 정해주는 forwarding table을 작성했다. 하지만 control plane을 하나로 합쳐 controller 라는 서버로 두고, 라우터는 data plane의 일만 한다. CA(control agents)는 데이터를 보내는 일만 함. bandwidth이 커졌기 때문에 로컬상태에서 연결하는 것 같은 효과를 볼 수 있다. 장점: 네트워크 관리가 쉬워짐, 라우터가 forwarding table을 작성하는 부담이 줄었음, 새로운 알고리즘을 적용할 수 있음(open implementation) 3. Clients/Servers 4. Code Migration 5. Cloud Computing: MapReduce</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">5. 하둡 파일 시스템</title>
+      <link href="http://localhost:4000/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
+      <published>2017-09-28T00:00:00+09:00</published>
+      <updated>2017-09-28T00:00:00+09:00</updated>
+      <id>http://localhost:4000/hadoopfilesystem</id>
+      <content type="html" xml:base="http://localhost:4000/hadoopfilesystem">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h6 class=&quot;wiki-page-abstract&quot;&gt;HDFS?&lt;br /&gt;Hadoop으로 구성된 file system이며 매우 많은 데이터를 관리하기 위해 설계되었다.&lt;br /&gt;(1) reliably&lt;br /&gt;(2) high bandwidth to user application&lt;br /&gt;Replicating file content (3배 정도)&lt;/h6&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;1. Hadoop&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;2. HDFS&lt;/h2&gt;
+&lt;h3&gt;목표&lt;/h3&gt;
+&lt;p&gt;매우 큰 분산 파일 시스템에 적합.&lt;/p&gt;
+&lt;p&gt;하드웨어 hardware failure가 났을 때 recovery&lt;/p&gt;
+&lt;p&gt;Batch Processing 에 최적화 되어있다. (MapReduce)&lt;/p&gt;
+&lt;p&gt;OS에 상관없이 user space에서 돌릴 수 있다. (어플리케이션이기 떄문)&lt;/p&gt;
+&lt;h3&gt;구조&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;NameNode&lt;/li&gt;
+&lt;li&gt;DataNode&lt;/li&gt;
+&lt;li&gt;SecondaryNameNode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Read&lt;/h4&gt;
+&lt;p&gt;Data Pipelining&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Write&lt;/h4&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Error Recovery&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;NameNode Metadata&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;메모리에 메타데이터를 올림. 많은 datanode의 신호와 client의 요청을 빠르게 수행하기 위해&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DataNode&lt;/li&gt;
+&lt;li&gt;Block server, Block Report(네임 노드에게 리포팅해준다.)&lt;/li&gt;
+&lt;li&gt;Heartbeats&lt;/li&gt;
+&lt;li&gt;Rack Awareness: 같은 rack 안에 다 저장하지 않고 또 다른 rack에 나머지 두 개의 복제본을 저장한다. 네트워크를 이용하므로 파이프라이닝은 복잡해지니 최소화하고 싶지만 reliability는 적당히 보장할 수 있다.&lt;/li&gt;
+&lt;li&gt;Block Placement&lt;/li&gt;
+&lt;li&gt;NameNode Failure&lt;/li&gt;
+&lt;li&gt;NameNode High Availability: AvatarNode (쌍둥이 노드)&lt;/li&gt;
+&lt;li&gt;Hadoop balancing: 새로운 데이터노드가 등록될 때 기존의 것을 나누어 각 기기 마다 데이터를 같은 비율로 저장할 수 있다. 하지만 접근 패턴은 알 수 없기 때문에 인기있는 노드가 무엇인지는 파악할 수 없다.&lt;/li&gt;
+&lt;li&gt;RAID를 적극적으로 이용한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">HDFS?Hadoop으로 구성된 file system이며 매우 많은 데이터를 관리하기 위해 설계되었다.(1) reliably(2) high bandwidth to user applicationReplicating file content (3배 정도) 1. Hadoop 2. HDFS 목표 매우 큰 분산 파일 시스템에 적합. 하드웨어 hardware failure가 났을 때 recovery Batch Processing 에 최적화 되어있다. (MapReduce) OS에 상관없이 user space에서 돌릴 수 있다. (어플리케이션이기 떄문) 구조 NameNode DataNode SecondaryNameNode Read Data Pipelining Write Error Recovery NameNode Metadata 메모리에 메타데이터를 올림. 많은 datanode의 신호와 client의 요청을 빠르게 수행하기 위해 DataNode Block server, Block Report(네임 노드에게 리포팅해준다.) Heartbeats Rack Awareness: 같은 rack 안에 다 저장하지 않고 또 다른 rack에 나머지 두 개의 복제본을 저장한다. 네트워크를 이용하므로 파이프라이닝은 복잡해지니 최소화하고 싶지만 reliability는 적당히 보장할 수 있다. Block Placement NameNode Failure NameNode High Availability: AvatarNode (쌍둥이 노드) Hadoop balancing: 새로운 데이터노드가 등록될 때 기존의 것을 나누어 각 기기 마다 데이터를 같은 비율로 저장할 수 있다. 하지만 접근 패턴은 알 수 없기 때문에 인기있는 노드가 무엇인지는 파악할 수 없다. RAID를 적극적으로 이용한다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">4. 분산 저장 시스템</title>
+      <link href="http://localhost:4000/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
+      <published>2017-09-25T00:00:00+09:00</published>
+      <updated>2017-09-25T00:00:00+09:00</updated>
+      <id>http://localhost:4000/distributedstoragesystem</id>
+      <content type="html" xml:base="http://localhost:4000/distributedstoragesystem">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Distributed Storage&lt;/h2&gt;
+&lt;h3&gt;1-1. RAID systems&lt;/h3&gt;
+&lt;p&gt;RAID: Redundant Array of Independent Disks&lt;/p&gt;
+&lt;p&gt;하드디스크를 여러 개 배치해 사용함으로 신뢰성(reliability)를 높인다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;RAID는 신뢰성(reliability)과 성능 향상(performance)를 높이기 위해 사용된다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;신뢰성을 향상시키기 위해 중복(redundancy)!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mirroring: 두 개의 물리적 디스크로 구성되어진 하나의 개념적 디스크인데, 모든 write 작업은 두 개의 디스크에 각각 전달된다.&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mean time to failure(MTTF): disk failure가 발생할 때 까지 걸리는 시간을 말한다.&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;싱글 디스크일 때 100,000 시간 이라면 두 개의 디스크를 사용 할 때는 두 개의 디스크 모두에 failure 가 일어나야 하므로 100,000^2 /(2*10) 시간임.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;성능을 향상시키기 위해 평행성(parallelism)!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mirrroing 사용 시 : 단위 시간 당 읽기 횟수가 두 배로 증가. 즉, 같은 시간이 주어진다면 더 많은 읽기가 가능하다.&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;Data Striping: 블락 단위의 파일이 복수의 디스크에 순서대로(stripe) 로 저장되어 있다. n 개의 디스크와 i번째 파일 블락은 (i mod n)+1 의 디스크에 위치하게 된다.&lt;/p&gt;
+&lt;p style=&quot;padding-left: 30px;&quot;&gt;모든 디스크가 모든 액세스, read/write할 때 참여하게 된다. 싱글 디스크가 한 번 read/write 하는 시간 동안 각각의 디스크가 read/write 할 수 있다! &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;RAID 0&lt;/h4&gt;
+&lt;p&gt;file을 block 단위로 쪼개서 parity 혹은 striping한다.&lt;/p&gt;
+&lt;p&gt;mirroring 없음.&lt;/p&gt;
+&lt;p&gt;read/write 효율: nX (n: 디스크의 수)&lt;/p&gt;
+&lt;p&gt;디스크의 데이터 접근은 속도가 다른 장치에 비해 현저히 느리기 때문에 성능에 있어 병목(bottle neck)현상이 발생한다.&lt;/p&gt;
+&lt;p&gt;만일 같은 시간이 주어진다면 디스크가 많을 수록 read/write를 더 많이 할 수 있다.&lt;/p&gt;
+&lt;p&gt;Space efficiency = 1 (디스크 하나와 같음!)&lt;/p&gt;
+&lt;p&gt;No data redundancy: 이 뜻은 protection을 제공하지 않음. error 나 failure이 떠도 방도가 없다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59bacebb0c2ecfb10fb2e983&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;RAID 1&lt;/h4&gt;
+&lt;p&gt;mirroring 있음&lt;/p&gt;
+&lt;p&gt;parity 혹은 striping 없음.&lt;/p&gt;
+&lt;p&gt;read 효율 : nX&lt;/p&gt;
+&lt;p&gt;write 효율 : X&lt;/p&gt;
+&lt;p&gt;Error/Failure 지원 (n-1개 까지 에러가 허용된다.)&lt;/p&gt;
+&lt;p&gt;Space efficiency = 1/n (카피는 n개인데 디스크 하나의 효율과 같다.)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c26a8d05825b1179fb87&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;RAID 4&lt;/h4&gt;
+&lt;p&gt;Block-level striping 있음&lt;/p&gt;
+&lt;p&gt;parity disk 있음 (A = A1+A2+A3, A: parity block)&lt;/p&gt;
+&lt;p&gt;read/write 효율 = (n-1)X (parity disk 하나가 에러 방지용이기 때문에 1개 빼야함)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;근데 write 할 때는 parity disk 계산 시간이 필요함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Space efficiency = (n-1)/n (디스크는 n개인데 실질적 데이터를 저장하는 디스크는 n-1개)&lt;/p&gt;
+&lt;p&gt;하나의 disk failure 까지 방지 할 수 있다! (연산으로 유추하면 됨, 만일 parity disk가 하나 더 있다면 두 개 까지 복구 가능)&lt;/p&gt;
+&lt;p&gt;문제점: Parity disk가 write시 항상 쓰여짐 (high stress for parity disk)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c2af8d05825b1179fb8c&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;RAID 5&lt;/h4&gt;
+&lt;p&gt;제일 많이 쓰는 방법.&lt;/p&gt;
+&lt;p&gt;Block-level striping 있음&lt;/p&gt;
+&lt;p&gt;distributed parity (RAID4와 다른 점: parity 정보가 드라이브 안에 분산되어 있음)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;read 효율: (n-1)X  혹은 nX&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;블럭 수가 3개 이하 : RAID4와 같은 상황이므로 (n-1)X&lt;/li&gt;
+&lt;li&gt;블럭 수가 3개 보다 많음: nX (특정 parity disk를 두는 것이 아니기 때문에 모든 디스크가 read에 참여한다.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;write 효율: RAID 4와 같음 (에러 방지용으로 parity block을 만들었고, 계산에도 시간이 걸린다. 결과적으로는 write하는 수가 같다.)&lt;/p&gt;
+&lt;p&gt;Space efficiency: RAID 4와 같음 (결론적인 실질적 데이터 저장량) &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;write할 때의 부담이 모든 디스크에게 분산되었다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c2b88d05825b1179fb8f&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt; RAID level 선택하기&lt;/h4&gt;
+&lt;p&gt;Rebuild performance (복구 시 걸리는 시간)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;disk failure가 발생하면 데이터를 복구해야하고 이 때 시간이 걸림&lt;/li&gt;
+&lt;li&gt;RAID 1: 똑같은 데이터가 하나 더 있기 때문에 복사해 오면 된다. 매우 쉽다.&lt;/li&gt;
+&lt;li&gt;RAId 4,5 : 다른 디스크에 접속해서 연산을 거쳐야한다. (디스크가 클 경우에는 수 시간이 걸릴 수도 있음)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;RAID level usage &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RAID 0: 데이터를 좀 날려도 괜찮은데 높은 성능을 원할 때&lt;/li&gt;
+&lt;li&gt;RAID 1: reliability도 어느 정도 있지만 복구도 빨리하고 싶을 때. (데이터 손실이 많은서버에서 주로 이용)&lt;/li&gt;
+&lt;li&gt;RAID 5: 많은 양의 데이터를 저장할 때. RAID 0 보다는 reliability가 높음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;RAID type&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Read efficiency&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Write efficiency&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Space efficiency&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Failure protection&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29.6666px;&quot;&gt;
+&lt;td style=&quot;height: 29.6666px;&quot;&gt;No RAID(1 disk)&lt;/td&gt;
+&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;height: 29.6666px;&quot;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;RAID 0 (n disks)&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;RAID 1 (n disks)&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;1/n&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;n-1&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;RAID 2 (n disks)&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;n-1&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;n-1&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;(n-1)/n&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;1-2. Storage network&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;DAS (Direct Attached Storage): 케이블을 이용해 직접적으로 storage끼리 연결. 물리적으로 선을 연결해줘야하기 때문에 '공유'하기에 좋지 않다.&lt;/li&gt;
+&lt;li&gt;NAS (Network Attached Storage): 네트워크를 통해 모든 storage에게 서버를 연결해준다. 공유하기엔 좋지만 속도가 떨어짐.&lt;/li&gt;
+&lt;li&gt;SAN (Storage Area Network): 클라이언트는 네트워크를 이용해 접근하지만 서버인 storage는 private network로 연결되어 있다. (광케이블과 스위치로 local하게 연결되어 있음.) NAS에 비해 속도는 빨라졌지만 비용이 많이 든다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. Data Centers&lt;/h2&gt;
+&lt;h3&gt;2-1. Google data center&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=XZmGGAbHqa0&quot;&gt;https://www.youtube.com/watch?v=XZmGGAbHqa0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;memcache, facebook, naver...&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;2-2. Facebooks Photo Storage&lt;/h3&gt;
+&lt;h4&gt;Haystack&lt;/h4&gt;
+&lt;p&gt;이전까지는 photo store sever라는 것이 따로 있어서 CDN에서 서버에 1차로 요청하면 서버에서는 사진이 저장되어 있는 NAS storage에 2차로 요청해 데이터를 가져왔다. 하지만 이렇게되면 디스크에 접근하는 횟수가 많아져서 느리다. haystack photo storage architecture는 디스크 접근 횟수를 줄이기 위해 index를 이용하였다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c64adf50cbf45e4ee82eae&quot; width=&quot;467&quot; height=&quot;389&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CDNs&lt;/strong&gt;: Content Delivery Networks&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Haystack Cache&lt;/strong&gt;: 사진들이 어디에 저자오디어 있는지 index가 써져있다. index를 알기 때문에 disk acess는 한 번만 하면 되고 속도는 상당히 올라간다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Haystack Store&lt;/strong&gt;: memcached-based file index&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default00&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Memcached&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;캐싱을 디스크에 하는 대신 RAM에 올리는 방법. 사진 파일의 위치 정보인 인덱스를 메모리에 모두 올렸다(in-memroy index). external data source에 접근 횟수를 줄이는 것이 목적.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Cold Storage&lt;/h4&gt;
+&lt;p&gt;오래 전에 올라온 사진 보다 최근에 업로드 된 사진으로 접근하는 경우가 많았다. (the older, and thuss less popular, less accessed) 하지만 모든 사진은 같은 데이터 센터에 보관되어 있기 때문에 많은 에너지와 메모리가 필요하다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;cold storage systmen은 서버 한 대가 여러개의 하드디스크를 관리하는 형태이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Disks: rack 마다 2PB의 저장소&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Power saving&lt;/strong&gt;: on/off duty cycle. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Storage saving: Erasure coding (Reed-Solomon error correction code&lt;br /&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;replication 효율을 3배로 늘릴 수 있는 방법.&lt;/p&gt;
+&lt;p&gt;Reed-solomon coding: 코딩으로 4개의 블럭을 더 만들어 block recovery를 가능하게함.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Distributed Storage 1-1. RAID systems RAID: Redundant Array of Independent Disks 하드디스크를 여러 개 배치해 사용함으로 신뢰성(reliability)를 높인다. RAID는 신뢰성(reliability)과 성능 향상(performance)를 높이기 위해 사용된다. 신뢰성을 향상시키기 위해 중복(redundancy)! Mirroring: 두 개의 물리적 디스크로 구성되어진 하나의 개념적 디스크인데, 모든 write 작업은 두 개의 디스크에 각각 전달된다. Mean time to failure(MTTF): disk failure가 발생할 때 까지 걸리는 시간을 말한다. 싱글 디스크일 때 100,000 시간 이라면 두 개의 디스크를 사용 할 때는 두 개의 디스크 모두에 failure 가 일어나야 하므로 100,000^2 /(2*10) 시간임. 성능을 향상시키기 위해 평행성(parallelism)! Mirrroing 사용 시 : 단위 시간 당 읽기 횟수가 두 배로 증가. 즉, 같은 시간이 주어진다면 더 많은 읽기가 가능하다. Data Striping: 블락 단위의 파일이 복수의 디스크에 순서대로(stripe) 로 저장되어 있다. n 개의 디스크와 i번째 파일 블락은 (i mod n)+1 의 디스크에 위치하게 된다. 모든 디스크가 모든 액세스, read/write할 때 참여하게 된다. 싱글 디스크가 한 번 read/write 하는 시간 동안 각각의 디스크가 read/write 할 수 있다!  RAID 0 file을 block 단위로 쪼개서 parity 혹은 striping한다. mirroring 없음. read/write 효율: nX (n: 디스크의 수) 디스크의 데이터 접근은 속도가 다른 장치에 비해 현저히 느리기 때문에 성능에 있어 병목(bottle neck)현상이 발생한다. 만일 같은 시간이 주어진다면 디스크가 많을 수록 read/write를 더 많이 할 수 있다. Space efficiency = 1 (디스크 하나와 같음!) No data redundancy: 이 뜻은 protection을 제공하지 않음. error 나 failure이 떠도 방도가 없다. RAID 1 mirroring 있음 parity 혹은 striping 없음. read 효율 : nX write 효율 : X Error/Failure 지원 (n-1개 까지 에러가 허용된다.) Space efficiency = 1/n (카피는 n개인데 디스크 하나의 효율과 같다.) RAID 4 Block-level striping 있음 parity disk 있음 (A = A1+A2+A3, A: parity block) read/write 효율 = (n-1)X (parity disk 하나가 에러 방지용이기 때문에 1개 빼야함) 근데 write 할 때는 parity disk 계산 시간이 필요함 Space efficiency = (n-1)/n (디스크는 n개인데 실질적 데이터를 저장하는 디스크는 n-1개) 하나의 disk failure 까지 방지 할 수 있다! (연산으로 유추하면 됨, 만일 parity disk가 하나 더 있다면 두 개 까지 복구 가능) 문제점: Parity disk가 write시 항상 쓰여짐 (high stress for parity disk) RAID 5 제일 많이 쓰는 방법. Block-level striping 있음 distributed parity (RAID4와 다른 점: parity 정보가 드라이브 안에 분산되어 있음) read 효율: (n-1)X  혹은 nX 블럭 수가 3개 이하 : RAID4와 같은 상황이므로 (n-1)X 블럭 수가 3개 보다 많음: nX (특정 parity disk를 두는 것이 아니기 때문에 모든 디스크가 read에 참여한다.) write 효율: RAID 4와 같음 (에러 방지용으로 parity block을 만들었고, 계산에도 시간이 걸린다. 결과적으로는 write하는 수가 같다.) Space efficiency: RAID 4와 같음 (결론적인 실질적 데이터 저장량)  write할 때의 부담이 모든 디스크에게 분산되었다.  RAID level 선택하기 Rebuild performance (복구 시 걸리는 시간) disk failure가 발생하면 데이터를 복구해야하고 이 때 시간이 걸림 RAID 1: 똑같은 데이터가 하나 더 있기 때문에 복사해 오면 된다. 매우 쉽다. RAId 4,5 : 다른 디스크에 접속해서 연산을 거쳐야한다. (디스크가 클 경우에는 수 시간이 걸릴 수도 있음) RAID level usage  RAID 0: 데이터를 좀 날려도 괜찮은데 높은 성능을 원할 때 RAID 1: reliability도 어느 정도 있지만 복구도 빨리하고 싶을 때. (데이터 손실이 많은서버에서 주로 이용) RAID 5: 많은 양의 데이터를 저장할 때. RAID 0 보다는 reliability가 높음 RAID type Read efficiency Write efficiency Space efficiency Failure protection No RAID(1 disk) 1 1 1 0 RAID 0 (n disks) n n 1 0 RAID 1 (n disks) n 1 1/n n-1 RAID 2 (n disks) n-1 n-1 (n-1)/n 1 1-2. Storage network DAS (Direct Attached Storage): 케이블을 이용해 직접적으로 storage끼리 연결. 물리적으로 선을 연결해줘야하기 때문에 '공유'하기에 좋지 않다. NAS (Network Attached Storage): 네트워크를 통해 모든 storage에게 서버를 연결해준다. 공유하기엔 좋지만 속도가 떨어짐. SAN (Storage Area Network): 클라이언트는 네트워크를 이용해 접근하지만 서버인 storage는 private network로 연결되어 있다. (광케이블과 스위치로 local하게 연결되어 있음.) NAS에 비해 속도는 빨라졌지만 비용이 많이 든다. 2. Data Centers 2-1. Google data center https://www.youtube.com/watch?v=XZmGGAbHqa0 memcache, facebook, naver... 2-2. Facebooks Photo Storage Haystack 이전까지는 photo store sever라는 것이 따로 있어서 CDN에서 서버에 1차로 요청하면 서버에서는 사진이 저장되어 있는 NAS storage에 2차로 요청해 데이터를 가져왔다. 하지만 이렇게되면 디스크에 접근하는 횟수가 많아져서 느리다. haystack photo storage architecture는 디스크 접근 횟수를 줄이기 위해 index를 이용하였다. CDNs: Content Delivery Networks Haystack Cache: 사진들이 어디에 저자오디어 있는지 index가 써져있다. index를 알기 때문에 disk acess는 한 번만 하면 되고 속도는 상당히 올라간다. Haystack Store: memcached-based file index Memcached 캐싱을 디스크에 하는 대신 RAM에 올리는 방법. 사진 파일의 위치 정보인 인덱스를 메모리에 모두 올렸다(in-memroy index). external data source에 접근 횟수를 줄이는 것이 목적. Cold Storage 오래 전에 올라온 사진 보다 최근에 업로드 된 사진으로 접근하는 경우가 많았다. (the older, and thuss less popular, less accessed) 하지만 모든 사진은 같은 데이터 센터에 보관되어 있기 때문에 많은 에너지와 메모리가 필요하다. cold storage systmen은 서버 한 대가 여러개의 하드디스크를 관리하는 형태이다. Disks: rack 마다 2PB의 저장소 Power saving: on/off duty cycle.  Storage saving: Erasure coding (Reed-Solomon error correction code replication 효율을 3배로 늘릴 수 있는 방법. Reed-solomon coding: 코딩으로 4개의 블럭을 더 만들어 block recovery를 가능하게함.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">3. 저장 장치 구조</title>
+      <link href="http://localhost:4000/StorageArchitecture" rel="alternate" type="text/html" title="3. 저장 장치 구조" />
+      <published>2017-09-23T00:00:00+09:00</published>
+      <updated>2017-09-23T00:00:00+09:00</updated>
+      <id>http://localhost:4000/StorageArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/StorageArchitecture">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Basic Architectures&lt;/h2&gt;
+&lt;h3&gt;1-1. Client-Server(Two-tier)&lt;/h3&gt;
+&lt;p&gt;centralized architectures&lt;/p&gt;
+&lt;p&gt;connectionless vs. connection-oriented&lt;/p&gt;
+&lt;h3&gt;1-2. Three-tier&lt;/h3&gt;
+&lt;p&gt;물리적 분류&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Client (user interface)&lt;/li&gt;
+&lt;li&gt;Application server&lt;/li&gt;
+&lt;li&gt;Database server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Application Layering&lt;/h4&gt;
+&lt;p&gt;개념적 분류&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The user-interface level&lt;/li&gt;
+&lt;li&gt;The processing level&lt;/li&gt;
+&lt;li&gt;The data level&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Fat (Thin) Client: 클리이언트 쪽 기기에 기능이 많을 때 (적을 때)&lt;/p&gt;
+&lt;p&gt;서버, 클라이언트 두 단계 구조로 생각함.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Peer-to-peer architecture&lt;/h3&gt;
+&lt;p&gt;BitTorrent, BitCoin etc&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Basic Architectures 1-1. Client-Server(Two-tier) centralized architectures connectionless vs. connection-oriented 1-2. Three-tier 물리적 분류 Client (user interface) Application server Database server Application Layering 개념적 분류 The user-interface level The processing level The data level Fat (Thin) Client: 클리이언트 쪽 기기에 기능이 많을 때 (적을 때) 서버, 클라이언트 두 단계 구조로 생각함. Peer-to-peer architecture BitTorrent, BitCoin etc</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">2. 분산시스템 기술</title>
+      <link href="http://localhost:4000/tech_DS" rel="alternate" type="text/html" title="2. 분산시스템 기술" />
+      <published>2017-09-10T00:00:00+09:00</published>
+      <updated>2017-09-10T00:00:00+09:00</updated>
+      <id>http://localhost:4000/tech_DS</id>
+      <content type="html" xml:base="http://localhost:4000/tech_DS">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;1. Resource Sharing&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;2. Transparency&lt;/h2&gt;
+&lt;p&gt;Access: Hide differences in data representation and how a resource is accessed&lt;/p&gt;
+&lt;p&gt;Location: Hide where a resouce is located&lt;/p&gt;
+&lt;p&gt;Migration: Hid that a resource may move to another location&lt;/p&gt;
+&lt;p&gt;Relocation&lt;/p&gt;
+&lt;p&gt;Replication: Hide that a resource is replicated&lt;/p&gt;
+&lt;p&gt;Concurrency: Hide that a resource may be shraed by several competitive users&lt;/p&gt;
+&lt;p&gt;Failure: Hide the failure an recovery of a resource&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Degree of Transparency&lt;/p&gt;
+&lt;p&gt;결론: 어느 정도만 추구하는 것이 좋다.&lt;/p&gt;
+&lt;p&gt;완벽하게 숨기는 것은 performance 측면에서 어렵기 때문&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;3. Scalability&lt;/h2&gt;
+&lt;p&gt;확장성: 인터넷 환경&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;확장성의 세 가지 요소&lt;/p&gt;
+&lt;p&gt;Size scalability(규모 측면): 유저/프로세스의 수&lt;/p&gt;
+&lt;p&gt;Geographical scalability(지리적 측면): 노드 사이의 최대 거리&lt;/p&gt;
+&lt;p&gt;Administrative scalability(관리적 측면): 관리 도메인의 수&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Techniques for Scaling&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Partition data/computation acroose multiple machines
+&lt;ul&gt;
+&lt;li&gt;Java applets, DNS, WWW&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;복제와 캐싱 (Replication and caching): 데이터의 복제를 만들어 다른 머신에 저장한다.
+&lt;ul&gt;
+&lt;li&gt;하지만 복제본을 만들 경우 한 복제본이 변경되었을 때 다른 것도 동기화되어야함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;DNS&lt;/h4&gt;
+&lt;p&gt;hierarchically distributed&lt;/p&gt;
+&lt;p&gt;Application-layer protocol&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h4&gt;Web&lt;/h4&gt;
+&lt;p&gt;World Wide Web(WWW)&lt;/p&gt;
+&lt;p&gt;하나의 단독 서버에서 가져오는 것이 아니라 많은 서버로부터 가져온다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default00&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;Parallel computing&lt;/p&gt;
+&lt;p&gt;Parallel computing이 시작되면서 높은 성능의 분산 컴퓨팅이 가능해졌다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Multiprocess / multicore&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Multicomputer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29.4445px;&quot;&gt;
+&lt;td style=&quot;height: 29.4445px;&quot;&gt;Shared memory&lt;/td&gt;
+&lt;td style=&quot;height: 29.4445px;&quot;&gt;Private memory&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;네트워크를 통해 하나의 메모리를 공유한다.&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;각각의 개인 메모리를 가짐.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;height: 29px;&quot;&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;SMP (Symmetric Multiprocessor)&lt;/td&gt;
+&lt;td style=&quot;height: 29px;&quot;&gt;Cloud (Distributed Systems)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;4. SMP : Symmetric Multiprocessor&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;multi-core processor에서는 여러 개의 코어가 프로세스를 나누어 담당함.&lt;/li&gt;
+&lt;li&gt;프로세서와 캐시를 각자가 가지고 있지만 메모리와 I/O device는 네트워크를 통해 공유함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;왜 멀티코어 프로세서인가?&lt;/h3&gt;
+&lt;p&gt;Moore's law에 따르면 18-24개월 마다 트랜지스터의 수용량이 두 배가 된다고 하였지만, 실제로 이론상의 효율을 내려면 태양의 온도를 견딜 수 있는 CPU가 필요함. (그런거 없엄!!)&lt;/p&gt;
+&lt;p&gt;이것을 해결하게 위해&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pipelining&lt;/li&gt;
+&lt;li&gt;multi-core processor
+&lt;ul&gt;
+&lt;li&gt;SMP, Shared memory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;를 이용한다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;만일 어떤 x라는 값이 변경되었을 때 그 값이 캐시에만 갱신되고 공유하는 메모리에는 반영되지 않는다면, 또 다른 코어에서 그 x 값에 접근할 때 값이 일치하지 않는(incoherent) 문제가 발생한다.&lt;/p&gt;
+&lt;h3&gt;write-through&lt;/h3&gt;
+&lt;p&gt;cache의 값이 바뀌었을 때 cache뿐만 아니라 memory에서도 write 해주는 방법.&lt;/p&gt;
+&lt;p&gt;단점: 또 다른 core의 cache에 해당 값이 있을 경우 memory incoherent 발생&lt;/p&gt;
+&lt;p&gt;예시)&lt;/p&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 11%;&quot;&gt;Time step&lt;/td&gt;
+&lt;td style=&quot;width: 23.5077%;&quot;&gt;Event&lt;/td&gt;
+&lt;td style=&quot;width: 23.4923%;&quot;&gt;Core A's cache&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;Core B's cache&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;Memory&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 11%;&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;width: 23.5077%;&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;width: 23.4923%;&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 11%;&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;width: 23.5077%;&quot;&gt;Core A read X&lt;/td&gt;
+&lt;td style=&quot;width: 23.4923%;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 11%;&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;width: 23.5077%;&quot;&gt;Core B read X&lt;/td&gt;
+&lt;td style=&quot;width: 23.4923%;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 11%;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;width: 23.5077%;&quot;&gt;Core A write 0 to X&lt;/td&gt;
+&lt;td style=&quot;width: 23.4923%;&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;width: 20%;&quot;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Snoopy cache (Bus sniffing)&lt;/h3&gt;
+&lt;p&gt;거의 모든 bus-based 구조에서 snoopy cache를 사용한다.&lt;/p&gt;
+&lt;p&gt;값을 write 할 때 &lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;invalidate message&lt;/strong&gt;&lt;/span&gt;를 bus를 통해 모든 캐시/메모리에 전송한다(broadcast). 만일 다른 캐시/메모리에 그 값이 있으면 지운다. 또 다른 캐시가 그 값을 읽으려고 할 때는 cache miss가 발생한다.&lt;/p&gt;
+&lt;p&gt;예시)&lt;/p&gt;
+&lt;table style=&quot;width: 100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU activity&lt;/td&gt;
+&lt;td&gt;Bus activity&lt;/td&gt;
+&lt;td&gt;Core A's cache&lt;/td&gt;
+&lt;td&gt;Core B's cache&lt;/td&gt;
+&lt;td&gt;Memory&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Core A reads X&lt;/td&gt;
+&lt;td&gt;Cache miss for X&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p&gt;Core B read X&lt;/p&gt;
+&lt;/td&gt;
+&lt;td&gt;Cache miss for X&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Core A writes 1 to X&lt;/td&gt;
+&lt;td&gt;Invalidate for X&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;(deleted)&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Core B read X&lt;/td&gt;
+&lt;td&gt;Cache miss for X&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;Problem&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Bus-based mulitcomputer&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;메모리를 공유 문제
+&lt;ul&gt;
+&lt;li&gt;memory coherence problem&lt;/li&gt;
+&lt;li&gt;트래픽 증가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;기존의 문제점을 극복해보자.&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;통신에는 버스(bus) 가 필요하다.&lt;/li&gt;
+&lt;li&gt;메모리 접근보다 트래픽이 낮으면 좋겠다.&lt;/li&gt;
+&lt;li&gt;물리적인 버스 보다는 LAN(local area network)를 사용해보자.&lt;/li&gt;
+&lt;li&gt;멀티 코어만 가지고 안된다면 컴퓨터를 여러 대로 늘려서 한계를 극복하자.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Switched multicomputer on LAN&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;네트워크 상에서 send/receive message를 통해 프로세서 사이에서 메세지를 주고받자.&lt;/li&gt;
+&lt;li&gt;즉 각각의 컴퓨터는 독립적인 프로세서, 캐시, 메모리 가지며 이들 사이의 통신은 네트워크를 이용한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;5. Distributed Systems &lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cloud data center&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;구글, 페이스북, 아마존...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cluster Computing&lt;/strong&gt;: 10000개 이상의 저렴한 기계를 사용해 큰 문제를 해결한다&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Devide and Conquer - Map &amp;amp; Reduce&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Distributed File System - Hadoop File System (HDFS)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Distributed Computing&lt;/h3&gt;
+&lt;p&gt;Distributed Computing system&lt;/p&gt;
+&lt;p&gt;높은 컴퓨팅 성능을 위해 사용된다&lt;/p&gt;
+&lt;p&gt;슈퍼 컴퓨터 -&amp;gt; 클러스터 컴퓨팅 시스템, Grid 컴퓨팅 시스템&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;지금은 하나의 문제를 여러 개의 서브 문제로 만들고 각각의 컴퓨터가 해결한다. (Devide and Conquer)&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;큰 하나의 문제/데이터를 해결하는 것은 많은 작은 문제/데이터를 해결하는 것과 같다.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h3&gt;기타&lt;/h3&gt;
+&lt;p&gt;Distributed Home systems (networks) : 개인 디바이스, 엔터테인먼트, 핸드폰, Network attached storage(NAS) 는 게이트 웨이를 거친다. 이때, self-configuring, sharing policy 가 이슈임.&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Distributed Electronic Health Care Systems&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Internet of Things (IoT)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;Connected Cars-&amp;gt;Automated Vehicles&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span&gt;요약&lt;/span&gt;&lt;/h2&gt;
+&lt;div contenteditable=&quot;false&quot;&gt;
+&lt;div class=&quot;alert wiki-alert-default00&quot; contenteditable=&quot;true&quot;&gt;
+&lt;p&gt;1. 분산 시스템은 자율적인(autonomous) 여러 대의 컴퓨터로 이루져있고 그 컴퓨터들이 같이 일하면서 하나의 시스템으로 보이는 것이다. (single coherent system)&lt;/p&gt;
+&lt;p&gt;2. 특징: Sharing, Transparend, Scalable&lt;/p&gt;
+&lt;p&gt;3. Parallel Computing: SMP, Cloud&lt;/p&gt;
+&lt;p&gt;4. 분산시스템의 다른 종류: Home network, Healthcare systems, IoT, Automated Cars..&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Distributed System" />
+      
+
+      
+        <summary type="html">1. Resource Sharing 2. Transparency Access: Hide differences in data representation and how a resource is accessed Location: Hide where a resouce is located Migration: Hid that a resource may move to another location Relocation Replication: Hide that a resource is replicated Concurrency: Hide that a resource may be shraed by several competitive users Failure: Hide the failure an recovery of a resource Degree of Transparency 결론: 어느 정도만 추구하는 것이 좋다. 완벽하게 숨기는 것은 performance 측면에서 어렵기 때문 3. Scalability 확장성: 인터넷 환경 확장성의 세 가지 요소 Size scalability(규모 측면): 유저/프로세스의 수 Geographical scalability(지리적 측면): 노드 사이의 최대 거리 Administrative scalability(관리적 측면): 관리 도메인의 수 Techniques for Scaling Partition data/computation acroose multiple machines Java applets, DNS, WWW 복제와 캐싱 (Replication and caching): 데이터의 복제를 만들어 다른 머신에 저장한다. 하지만 복제본을 만들 경우 한 복제본이 변경되었을 때 다른 것도 동기화되어야함 DNS hierarchically distributed Application-layer protocol Web World Wide Web(WWW) 하나의 단독 서버에서 가져오는 것이 아니라 많은 서버로부터 가져온다. Parallel computing Parallel computing이 시작되면서 높은 성능의 분산 컴퓨팅이 가능해졌다. Multiprocess / multicore Multicomputer Shared memory Private memory 네트워크를 통해 하나의 메모리를 공유한다. 각각의 개인 메모리를 가짐. SMP (Symmetric Multiprocessor) Cloud (Distributed Systems) 4. SMP : Symmetric Multiprocessor multi-core processor에서는 여러 개의 코어가 프로세스를 나누어 담당함. 프로세서와 캐시를 각자가 가지고 있지만 메모리와 I/O device는 네트워크를 통해 공유함 왜 멀티코어 프로세서인가? Moore's law에 따르면 18-24개월 마다 트랜지스터의 수용량이 두 배가 된다고 하였지만, 실제로 이론상의 효율을 내려면 태양의 온도를 견딜 수 있는 CPU가 필요함. (그런거 없엄!!) 이것을 해결하게 위해 Pipelining multi-core processor SMP, Shared memory 를 이용한다. 만일 어떤 x라는 값이 변경되었을 때 그 값이 캐시에만 갱신되고 공유하는 메모리에는 반영되지 않는다면, 또 다른 코어에서 그 x 값에 접근할 때 값이 일치하지 않는(incoherent) 문제가 발생한다. write-through cache의 값이 바뀌었을 때 cache뿐만 아니라 memory에서도 write 해주는 방법. 단점: 또 다른 core의 cache에 해당 값이 있을 경우 memory incoherent 발생 예시) Time step Event Core A's cache Core B's cache Memory 0 3 1 Core A read X 3 3 2 Core B read X 3 3 3 3 Core A write 0 to X 0 3 0 Snoopy cache (Bus sniffing) 거의 모든 bus-based 구조에서 snoopy cache를 사용한다. 값을 write 할 때 invalidate message를 bus를 통해 모든 캐시/메모리에 전송한다(broadcast). 만일 다른 캐시/메모리에 그 값이 있으면 지운다. 또 다른 캐시가 그 값을 읽으려고 할 때는 cache miss가 발생한다. 예시) CPU activity Bus activity Core A's cache Core B's cache Memory 0 Core A reads X Cache miss for X 0 0 Core B read X Cache miss for X 0 0 0 Core A writes 1 to X Invalidate for X 1 (deleted) 0 Core B read X Cache miss for X 1 1 1 Problem Bus-based mulitcomputer 메모리를 공유 문제 memory coherence problem 트래픽 증가 기존의 문제점을 극복해보자. 통신에는 버스(bus) 가 필요하다. 메모리 접근보다 트래픽이 낮으면 좋겠다. 물리적인 버스 보다는 LAN(local area network)를 사용해보자. 멀티 코어만 가지고 안된다면 컴퓨터를 여러 대로 늘려서 한계를 극복하자. Switched multicomputer on LAN 네트워크 상에서 send/receive message를 통해 프로세서 사이에서 메세지를 주고받자. 즉 각각의 컴퓨터는 독립적인 프로세서, 캐시, 메모리 가지며 이들 사이의 통신은 네트워크를 이용한다. 5. Distributed Systems  Cloud data center 구글, 페이스북, 아마존... Cluster Computing: 10000개 이상의 저렴한 기계를 사용해 큰 문제를 해결한다 Devide and Conquer - Map &amp;amp; Reduce Distributed File System - Hadoop File System (HDFS) Distributed Computing Distributed Computing system 높은 컴퓨팅 성능을 위해 사용된다 슈퍼 컴퓨터 -&amp;gt; 클러스터 컴퓨팅 시스템, Grid 컴퓨팅 시스템 지금은 하나의 문제를 여러 개의 서브 문제로 만들고 각각의 컴퓨터가 해결한다. (Devide and Conquer) 큰 하나의 문제/데이터를 해결하는 것은 많은 작은 문제/데이터를 해결하는 것과 같다. 기타 Distributed Home systems (networks) : 개인 디바이스, 엔터테인먼트, 핸드폰, Network attached storage(NAS) 는 게이트 웨이를 거친다. 이때, self-configuring, sharing policy 가 이슈임. Distributed Electronic Health Care Systems Internet of Things (IoT) Connected Cars-&amp;gt;Automated Vehicles 요약 1. 분산 시스템은 자율적인(autonomous) 여러 대의 컴퓨터로 이루져있고 그 컴퓨터들이 같이 일하면서 하나의 시스템으로 보이는 것이다. (single coherent system) 2. 특징: Sharing, Transparend, Scalable 3. Parallel Computing: SMP, Cloud 4. 분산시스템의 다른 종류: Home network, Healthcare systems, IoT, Automated Cars..</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
