@@ -12,7 +12,6 @@ subclass: 'post tag-getting-started'
 author: mem
 ---
 
-수정수정수정수정
 # Index
 ## Get Element Height
 ## Get Element Left Position
@@ -22,7 +21,6 @@ author: mem
 ## Right Click
 ## Right Click Offset
 ## Scroll To Element
-
 
 ---
 
