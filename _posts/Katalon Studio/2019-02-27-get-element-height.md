@@ -62,6 +62,22 @@ width = WebUI.getElementWidth(findTestObject('Page_Login/txt_UserName'))
 WebUI.closeBrowser()
 ```
 
+```groovy
+//로그인 페이지 열기
+WebUI.openBrowser(GlobalVariable.G_url_loginPage)
+
+// id의 값 들고오기
+height = WebUI.getElementHeight(findTestObject('Object Repository/loginPage/Page_/input__id'))
+
+leftPosition = WebUI.getElementLeftPosition(findTestObject('Object Repository/loginPage/Page_/input__id'))
+
+width = WebUI.getElementWidth(findTestObject('Object Repository/loginPage/Page_/input__id'))
+
+println(height)
+println(leftPosition)
+println(width)
+```
+
 ---
 
 # 2. Mouse Over/Over Offset
@@ -152,4 +168,70 @@ WebUI.scrollToElement(findTestObject('Page_CuraHomepage/btn_MakeAppointment'), 3
 
 ```
 
+
+
+* Total Example
+
+```groovy
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+WebUI.openBrowser("https://www.w3schools.com/")
+
+WebUI.scrollToElement(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_Python'), 0)
+
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_CSS Exercises'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_HTML Exercises'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_Java'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_jQuery'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_JS Exercises'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_PHP'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_Python'))
+
+WebUI.delay(1)
+
+WebUI.mouseOver(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_SQL'))
+
+WebUI.delay(1)
+
+WebUI.mouseOverOffset(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_SQL'),30,0)
+
+WebUI.rightClick(findTestObject('Object Repository/scrollAndMouseOver/Page_W3Schools Online Web Tutorials/a_SQL'))
+
+WebUI.delay(1)
+
+```
 ---
