@@ -4,7 +4,7 @@ current: post
 cover: assets/images/katalonlogo.png 
 title:  "WebUI Element 1"
 navigation: True
-tags: [katalon-studio]
+tags: [Katalon Studio]
 class: post-template
 subtitle: "Delete all cookies, Execute JavaScript, Forward, Get Page Height"
 background: assets/images/katalonlogo.png 
