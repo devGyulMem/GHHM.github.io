@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/distributed-system/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:31:42+09:00</updated>
-  <id>http://localhost:4000/tag/distributed-system/feed.xml</id>
+  <link href="http://localhost:4000/memlearning/tag/distributed-system/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:41:36+09:00</updated>
+  <id>http://localhost:4000/memlearning/tag/distributed-system/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">결함 허용</title>
-      <link href="http://localhost:4000/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
+      <link href="http://localhost:4000/memlearning/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
       <published>2017-12-01T00:00:00+09:00</published>
       <updated>2017-12-01T00:00:00+09:00</updated>
-      <id>http://localhost:4000/Fault%20Tolerance</id>
-      <content type="html" xml:base="http://localhost:4000/Fault-Tolerance">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/Fault%20Tolerance</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/Fault-Tolerance">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -444,11 +444,11 @@
   
     <entry>
       <title type="html">일관성과 복제</title>
-      <link href="http://localhost:4000/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
+      <link href="http://localhost:4000/memlearning/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
       <published>2017-11-17T00:00:00+09:00</published>
       <updated>2017-11-17T00:00:00+09:00</updated>
-      <id>http://localhost:4000/consistencyAndReplication</id>
-      <content type="html" xml:base="http://localhost:4000/consistencyAndReplication">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/consistencyAndReplication</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/consistencyAndReplication">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -620,11 +620,11 @@
   
     <entry>
       <title type="html">동기화</title>
-      <link href="http://localhost:4000/synchronization" rel="alternate" type="text/html" title="동기화" />
+      <link href="http://localhost:4000/memlearning/synchronization" rel="alternate" type="text/html" title="동기화" />
       <published>2017-11-16T00:00:00+09:00</published>
       <updated>2017-11-16T00:00:00+09:00</updated>
-      <id>http://localhost:4000/synchronization</id>
-      <content type="html" xml:base="http://localhost:4000/synchronization">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/synchronization</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/synchronization">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -941,11 +941,11 @@
   
     <entry>
       <title type="html">8. 멀티미디어와 무선 시스템</title>
-      <link href="http://localhost:4000/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
+      <link href="http://localhost:4000/memlearning/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/multimediaWirelessSystems</id>
-      <content type="html" xml:base="http://localhost:4000/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/multimediaWirelessSystems</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1146,11 +1146,11 @@
   
     <entry>
       <title type="html">7. 네트워크 구조</title>
-      <link href="http://localhost:4000/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
+      <link href="http://localhost:4000/memlearning/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/networkArchitecture</id>
-      <content type="html" xml:base="http://localhost:4000/networkArchitecture">1. Internet Architecture
+      <id>http://localhost:4000/memlearning/networkArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/networkArchitecture">1. Internet Architecture
 IPv4 -&gt; (solution) NAT,IPv6
 
 Network Congestion
@@ -1229,11 +1229,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">6. 프로세스</title>
-      <link href="http://localhost:4000/processing" rel="alternate" type="text/html" title="6. 프로세스" />
+      <link href="http://localhost:4000/memlearning/processing" rel="alternate" type="text/html" title="6. 프로세스" />
       <published>2017-09-28T00:00:00+09:00</published>
       <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/processing</id>
-      <content type="html" xml:base="http://localhost:4000/processing">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/processing</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/processing">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1306,11 +1306,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">5. 하둡 파일 시스템</title>
-      <link href="http://localhost:4000/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
+      <link href="http://localhost:4000/memlearning/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
       <published>2017-09-28T00:00:00+09:00</published>
       <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/hadoopfilesystem</id>
-      <content type="html" xml:base="http://localhost:4000/hadoopfilesystem">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/hadoopfilesystem</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/hadoopfilesystem">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1385,11 +1385,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">4. 분산 저장 시스템</title>
-      <link href="http://localhost:4000/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
+      <link href="http://localhost:4000/memlearning/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
       <published>2017-09-25T00:00:00+09:00</published>
       <updated>2017-09-25T00:00:00+09:00</updated>
-      <id>http://localhost:4000/distributedstoragesystem</id>
-      <content type="html" xml:base="http://localhost:4000/distributedstoragesystem">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/distributedstoragesystem</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/distributedstoragesystem">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1579,11 +1579,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">3. 저장 장치 구조</title>
-      <link href="http://localhost:4000/StorageArchitecture" rel="alternate" type="text/html" title="3. 저장 장치 구조" />
+      <link href="http://localhost:4000/memlearning/StorageArchitecture" rel="alternate" type="text/html" title="3. 저장 장치 구조" />
       <published>2017-09-23T00:00:00+09:00</published>
       <updated>2017-09-23T00:00:00+09:00</updated>
-      <id>http://localhost:4000/StorageArchitecture</id>
-      <content type="html" xml:base="http://localhost:4000/StorageArchitecture">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/StorageArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/StorageArchitecture">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1645,11 +1645,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">2. 분산시스템 기술</title>
-      <link href="http://localhost:4000/tech_DS" rel="alternate" type="text/html" title="2. 분산시스템 기술" />
+      <link href="http://localhost:4000/memlearning/tech_DS" rel="alternate" type="text/html" title="2. 분산시스템 기술" />
       <published>2017-09-10T00:00:00+09:00</published>
       <updated>2017-09-10T00:00:00+09:00</updated>
-      <id>http://localhost:4000/tech_DS</id>
-      <content type="html" xml:base="http://localhost:4000/tech_DS">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/tech_DS</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/tech_DS">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;

@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/author/mem/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:31:42+09:00</updated>
-  <id>http://localhost:4000/author/mem/feed.xml</id>
+  <link href="http://localhost:4000/memlearning/author/mem/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:41:36+09:00</updated>
+  <id>http://localhost:4000/memlearning/author/mem/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">WebUI Element 3</title>
-      <link href="http://localhost:4000/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
+      <link href="http://localhost:4000/memlearning/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
       <published>2019-02-20T00:00:00+09:00</published>
       <updated>2019-02-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/get-element-height</id>
-      <content type="html" xml:base="http://localhost:4000/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+      <id>http://localhost:4000/memlearning/get-element-height</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 &lt;h2 id=&quot;get-element-height&quot;&gt;Get Element Height&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-left-position&quot;&gt;Get Element Left Position&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-width&quot;&gt;Get Element Width&lt;/h2&gt;
@@ -415,11 +415,11 @@
   
     <entry>
       <title type="html">WebUI Keywords</title>
-      <link href="http://localhost:4000/delete-all-cookies" rel="alternate" type="text/html" title="WebUI Keywords" />
+      <link href="http://localhost:4000/memlearning/delete-all-cookies" rel="alternate" type="text/html" title="WebUI Keywords" />
       <published>2019-01-15T00:00:00+09:00</published>
       <updated>2019-01-15T00:00:00+09:00</updated>
-      <id>http://localhost:4000/delete-all-cookies</id>
-      <content type="html" xml:base="http://localhost:4000/delete-all-cookies">&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
+      <id>http://localhost:4000/memlearning/delete-all-cookies</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/delete-all-cookies">&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
 
 &lt;h3 id=&quot;김혜미&quot;&gt;김혜미&lt;/h3&gt;
 
@@ -864,11 +864,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">결함 허용</title>
-      <link href="http://localhost:4000/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
+      <link href="http://localhost:4000/memlearning/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
       <published>2017-12-01T00:00:00+09:00</published>
       <updated>2017-12-01T00:00:00+09:00</updated>
-      <id>http://localhost:4000/Fault%20Tolerance</id>
-      <content type="html" xml:base="http://localhost:4000/Fault-Tolerance">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/Fault%20Tolerance</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/Fault-Tolerance">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1261,11 +1261,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">일관성과 복제</title>
-      <link href="http://localhost:4000/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
+      <link href="http://localhost:4000/memlearning/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
       <published>2017-11-17T00:00:00+09:00</published>
       <updated>2017-11-17T00:00:00+09:00</updated>
-      <id>http://localhost:4000/consistencyAndReplication</id>
-      <content type="html" xml:base="http://localhost:4000/consistencyAndReplication">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/consistencyAndReplication</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/consistencyAndReplication">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1437,11 +1437,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">동기화</title>
-      <link href="http://localhost:4000/synchronization" rel="alternate" type="text/html" title="동기화" />
+      <link href="http://localhost:4000/memlearning/synchronization" rel="alternate" type="text/html" title="동기화" />
       <published>2017-11-16T00:00:00+09:00</published>
       <updated>2017-11-16T00:00:00+09:00</updated>
-      <id>http://localhost:4000/synchronization</id>
-      <content type="html" xml:base="http://localhost:4000/synchronization">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/synchronization</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/synchronization">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1758,11 +1758,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">7. 네트워크 구조</title>
-      <link href="http://localhost:4000/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
+      <link href="http://localhost:4000/memlearning/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/networkArchitecture</id>
-      <content type="html" xml:base="http://localhost:4000/networkArchitecture">1. Internet Architecture
+      <id>http://localhost:4000/memlearning/networkArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/networkArchitecture">1. Internet Architecture
 IPv4 -&gt; (solution) NAT,IPv6
 
 Network Congestion
@@ -1841,11 +1841,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">8. 멀티미디어와 무선 시스템</title>
-      <link href="http://localhost:4000/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
+      <link href="http://localhost:4000/memlearning/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/multimediaWirelessSystems</id>
-      <content type="html" xml:base="http://localhost:4000/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/multimediaWirelessSystems</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -2046,11 +2046,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">5. 하둡 파일 시스템</title>
-      <link href="http://localhost:4000/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
+      <link href="http://localhost:4000/memlearning/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
       <published>2017-09-28T00:00:00+09:00</published>
       <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/hadoopfilesystem</id>
-      <content type="html" xml:base="http://localhost:4000/hadoopfilesystem">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/hadoopfilesystem</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/hadoopfilesystem">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -2125,11 +2125,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">6. 프로세스</title>
-      <link href="http://localhost:4000/processing" rel="alternate" type="text/html" title="6. 프로세스" />
+      <link href="http://localhost:4000/memlearning/processing" rel="alternate" type="text/html" title="6. 프로세스" />
       <published>2017-09-28T00:00:00+09:00</published>
       <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/processing</id>
-      <content type="html" xml:base="http://localhost:4000/processing">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/processing</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/processing">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -2202,11 +2202,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">4. 분산 저장 시스템</title>
-      <link href="http://localhost:4000/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
+      <link href="http://localhost:4000/memlearning/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
       <published>2017-09-25T00:00:00+09:00</published>
       <updated>2017-09-25T00:00:00+09:00</updated>
-      <id>http://localhost:4000/distributedstoragesystem</id>
-      <content type="html" xml:base="http://localhost:4000/distributedstoragesystem">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/memlearning/distributedstoragesystem</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/distributedstoragesystem">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;

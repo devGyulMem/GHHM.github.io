@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/tag/katalon-studio/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:31:42+09:00</updated>
-  <id>http://localhost:4000/tag/katalon-studio/feed.xml</id>
+  <link href="http://localhost:4000/memlearning/tag/katalon-studio/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T14:41:36+09:00</updated>
+  <id>http://localhost:4000/memlearning/tag/katalon-studio/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">WebUI Element 3</title>
-      <link href="http://localhost:4000/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
+      <link href="http://localhost:4000/memlearning/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
       <published>2019-02-20T00:00:00+09:00</published>
       <updated>2019-02-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/get-element-height</id>
-      <content type="html" xml:base="http://localhost:4000/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+      <id>http://localhost:4000/memlearning/get-element-height</id>
+      <content type="html" xml:base="http://localhost:4000/memlearning/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 &lt;h2 id=&quot;get-element-height&quot;&gt;Get Element Height&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-left-position&quot;&gt;Get Element Left Position&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-width&quot;&gt;Get Element Width&lt;/h2&gt;
