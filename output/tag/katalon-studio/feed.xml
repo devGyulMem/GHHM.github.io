@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/memlearning/tag/katalon-studio/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:41:36+09:00</updated>
-  <id>http://localhost:4000/memlearning/tag/katalon-studio/feed.xml</id>
+  <link href="http://localhost:4000/tag/katalon-studio/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T16:27:58+09:00</updated>
+  <id>http://localhost:4000/tag/katalon-studio/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">WebUI Element 3</title>
-      <link href="http://localhost:4000/memlearning/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
-      <published>2019-02-20T00:00:00+09:00</published>
-      <updated>2019-02-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/get-element-height</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+      <link href="http://localhost:4000/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
+      <published>2019-02-27T00:00:00+09:00</published>
+      <updated>2019-02-27T00:00:00+09:00</updated>
+      <id>http://localhost:4000/get-element-height</id>
+      <content type="html" xml:base="http://localhost:4000/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 &lt;h2 id=&quot;get-element-height&quot;&gt;Get Element Height&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-left-position&quot;&gt;Get Element Left Position&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-width&quot;&gt;Get Element Width&lt;/h2&gt;
@@ -407,6 +407,878 @@
 
       
         <summary type="html">Index Get Element Height Get Element Left Position Get Element Width Mouse Over Mouse Over Offset Right Click Right Click Offset Scroll To Element</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Assertions</title>
+      <link href="http://localhost:4000/assertions" rel="alternate" type="text/html" title="Assertions" />
+      <published>2019-01-31T00:00:00+09:00</published>
+      <updated>2019-01-31T00:00:00+09:00</updated>
+      <id>http://localhost:4000/assertions</id>
+      <content type="html" xml:base="http://localhost:4000/assertions">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assertions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;assertions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example 2&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//isChecked = WebUI.verifyElementChecked(findTestObject('Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'), 5)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//WebUI.check(findTestObject('Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a bike'))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isNotChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementNotChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a bike'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isNotChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html">Example</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">WebUI element 2</title>
+      <link href="http://localhost:4000/get-page-width" rel="alternate" type="text/html" title="WebUI element 2" />
+      <published>2019-01-31T00:00:00+09:00</published>
+      <updated>2019-01-31T00:00:00+09:00</updated>
+      <id>http://localhost:4000/get-page-width</id>
+      <content type="html" xml:base="http://localhost:4000/get-page-width">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get Page Width&lt;/li&gt;
+  &lt;li&gt;Get Url&lt;/li&gt;
+  &lt;li&gt;Get Viewport Height&lt;/li&gt;
+  &lt;li&gt;Get Viewport Left Position&lt;/li&gt;
+  &lt;li&gt;Get Viewport Top Position&lt;/li&gt;
+  &lt;li&gt;Get Viewport Width&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;1-get-page-width&quot;&gt;1. Get Page Width&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 페이지의 넓이를 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPageWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;2-get-url&quot;&gt;2. Get Url&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-1&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 페이지의 URL을 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-1&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;String&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;URL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-1&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;3-get-viewport-heightleft-positiontop-positionwidth&quot;&gt;3. Get Viewport Height/Left Position/Top Position/Width&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-2&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 viewport의 높이, 넓이, x, y 값을 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-2&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-1&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (height)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport의 높이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (left)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport를 웹페이지를 기준으로 왼쪽x값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (top)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport를 웹페이지를 기준으로 상단y값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (width)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport의 넓이&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;viewport_height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;left_viewport&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportLeftPosition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;top_viewport&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportTopPosition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;viewport_width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html">Index</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Verify Element Checked</title>
+      <link href="http://localhost:4000/verify-element-checked" rel="alternate" type="text/html" title="Verify Element Checked" />
+      <published>2019-01-18T00:00:00+09:00</published>
+      <updated>2019-01-18T00:00:00+09:00</updated>
+      <id>http://localhost:4000/verify-element-checked</id>
+      <content type="html" xml:base="http://localhost:4000/verify-element-checked">&lt;hr /&gt;
+
+&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
+
+&lt;h2 id=&quot;김혜미&quot;&gt;김혜미&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Verify Element Checked&lt;/li&gt;
+  &lt;li&gt;Deselect All Option&lt;/li&gt;
+  &lt;li&gt;Deselect Option By Index&lt;/li&gt;
+  &lt;li&gt;Deselect Option By Value&lt;/li&gt;
+  &lt;li&gt;Get Number Of Selected Option&lt;/li&gt;
+  &lt;li&gt;Get Number Of Total Option&lt;/li&gt;
+  &lt;li&gt;문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-verify-element-checked&quot;&gt;1 Verify Element Checked&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;지정된 체크박스 web element가 체크되었는지 확인한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;timeout&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Requried&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;시스템은 결과를 리턴하기 위해 타임아웃(초단위)때 까지 기다린다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;boolean&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;verification 결과&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(true: element checked, false: element unchecked)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/chk_Medicaid'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example 2&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-deselect-all-option&quot;&gt;2 Deselect All Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-1&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 모든 옵션을 선택 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-1&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-1&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect all options on \'Facility\' list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectAllOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-deselect-option-by-index&quot;&gt;3 Deselect Option By Index&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-2&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 주어진 인덱스의 옵션을 선택 해제 한다. 인덱스는 0부터 시작한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-2&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;range&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Object&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Reqruied&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택해제할 인덱스 범위&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2 - 인덱스2 , “2,3” - 인덱스 2와 3, “2-5” - 인덱스 2에서 5까지 즉 2,3,4,5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect option 1 on \'Facility\' list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectOptionByIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-deselect-option-by-label&quot;&gt;4 Deselect Option By Label&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-3&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 지정된 레이블(보여지는 텍스트)를 사용하여 옵션을 선택 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-3&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;labelText&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;String&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택해제할 옵션의 표시된 텍스트&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;isRegex&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;boolean&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;true: 레이블 값이 일반적인 표현식일때, false: true 외의 모든 상황&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-3&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Select \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;selectOptionByValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectOptionByLabel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-get-number-of-selected-option&quot;&gt;5 Get Number Of Selected Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-4&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 콤보박스 web element 에서 선택된 옵션의 수를 센다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-4&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Testobject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Represent a web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-1&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택된 옵션의 수&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-4&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Select \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;selectOptionByValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Get number of selected option in Facility list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getNumberOfSelectedOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6--get-number-of-total-option&quot;&gt;6  Get Number Of Total Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-5&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 콤보박스 web element가 가진 옵션의 총 수를 센다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-5&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Testobject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Represent a web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-2&quot;&gt;Returns&lt;/h2&gt;
+    &lt;p&gt;| Param Type | Description |
+|:———-:|:————:|
+| int | 총 옵션의 수 |&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-5&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Get number of total option in Facility list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getNumberOfTotalOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_AppointmentConfirmation/lbl_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html"></summary>
       
 
       

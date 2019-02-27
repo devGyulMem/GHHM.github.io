@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/memlearning/tag/android/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:41:36+09:00</updated>
-  <id>http://localhost:4000/memlearning/tag/android/feed.xml</id>
+  <link href="http://localhost:4000/tag/android/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T16:27:58+09:00</updated>
+  <id>http://localhost:4000/tag/android/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">AsyncTask</title>
-      <link href="http://localhost:4000/memlearning/asynctask" rel="alternate" type="text/html" title="AsyncTask" />
+      <link href="http://localhost:4000/asynctask" rel="alternate" type="text/html" title="AsyncTask" />
       <published>2017-07-17T00:00:00+09:00</published>
       <updated>2017-07-17T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/asynctask</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/asynctask">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/asynctask</id>
+      <content type="html" xml:base="http://localhost:4000/asynctask">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;

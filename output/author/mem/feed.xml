@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
-  <link href="http://localhost:4000/memlearning/author/mem/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/memlearning/" rel="alternate" type="text/html" />
-  <updated>2019-02-27T14:41:36+09:00</updated>
-  <id>http://localhost:4000/memlearning/author/mem/feed.xml</id>
+  <link href="http://localhost:4000/author/mem/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2019-02-27T16:27:58+09:00</updated>
+  <id>http://localhost:4000/author/mem/feed.xml</id>
 
   
   
@@ -47,11 +47,11 @@
   
     <entry>
       <title type="html">WebUI Element 3</title>
-      <link href="http://localhost:4000/memlearning/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
-      <published>2019-02-20T00:00:00+09:00</published>
-      <updated>2019-02-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/get-element-height</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+      <link href="http://localhost:4000/get-element-height" rel="alternate" type="text/html" title="WebUI Element 3" />
+      <published>2019-02-27T00:00:00+09:00</published>
+      <updated>2019-02-27T00:00:00+09:00</updated>
+      <id>http://localhost:4000/get-element-height</id>
+      <content type="html" xml:base="http://localhost:4000/get-element-height">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
 &lt;h2 id=&quot;get-element-height&quot;&gt;Get Element Height&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-left-position&quot;&gt;Get Element Left Position&lt;/h2&gt;
 &lt;h2 id=&quot;get-element-width&quot;&gt;Get Element Width&lt;/h2&gt;
@@ -414,12 +414,884 @@
     </entry>
   
     <entry>
-      <title type="html">WebUI Keywords</title>
-      <link href="http://localhost:4000/memlearning/delete-all-cookies" rel="alternate" type="text/html" title="WebUI Keywords" />
+      <title type="html">Assertions</title>
+      <link href="http://localhost:4000/assertions" rel="alternate" type="text/html" title="Assertions" />
+      <published>2019-01-31T00:00:00+09:00</published>
+      <updated>2019-01-31T00:00:00+09:00</updated>
+      <id>http://localhost:4000/assertions</id>
+      <content type="html" xml:base="http://localhost:4000/assertions">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assertions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;assertions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example 2&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//isChecked = WebUI.verifyElementChecked(findTestObject('Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'), 5)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//WebUI.check(findTestObject('Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a bike'))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isNotChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementNotChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a bike'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isNotChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html">Example</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">WebUI element 2</title>
+      <link href="http://localhost:4000/get-page-width" rel="alternate" type="text/html" title="WebUI element 2" />
+      <published>2019-01-31T00:00:00+09:00</published>
+      <updated>2019-01-31T00:00:00+09:00</updated>
+      <id>http://localhost:4000/get-page-width</id>
+      <content type="html" xml:base="http://localhost:4000/get-page-width">&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get Page Width&lt;/li&gt;
+  &lt;li&gt;Get Url&lt;/li&gt;
+  &lt;li&gt;Get Viewport Height&lt;/li&gt;
+  &lt;li&gt;Get Viewport Left Position&lt;/li&gt;
+  &lt;li&gt;Get Viewport Top Position&lt;/li&gt;
+  &lt;li&gt;Get Viewport Width&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;1-get-page-width&quot;&gt;1. Get Page Width&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 페이지의 넓이를 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPageWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;2-get-url&quot;&gt;2. Get Url&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-1&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 페이지의 URL을 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-1&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;String&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;URL&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-1&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;3-get-viewport-heightleft-positiontop-positionwidth&quot;&gt;3. Get Viewport Height/Left Position/Top Position/Width&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-2&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;현재 viewport의 높이, 넓이, x, y 값을 가져온다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-2&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-1&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (height)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport의 높이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (left)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport를 웹페이지를 기준으로 왼쪽x값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (top)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport를 웹페이지를 기준으로 상단y값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int (width)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 viewport의 넓이&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GlobalVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;G_SiteURL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;viewport_height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;left_viewport&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportLeftPosition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;top_viewport&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportTopPosition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;viewport_width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getViewportWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html">Index</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Verify Element Checked</title>
+      <link href="http://localhost:4000/verify-element-checked" rel="alternate" type="text/html" title="Verify Element Checked" />
+      <published>2019-01-18T00:00:00+09:00</published>
+      <updated>2019-01-18T00:00:00+09:00</updated>
+      <id>http://localhost:4000/verify-element-checked</id>
+      <content type="html" xml:base="http://localhost:4000/verify-element-checked">&lt;hr /&gt;
+
+&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
+
+&lt;h2 id=&quot;김혜미&quot;&gt;김혜미&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;index&quot;&gt;Index&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Verify Element Checked&lt;/li&gt;
+  &lt;li&gt;Deselect All Option&lt;/li&gt;
+  &lt;li&gt;Deselect Option By Index&lt;/li&gt;
+  &lt;li&gt;Deselect Option By Value&lt;/li&gt;
+  &lt;li&gt;Get Number Of Selected Option&lt;/li&gt;
+  &lt;li&gt;Get Number Of Total Option&lt;/li&gt;
+  &lt;li&gt;문서 Assertions, Keyword 메뉴 확인    Assert를 사용해서 성공/실패 예제 만들기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-verify-element-checked&quot;&gt;1 Verify Element Checked&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;지정된 체크박스 web element가 체크되었는지 확인한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;timeout&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Requried&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;시스템은 결과를 리턴하기 위해 타임아웃(초단위)때 까지 기다린다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Types&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;boolean&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;verification 결과&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(true: element checked, false: element unchecked)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/chk_Medicaid'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example 2&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyElementChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Object Repository/Checkbox/Page_Tryit Editor v3.6/input_I have a boat'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-deselect-all-option&quot;&gt;2 Deselect All Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-1&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 모든 옵션을 선택 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-1&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-1&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect all options on \'Facility\' list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectAllOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-deselect-option-by-index&quot;&gt;3 Deselect Option By Index&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-2&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 주어진 인덱스의 옵션을 선택 해제 한다. 인덱스는 0부터 시작한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-2&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;range&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Object&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Reqruied&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택해제할 인덱스 범위&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2 - 인덱스2 , “2,3” - 인덱스 2와 3, “2-5” - 인덱스 2에서 5까지 즉 2,3,4,5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-2&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect option 1 on \'Facility\' list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectOptionByIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-deselect-option-by-label&quot;&gt;4 Deselect Option By Label&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-3&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;콤보박스에서 지정된 레이블(보여지는 텍스트)를 사용하여 옵션을 선택 해제한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-3&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TestObject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;web element를 나타낸다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;labelText&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;String&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택해제할 옵션의 표시된 텍스트&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;isRegex&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;boolean&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;true: 레이블 값이 일반적인 표현식일때, false: true 외의 모든 상황&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-3&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Select \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;selectOptionByValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Deselect \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deselectOptionByLabel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-get-number-of-selected-option&quot;&gt;5 Get Number Of Selected Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-4&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 콤보박스 web element 에서 선택된 옵션의 수를 센다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-4&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Testobject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Represent a web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-1&quot;&gt;Returns&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;선택된 옵션의 수&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-4&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Select \&quot;Hongkong CURA Healthcare Center\&quot; option'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;selectOptionByValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hongkong CURA Healthcare Center'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Get number of selected option in Facility list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getNumberOfSelectedOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/lst_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6--get-number-of-total-option&quot;&gt;6  Get Number Of Total Option&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;description-5&quot;&gt;Description&lt;/h2&gt;
+    &lt;p&gt;주어진 콤보박스 web element가 가진 옵션의 총 수를 센다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;parameter-5&quot;&gt;Parameter&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Param Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Mandatory&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;to&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Testobject&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Represent a web element&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;flowControl&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FailureHandling&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;failure handlingschema를 지정하면 실행을 계속할지 중지할지 결정할 수 있다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;returns-2&quot;&gt;Returns&lt;/h2&gt;
+    &lt;p&gt;| Param Type | Description |
+|:———-:|:————:|
+| int | 총 옵션의 수 |&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;example-5&quot;&gt;Example&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'Open browser and navigate to demo AUT site'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;openBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://demoaut.katalon.com/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Click on \'Make Appointment\' button'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_CuraAppointment/btn_BookAppointment'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Get number of total option in Facility list'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getNumberOfTotalOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findTestObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Page_AppointmentConfirmation/lbl_Facility'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;'Close Browser'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WebUI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;closeBrowser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Memi</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Katalon Studio" />
+      
+
+      
+        <summary type="html"></summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">WebUI Element 1</title>
+      <link href="http://localhost:4000/delete-all-cookies" rel="alternate" type="text/html" title="WebUI Element 1" />
       <published>2019-01-15T00:00:00+09:00</published>
       <updated>2019-01-15T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/delete-all-cookies</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/delete-all-cookies">&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
+      <id>http://localhost:4000/delete-all-cookies</id>
+      <content type="html" xml:base="http://localhost:4000/delete-all-cookies">&lt;h1 id=&quot;katalon-studio&quot;&gt;Katalon Studio&lt;/h1&gt;
 
 &lt;h3 id=&quot;김혜미&quot;&gt;김혜미&lt;/h3&gt;
 
@@ -864,11 +1736,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">결함 허용</title>
-      <link href="http://localhost:4000/memlearning/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
+      <link href="http://localhost:4000/Fault-Tolerance" rel="alternate" type="text/html" title="결함 허용" />
       <published>2017-12-01T00:00:00+09:00</published>
       <updated>2017-12-01T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/Fault%20Tolerance</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/Fault-Tolerance">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/Fault%20Tolerance</id>
+      <content type="html" xml:base="http://localhost:4000/Fault-Tolerance">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1261,11 +2133,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">일관성과 복제</title>
-      <link href="http://localhost:4000/memlearning/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
+      <link href="http://localhost:4000/consistencyAndReplication" rel="alternate" type="text/html" title="일관성과 복제" />
       <published>2017-11-17T00:00:00+09:00</published>
       <updated>2017-11-17T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/consistencyAndReplication</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/consistencyAndReplication">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/consistencyAndReplication</id>
+      <content type="html" xml:base="http://localhost:4000/consistencyAndReplication">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1437,11 +2309,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">동기화</title>
-      <link href="http://localhost:4000/memlearning/synchronization" rel="alternate" type="text/html" title="동기화" />
+      <link href="http://localhost:4000/synchronization" rel="alternate" type="text/html" title="동기화" />
       <published>2017-11-16T00:00:00+09:00</published>
       <updated>2017-11-16T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/synchronization</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/synchronization">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/synchronization</id>
+      <content type="html" xml:base="http://localhost:4000/synchronization">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -1758,11 +2630,11 @@ WebUI.executeJavaScript(&quot;arguments[0].click()&quot;, Arrays.asList(element)
   
     <entry>
       <title type="html">7. 네트워크 구조</title>
-      <link href="http://localhost:4000/memlearning/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
+      <link href="http://localhost:4000/networkArchitecture" rel="alternate" type="text/html" title="7. 네트워크 구조" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/networkArchitecture</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/networkArchitecture">1. Internet Architecture
+      <id>http://localhost:4000/networkArchitecture</id>
+      <content type="html" xml:base="http://localhost:4000/networkArchitecture">1. Internet Architecture
 IPv4 -&gt; (solution) NAT,IPv6
 
 Network Congestion
@@ -1841,11 +2713,11 @@ TCP fast recovery (3 duplicate ACKs):
   
     <entry>
       <title type="html">8. 멀티미디어와 무선 시스템</title>
-      <link href="http://localhost:4000/memlearning/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
+      <link href="http://localhost:4000/multimediaWirelessSystems" rel="alternate" type="text/html" title="8. 멀티미디어와 무선 시스템" />
       <published>2017-10-20T00:00:00+09:00</published>
       <updated>2017-10-20T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/multimediaWirelessSystems</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
+      <id>http://localhost:4000/multimediaWirelessSystems</id>
+      <content type="html" xml:base="http://localhost:4000/multimediaWirelessSystems">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;/head&gt;
@@ -2038,356 +2910,6 @@ TCP fast recovery (3 duplicate ACKs):
 
       
         <summary type="html">1. Multimedia Streaming 비디오: 이미지의를 일정한 시간 순서대로 보여주는 것 (24 images/sec) 디지털 이미지: array of pixels 코딩: 압축 바 temporal coding: 영상의 매 프레임마다 모든 정보를 보내면 부하가 크기 때문에 달라진 비트 값만 보냄. spatial: 모든 픽셀 정보가 아니라 비슷한 픽셀은 하나만 추출해서 보냄. CBR (constant bit rate) VBR (variable bit rate) MPEG1 (CD_ROM) 1.5 Mbps MPEG2 (DVD) 3-6Mbps MPEG4 (인터넷 환경에서 주로 쓰인다 , 1 Mbps 이하) Streaming stored streaming: 파일 전체를 다운 받기 전에 재생할 수 있다. 1-1. Streaming stored video 저장된 비디오를 스트리밍 (1) video recorded  (2) video sent  (3) video received, played out at client (2)와 (3) 사이를 스트리밍이라고 한다. 비디오가 저장된 서버로 부터 인터넷을 거쳐 클라이언트로 온다. 모든 비디오 데이터를 받기 전에 클라이언트에서 재생할 수 있다. 어느 정도의 데이터가 들어오면 비디오를 재생할 것인가? Continuous playout constraint 바로바로 재생하면 좋겠지만 jitter가 있기 때문에 원래 시간대로 실행하기 위해서는 클라이언트에 버퍼가 필요하다. jitter: 각 패킷에 대한 지연 변동 (delay for each packet fluctuates) 라우터에서 queueing delay가 일어나기 때문에 패킷이 도착하는 시간은 일정하지 않다. video transmission과 비디오 데이터를 클라이언트에서 받는 사이에 딜레이가 존재하는데 이것이 네트워크 딜레이, 지터이다. jitter를 줄이기위해 버퍼를 사용하자! client-side buffering and playout delay: 클라이언트에서 버퍼링을 사용하기 때문에 비디오 실행에 딜레이가 걸린다. 네트워크 딜레이가 걸릴 것을 예상하고 대비하기 위함. (playout delay: 비디오 데이터를 받은 후 부터 실행하기 까지 걸리는 시간) 단점은? 1-2. Streaming multimedia: HTTP 멀티미디어 파일은 HTTP를 통해 웹 상에서 가져온다. TCP 최대 전송율 밑으로 전송 가능함. 버퍼의 한계는 TCP congestion control과 retransmission(순차 전송) 에 영향을 받는다. Application playout buffer: 시작할 때 딜레이(playout delay)는 오래걸리지만 영상은 부드럽다. 왜 HTTP(TCP) 를 사용하는가? UDP TCP 차이 UDP: unreliable(no acks), lightweight(faster), smooth TCPL reliable(use acks), heavyweight(slower), sawtooth pattern (congestion control) 이러한 특성들만 봤을 때 UDP를 사용해야하지만... TCP를 사용한다. UDP는 보안 문제로 방화벽에 막힘 비디오 스트리밍을 위해 서버를 따로 두어야함. HTTP는 방화벽을 뚫기 쉽다. 기존에 있던 웹 서버를 사용할 수 있다. TCP sawtooth pattern은 application buffer를 통해 완화할 수 있다. 1-3. DASH: Dynamic, Adaptive Streaming over HTTP 서버 여러 화질의 영상을 가지고 있다.(encoded different rates) 영상들은 청크(chunk)로 나누어져 있는데 하나의 청크는 1~15초의 비디오 영상 데이터이다. 클라이언트 주기적으로 서버-클라이언트의 bandwidth을 측정 현재 bandwidth에서 받을 수 있는 가장 높은 부호화 속도를 선택 당시의 bandwidth에 따라 다른 속도를 선택할 수 있다. MPEG-DASH, Adobe, Apple, MS 각각의 청크가 존재하는 url에 접속 1-4. Voice-over-IP (VoIP) VoIP end-end-delay requirement: 대화해야 하기 때문에 딜레이가 높아서는 안된다. 400 ms 이상 넘어가면 사람이 느낄 수 있음. network loss: 네트워크가 혼잡하여 (라우터 오버플로우) IP datagram lost 가 발생할 수 있다. 이 때 재전송을 하게 되면 딜레이가 급격히 증가하기 때문에 대신에 FEC나 Interleaving을 사용함. Forward Error Correction (FEC) vs. Interleaving FEC(=Compounding high-and-low resolution packets) Interleaving (사이사이에 끼워넣는다는 의미) 앞에 보낸 음성데이터를 저음질(low resolution)로 복제해서 piggyback (1번 데이터를 저음질로 2번 데이터에 실어 보낸다.) non interleaved transmission: 보낼 데이터를 순차적으로 패킷으로 묶어 보낸다. 패킷 로스가 발생하면 다음 패킷으로부터 저음질 데이터를 가져온다. interleaved transmission: 보낼 데이터를 세로로 묶은 순서로 보내고 수신자 측에서 재조합한다. 각 패킷에 1개씩 밖에 에러가 안난 것 처럼 하여 error correction 장점: delay가 낮다 단점: 패킷 하나만 로스났을 땐 복구 가능하지만, 연속적인 로스는 복구 불가능하다. 그리고 사실 패킷 하나만 로스나는 경우는 거의 없다. 장점: FEC에 비해 오버헤드가 줄어든다. 단점: Playout delay non-consecutive loss: receiver can conceal loss 참고 사이트:  http://kimdongeun.com/220733958064 2. Content Delivery Network (CDN) 3. Wireless/Mobile Architecture</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">5. 하둡 파일 시스템</title>
-      <link href="http://localhost:4000/memlearning/hadoopfilesystem" rel="alternate" type="text/html" title="5. 하둡 파일 시스템" />
-      <published>2017-09-28T00:00:00+09:00</published>
-      <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/hadoopfilesystem</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/hadoopfilesystem">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h6 class=&quot;wiki-page-abstract&quot;&gt;HDFS?&lt;br /&gt;Hadoop으로 구성된 file system이며 매우 많은 데이터를 관리하기 위해 설계되었다.&lt;br /&gt;(1) reliably&lt;br /&gt;(2) high bandwidth to user application&lt;br /&gt;Replicating file content (3배 정도)&lt;/h6&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;1. Hadoop&lt;/h2&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;2. HDFS&lt;/h2&gt;
-&lt;h3&gt;목표&lt;/h3&gt;
-&lt;p&gt;매우 큰 분산 파일 시스템에 적합.&lt;/p&gt;
-&lt;p&gt;하드웨어 hardware failure가 났을 때 recovery&lt;/p&gt;
-&lt;p&gt;Batch Processing 에 최적화 되어있다. (MapReduce)&lt;/p&gt;
-&lt;p&gt;OS에 상관없이 user space에서 돌릴 수 있다. (어플리케이션이기 떄문)&lt;/p&gt;
-&lt;h3&gt;구조&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;NameNode&lt;/li&gt;
-&lt;li&gt;DataNode&lt;/li&gt;
-&lt;li&gt;SecondaryNameNode&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;Read&lt;/h4&gt;
-&lt;p&gt;Data Pipelining&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h4&gt;Write&lt;/h4&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h4&gt;Error Recovery&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;NameNode Metadata&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;메모리에 메타데이터를 올림. 많은 datanode의 신호와 client의 요청을 빠르게 수행하기 위해&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DataNode&lt;/li&gt;
-&lt;li&gt;Block server, Block Report(네임 노드에게 리포팅해준다.)&lt;/li&gt;
-&lt;li&gt;Heartbeats&lt;/li&gt;
-&lt;li&gt;Rack Awareness: 같은 rack 안에 다 저장하지 않고 또 다른 rack에 나머지 두 개의 복제본을 저장한다. 네트워크를 이용하므로 파이프라이닝은 복잡해지니 최소화하고 싶지만 reliability는 적당히 보장할 수 있다.&lt;/li&gt;
-&lt;li&gt;Block Placement&lt;/li&gt;
-&lt;li&gt;NameNode Failure&lt;/li&gt;
-&lt;li&gt;NameNode High Availability: AvatarNode (쌍둥이 노드)&lt;/li&gt;
-&lt;li&gt;Hadoop balancing: 새로운 데이터노드가 등록될 때 기존의 것을 나누어 각 기기 마다 데이터를 같은 비율로 저장할 수 있다. 하지만 접근 패턴은 알 수 없기 때문에 인기있는 노드가 무엇인지는 파악할 수 없다.&lt;/li&gt;
-&lt;li&gt;RAID를 적극적으로 이용한다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Memi</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Distributed System" />
-      
-
-      
-        <summary type="html">HDFS?Hadoop으로 구성된 file system이며 매우 많은 데이터를 관리하기 위해 설계되었다.(1) reliably(2) high bandwidth to user applicationReplicating file content (3배 정도) 1. Hadoop 2. HDFS 목표 매우 큰 분산 파일 시스템에 적합. 하드웨어 hardware failure가 났을 때 recovery Batch Processing 에 최적화 되어있다. (MapReduce) OS에 상관없이 user space에서 돌릴 수 있다. (어플리케이션이기 떄문) 구조 NameNode DataNode SecondaryNameNode Read Data Pipelining Write Error Recovery NameNode Metadata 메모리에 메타데이터를 올림. 많은 datanode의 신호와 client의 요청을 빠르게 수행하기 위해 DataNode Block server, Block Report(네임 노드에게 리포팅해준다.) Heartbeats Rack Awareness: 같은 rack 안에 다 저장하지 않고 또 다른 rack에 나머지 두 개의 복제본을 저장한다. 네트워크를 이용하므로 파이프라이닝은 복잡해지니 최소화하고 싶지만 reliability는 적당히 보장할 수 있다. Block Placement NameNode Failure NameNode High Availability: AvatarNode (쌍둥이 노드) Hadoop balancing: 새로운 데이터노드가 등록될 때 기존의 것을 나누어 각 기기 마다 데이터를 같은 비율로 저장할 수 있다. 하지만 접근 패턴은 알 수 없기 때문에 인기있는 노드가 무엇인지는 파악할 수 없다. RAID를 적극적으로 이용한다.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">6. 프로세스</title>
-      <link href="http://localhost:4000/memlearning/processing" rel="alternate" type="text/html" title="6. 프로세스" />
-      <published>2017-09-28T00:00:00+09:00</published>
-      <updated>2017-09-28T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/processing</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/processing">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;1. Virtualization (가상화)&lt;/h2&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;분산 시스템에서 가상화의 역할&lt;/p&gt;
-&lt;p&gt;1 Virtualization can help here by porting the legacy interfaces to the new platforms and thus immediately opening up the latter for large classes of existing programs.&lt;/p&gt;
-&lt;p&gt;2. that system administrators maintain a large and heterogeneous collection of server computers, each one running very different applications, which can be accessed by clients. 현대 컴퓨터는 대부분 인터넷 네트워크 서비스를 지원하기 때문에 각 클라이언트는 서로 다른 많은 서버 컴퓨터들에 접근이 가능해야한다. (라이브러리, OS 가 달라도 공통된 플랫폼에서 어플리케이션이 돌아가야함.)&lt;/p&gt;
-&lt;p&gt;3. virtualization provides a high degree of portability and flexibility.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;컴퓨터 시스템은 보통 4가지 interface로 구성되어있다.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;2. Google DCN Virtualization &amp;amp; SDN&lt;/h2&gt;
-&lt;p&gt;1. MapReduce: divide and conquer&lt;/p&gt;
-&lt;p&gt;2. Google File System&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;B4&lt;/li&gt;
-&lt;li&gt;GGC&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Jupiter : 데이터 센터 안의 네트워크가 어떻게 구성되어 있나!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Freedome&lt;/li&gt;
-&lt;li&gt;Andromeda&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;3. Big Table&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h3&gt;Jupiter&lt;/h3&gt;
-&lt;p&gt;그 전까지는 비싼 라우터를 4개 정도 썼다. 하지만 확장성도 떨어져서 곧 쓸 수 없게 되었다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Clos Topology&lt;/strong&gt;: 저렴한 라우터(스위치)를 엄청 많이 사용하자. &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Centralized Control Protocols&lt;/strong&gt;: 그러기 위해 &lt;strong&gt;Software Defined Networking(SDN)&lt;/strong&gt; 기술을 사용하겠다. Master Node가 link-state 정보를 네트워크를 통해 모으는 방식이다. 각각의 스위치는 자신만의 테이블을 계산한다. &lt;/p&gt;
-&lt;h3&gt;SDN&lt;/h3&gt;
-&lt;p&gt;라우터 마다 control plane을 가지고 있을 때, 다른 라우터와 정보를 교환해서 어디로 보낼지 정해주는 forwarding table을 작성했다.&lt;/p&gt;
-&lt;p&gt;하지만 control plane을 하나로 합쳐 controller 라는 서버로 두고, 라우터는 data plane의 일만 한다. CA(control agents)는 데이터를 보내는 일만 함. bandwidth이 커졌기 때문에 로컬상태에서 연결하는 것 같은 효과를 볼 수 있다.&lt;/p&gt;
-&lt;p&gt;장점: 네트워크 관리가 쉬워짐, 라우터가 forwarding table을 작성하는 부담이 줄었음, 새로운 알고리즘을 적용할 수 있음(open implementation)&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;3. Clients/Servers&lt;/h2&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;4. Code Migration&lt;/h2&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;5. Cloud Computing: MapReduce&lt;/h2&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Memi</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Distributed System" />
-      
-
-      
-        <summary type="html">1. Virtualization (가상화) 분산 시스템에서 가상화의 역할 1 Virtualization can help here by porting the legacy interfaces to the new platforms and thus immediately opening up the latter for large classes of existing programs. 2. that system administrators maintain a large and heterogeneous collection of server computers, each one running very different applications, which can be accessed by clients. 현대 컴퓨터는 대부분 인터넷 네트워크 서비스를 지원하기 때문에 각 클라이언트는 서로 다른 많은 서버 컴퓨터들에 접근이 가능해야한다. (라이브러리, OS 가 달라도 공통된 플랫폼에서 어플리케이션이 돌아가야함.) 3. virtualization provides a high degree of portability and flexibility. 컴퓨터 시스템은 보통 4가지 interface로 구성되어있다. 2. Google DCN Virtualization &amp;amp; SDN 1. MapReduce: divide and conquer 2. Google File System B4 GGC Jupiter : 데이터 센터 안의 네트워크가 어떻게 구성되어 있나! Freedome Andromeda 3. Big Table Jupiter 그 전까지는 비싼 라우터를 4개 정도 썼다. 하지만 확장성도 떨어져서 곧 쓸 수 없게 되었다. Clos Topology: 저렴한 라우터(스위치)를 엄청 많이 사용하자.  Centralized Control Protocols: 그러기 위해 Software Defined Networking(SDN) 기술을 사용하겠다. Master Node가 link-state 정보를 네트워크를 통해 모으는 방식이다. 각각의 스위치는 자신만의 테이블을 계산한다.  SDN 라우터 마다 control plane을 가지고 있을 때, 다른 라우터와 정보를 교환해서 어디로 보낼지 정해주는 forwarding table을 작성했다. 하지만 control plane을 하나로 합쳐 controller 라는 서버로 두고, 라우터는 data plane의 일만 한다. CA(control agents)는 데이터를 보내는 일만 함. bandwidth이 커졌기 때문에 로컬상태에서 연결하는 것 같은 효과를 볼 수 있다. 장점: 네트워크 관리가 쉬워짐, 라우터가 forwarding table을 작성하는 부담이 줄었음, 새로운 알고리즘을 적용할 수 있음(open implementation) 3. Clients/Servers 4. Code Migration 5. Cloud Computing: MapReduce</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">4. 분산 저장 시스템</title>
-      <link href="http://localhost:4000/memlearning/distributedstoragesystem" rel="alternate" type="text/html" title="4. 분산 저장 시스템" />
-      <published>2017-09-25T00:00:00+09:00</published>
-      <updated>2017-09-25T00:00:00+09:00</updated>
-      <id>http://localhost:4000/memlearning/distributedstoragesystem</id>
-      <content type="html" xml:base="http://localhost:4000/memlearning/distributedstoragesystem">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;1. Distributed Storage&lt;/h2&gt;
-&lt;h3&gt;1-1. RAID systems&lt;/h3&gt;
-&lt;p&gt;RAID: Redundant Array of Independent Disks&lt;/p&gt;
-&lt;p&gt;하드디스크를 여러 개 배치해 사용함으로 신뢰성(reliability)를 높인다.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;RAID는 신뢰성(reliability)과 성능 향상(performance)를 높이기 위해 사용된다.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;신뢰성을 향상시키기 위해 중복(redundancy)!&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mirroring: 두 개의 물리적 디스크로 구성되어진 하나의 개념적 디스크인데, 모든 write 작업은 두 개의 디스크에 각각 전달된다.&lt;/p&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mean time to failure(MTTF): disk failure가 발생할 때 까지 걸리는 시간을 말한다.&lt;/p&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;싱글 디스크일 때 100,000 시간 이라면 두 개의 디스크를 사용 할 때는 두 개의 디스크 모두에 failure 가 일어나야 하므로 100,000^2 /(2*10) 시간임.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;성능을 향상시키기 위해 평행성(parallelism)!&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;Mirrroing 사용 시 : 단위 시간 당 읽기 횟수가 두 배로 증가. 즉, 같은 시간이 주어진다면 더 많은 읽기가 가능하다.&lt;/p&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;Data Striping: 블락 단위의 파일이 복수의 디스크에 순서대로(stripe) 로 저장되어 있다. n 개의 디스크와 i번째 파일 블락은 (i mod n)+1 의 디스크에 위치하게 된다.&lt;/p&gt;
-&lt;p style=&quot;padding-left: 30px;&quot;&gt;모든 디스크가 모든 액세스, read/write할 때 참여하게 된다. 싱글 디스크가 한 번 read/write 하는 시간 동안 각각의 디스크가 read/write 할 수 있다! &lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h4&gt;RAID 0&lt;/h4&gt;
-&lt;p&gt;file을 block 단위로 쪼개서 parity 혹은 striping한다.&lt;/p&gt;
-&lt;p&gt;mirroring 없음.&lt;/p&gt;
-&lt;p&gt;read/write 효율: nX (n: 디스크의 수)&lt;/p&gt;
-&lt;p&gt;디스크의 데이터 접근은 속도가 다른 장치에 비해 현저히 느리기 때문에 성능에 있어 병목(bottle neck)현상이 발생한다.&lt;/p&gt;
-&lt;p&gt;만일 같은 시간이 주어진다면 디스크가 많을 수록 read/write를 더 많이 할 수 있다.&lt;/p&gt;
-&lt;p&gt;Space efficiency = 1 (디스크 하나와 같음!)&lt;/p&gt;
-&lt;p&gt;No data redundancy: 이 뜻은 protection을 제공하지 않음. error 나 failure이 떠도 방도가 없다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59bacebb0c2ecfb10fb2e983&quot; /&gt;&lt;/p&gt;
-&lt;h4&gt;RAID 1&lt;/h4&gt;
-&lt;p&gt;mirroring 있음&lt;/p&gt;
-&lt;p&gt;parity 혹은 striping 없음.&lt;/p&gt;
-&lt;p&gt;read 효율 : nX&lt;/p&gt;
-&lt;p&gt;write 효율 : X&lt;/p&gt;
-&lt;p&gt;Error/Failure 지원 (n-1개 까지 에러가 허용된다.)&lt;/p&gt;
-&lt;p&gt;Space efficiency = 1/n (카피는 n개인데 디스크 하나의 효율과 같다.)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c26a8d05825b1179fb87&quot; /&gt;&lt;/p&gt;
-&lt;h4&gt;RAID 4&lt;/h4&gt;
-&lt;p&gt;Block-level striping 있음&lt;/p&gt;
-&lt;p&gt;parity disk 있음 (A = A1+A2+A3, A: parity block)&lt;/p&gt;
-&lt;p&gt;read/write 효율 = (n-1)X (parity disk 하나가 에러 방지용이기 때문에 1개 빼야함)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;근데 write 할 때는 parity disk 계산 시간이 필요함&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Space efficiency = (n-1)/n (디스크는 n개인데 실질적 데이터를 저장하는 디스크는 n-1개)&lt;/p&gt;
-&lt;p&gt;하나의 disk failure 까지 방지 할 수 있다! (연산으로 유추하면 됨, 만일 parity disk가 하나 더 있다면 두 개 까지 복구 가능)&lt;/p&gt;
-&lt;p&gt;문제점: Parity disk가 write시 항상 쓰여짐 (high stress for parity disk)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c2af8d05825b1179fb8c&quot; /&gt;&lt;/p&gt;
-&lt;h4&gt;RAID 5&lt;/h4&gt;
-&lt;p&gt;제일 많이 쓰는 방법.&lt;/p&gt;
-&lt;p&gt;Block-level striping 있음&lt;/p&gt;
-&lt;p&gt;distributed parity (RAID4와 다른 점: parity 정보가 드라이브 안에 분산되어 있음)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;read 효율: (n-1)X  혹은 nX&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;블럭 수가 3개 이하 : RAID4와 같은 상황이므로 (n-1)X&lt;/li&gt;
-&lt;li&gt;블럭 수가 3개 보다 많음: nX (특정 parity disk를 두는 것이 아니기 때문에 모든 디스크가 read에 참여한다.)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;write 효율: RAID 4와 같음 (에러 방지용으로 parity block을 만들었고, 계산에도 시간이 걸린다. 결과적으로는 write하는 수가 같다.)&lt;/p&gt;
-&lt;p&gt;Space efficiency: RAID 4와 같음 (결론적인 실질적 데이터 저장량) &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;write할 때의 부담이 모든 디스크에게 분산되었다.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c4c2b88d05825b1179fb8f&quot; /&gt;&lt;/p&gt;
-&lt;h4&gt; RAID level 선택하기&lt;/h4&gt;
-&lt;p&gt;Rebuild performance (복구 시 걸리는 시간)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;disk failure가 발생하면 데이터를 복구해야하고 이 때 시간이 걸림&lt;/li&gt;
-&lt;li&gt;RAID 1: 똑같은 데이터가 하나 더 있기 때문에 복사해 오면 된다. 매우 쉽다.&lt;/li&gt;
-&lt;li&gt;RAId 4,5 : 다른 디스크에 접속해서 연산을 거쳐야한다. (디스크가 클 경우에는 수 시간이 걸릴 수도 있음)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;RAID level usage &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;RAID 0: 데이터를 좀 날려도 괜찮은데 높은 성능을 원할 때&lt;/li&gt;
-&lt;li&gt;RAID 1: reliability도 어느 정도 있지만 복구도 빨리하고 싶을 때. (데이터 손실이 많은서버에서 주로 이용)&lt;/li&gt;
-&lt;li&gt;RAID 5: 많은 양의 데이터를 저장할 때. RAID 0 보다는 reliability가 높음&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table style=&quot;width: 100%;&quot;&gt;
-&lt;tbody&gt;
-&lt;tr style=&quot;height: 29px;&quot;&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;RAID type&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;Read efficiency&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;Write efficiency&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;Space efficiency&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;Failure protection&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style=&quot;height: 29.6666px;&quot;&gt;
-&lt;td style=&quot;height: 29.6666px;&quot;&gt;No RAID(1 disk)&lt;/td&gt;
-&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
-&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
-&lt;td style=&quot;height: 29.6666px;&quot;&gt;1&lt;/td&gt;
-&lt;td style=&quot;height: 29.6666px;&quot;&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style=&quot;height: 29px;&quot;&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;RAID 0 (n disks)&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style=&quot;height: 29px;&quot;&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;RAID 1 (n disks)&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;n&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;1&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;1/n&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;n-1&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style=&quot;height: 29px;&quot;&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;RAID 2 (n disks)&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;n-1&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;n-1&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;(n-1)/n&lt;/td&gt;
-&lt;td style=&quot;height: 29px;&quot;&gt;1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;1-2. Storage network&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;DAS (Direct Attached Storage): 케이블을 이용해 직접적으로 storage끼리 연결. 물리적으로 선을 연결해줘야하기 때문에 '공유'하기에 좋지 않다.&lt;/li&gt;
-&lt;li&gt;NAS (Network Attached Storage): 네트워크를 통해 모든 storage에게 서버를 연결해준다. 공유하기엔 좋지만 속도가 떨어짐.&lt;/li&gt;
-&lt;li&gt;SAN (Storage Area Network): 클라이언트는 네트워크를 이용해 접근하지만 서버인 storage는 private network로 연결되어 있다. (광케이블과 스위치로 local하게 연결되어 있음.) NAS에 비해 속도는 빨라졌지만 비용이 많이 든다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;2. Data Centers&lt;/h2&gt;
-&lt;h3&gt;2-1. Google data center&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=XZmGGAbHqa0&quot;&gt;https://www.youtube.com/watch?v=XZmGGAbHqa0&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;memcache, facebook, naver...&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h3&gt;2-2. Facebooks Photo Storage&lt;/h3&gt;
-&lt;h4&gt;Haystack&lt;/h4&gt;
-&lt;p&gt;이전까지는 photo store sever라는 것이 따로 있어서 CDN에서 서버에 1차로 요청하면 서버에서는 사진이 저장되어 있는 NAS storage에 2차로 요청해 데이터를 가져왔다. 하지만 이렇게되면 디스크에 접근하는 횟수가 많아져서 느리다. haystack photo storage architecture는 디스크 접근 횟수를 줄이기 위해 index를 이용하였다.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ko.coco.wikidok.net/api/File/Real/59c64adf50cbf45e4ee82eae&quot; width=&quot;467&quot; height=&quot;389&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;CDNs&lt;/strong&gt;: Content Delivery Networks&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Haystack Cache&lt;/strong&gt;: 사진들이 어디에 저자오디어 있는지 index가 써져있다. index를 알기 때문에 disk acess는 한 번만 하면 되고 속도는 상당히 올라간다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Haystack Store&lt;/strong&gt;: memcached-based file index&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;div contenteditable=&quot;false&quot;&gt;
-&lt;div class=&quot;alert wiki-alert-default00&quot; contenteditable=&quot;true&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Memcached&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;캐싱을 디스크에 하는 대신 RAM에 올리는 방법. 사진 파일의 위치 정보인 인덱스를 메모리에 모두 올렸다(in-memroy index). external data source에 접근 횟수를 줄이는 것이 목적.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;h4&gt;Cold Storage&lt;/h4&gt;
-&lt;p&gt;오래 전에 올라온 사진 보다 최근에 업로드 된 사진으로 접근하는 경우가 많았다. (the older, and thuss less popular, less accessed) 하지만 모든 사진은 같은 데이터 센터에 보관되어 있기 때문에 많은 에너지와 메모리가 필요하다.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;cold storage systmen은 서버 한 대가 여러개의 하드디스크를 관리하는 형태이다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Disks: rack 마다 2PB의 저장소&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Power saving&lt;/strong&gt;: on/off duty cycle. &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Storage saving: Erasure coding (Reed-Solomon error correction code&lt;br /&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;replication 효율을 3배로 늘릴 수 있는 방법.&lt;/p&gt;
-&lt;p&gt;Reed-solomon coding: 코딩으로 4개의 블럭을 더 만들어 block recovery를 가능하게함.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Memi</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Distributed System" />
-      
-
-      
-        <summary type="html">1. Distributed Storage 1-1. RAID systems RAID: Redundant Array of Independent Disks 하드디스크를 여러 개 배치해 사용함으로 신뢰성(reliability)를 높인다. RAID는 신뢰성(reliability)과 성능 향상(performance)를 높이기 위해 사용된다. 신뢰성을 향상시키기 위해 중복(redundancy)! Mirroring: 두 개의 물리적 디스크로 구성되어진 하나의 개념적 디스크인데, 모든 write 작업은 두 개의 디스크에 각각 전달된다. Mean time to failure(MTTF): disk failure가 발생할 때 까지 걸리는 시간을 말한다. 싱글 디스크일 때 100,000 시간 이라면 두 개의 디스크를 사용 할 때는 두 개의 디스크 모두에 failure 가 일어나야 하므로 100,000^2 /(2*10) 시간임. 성능을 향상시키기 위해 평행성(parallelism)! Mirrroing 사용 시 : 단위 시간 당 읽기 횟수가 두 배로 증가. 즉, 같은 시간이 주어진다면 더 많은 읽기가 가능하다. Data Striping: 블락 단위의 파일이 복수의 디스크에 순서대로(stripe) 로 저장되어 있다. n 개의 디스크와 i번째 파일 블락은 (i mod n)+1 의 디스크에 위치하게 된다. 모든 디스크가 모든 액세스, read/write할 때 참여하게 된다. 싱글 디스크가 한 번 read/write 하는 시간 동안 각각의 디스크가 read/write 할 수 있다!  RAID 0 file을 block 단위로 쪼개서 parity 혹은 striping한다. mirroring 없음. read/write 효율: nX (n: 디스크의 수) 디스크의 데이터 접근은 속도가 다른 장치에 비해 현저히 느리기 때문에 성능에 있어 병목(bottle neck)현상이 발생한다. 만일 같은 시간이 주어진다면 디스크가 많을 수록 read/write를 더 많이 할 수 있다. Space efficiency = 1 (디스크 하나와 같음!) No data redundancy: 이 뜻은 protection을 제공하지 않음. error 나 failure이 떠도 방도가 없다. RAID 1 mirroring 있음 parity 혹은 striping 없음. read 효율 : nX write 효율 : X Error/Failure 지원 (n-1개 까지 에러가 허용된다.) Space efficiency = 1/n (카피는 n개인데 디스크 하나의 효율과 같다.) RAID 4 Block-level striping 있음 parity disk 있음 (A = A1+A2+A3, A: parity block) read/write 효율 = (n-1)X (parity disk 하나가 에러 방지용이기 때문에 1개 빼야함) 근데 write 할 때는 parity disk 계산 시간이 필요함 Space efficiency = (n-1)/n (디스크는 n개인데 실질적 데이터를 저장하는 디스크는 n-1개) 하나의 disk failure 까지 방지 할 수 있다! (연산으로 유추하면 됨, 만일 parity disk가 하나 더 있다면 두 개 까지 복구 가능) 문제점: Parity disk가 write시 항상 쓰여짐 (high stress for parity disk) RAID 5 제일 많이 쓰는 방법. Block-level striping 있음 distributed parity (RAID4와 다른 점: parity 정보가 드라이브 안에 분산되어 있음) read 효율: (n-1)X  혹은 nX 블럭 수가 3개 이하 : RAID4와 같은 상황이므로 (n-1)X 블럭 수가 3개 보다 많음: nX (특정 parity disk를 두는 것이 아니기 때문에 모든 디스크가 read에 참여한다.) write 효율: RAID 4와 같음 (에러 방지용으로 parity block을 만들었고, 계산에도 시간이 걸린다. 결과적으로는 write하는 수가 같다.) Space efficiency: RAID 4와 같음 (결론적인 실질적 데이터 저장량)  write할 때의 부담이 모든 디스크에게 분산되었다.  RAID level 선택하기 Rebuild performance (복구 시 걸리는 시간) disk failure가 발생하면 데이터를 복구해야하고 이 때 시간이 걸림 RAID 1: 똑같은 데이터가 하나 더 있기 때문에 복사해 오면 된다. 매우 쉽다. RAId 4,5 : 다른 디스크에 접속해서 연산을 거쳐야한다. (디스크가 클 경우에는 수 시간이 걸릴 수도 있음) RAID level usage  RAID 0: 데이터를 좀 날려도 괜찮은데 높은 성능을 원할 때 RAID 1: reliability도 어느 정도 있지만 복구도 빨리하고 싶을 때. (데이터 손실이 많은서버에서 주로 이용) RAID 5: 많은 양의 데이터를 저장할 때. RAID 0 보다는 reliability가 높음 RAID type Read efficiency Write efficiency Space efficiency Failure protection No RAID(1 disk) 1 1 1 0 RAID 0 (n disks) n n 1 0 RAID 1 (n disks) n 1 1/n n-1 RAID 2 (n disks) n-1 n-1 (n-1)/n 1 1-2. Storage network DAS (Direct Attached Storage): 케이블을 이용해 직접적으로 storage끼리 연결. 물리적으로 선을 연결해줘야하기 때문에 '공유'하기에 좋지 않다. NAS (Network Attached Storage): 네트워크를 통해 모든 storage에게 서버를 연결해준다. 공유하기엔 좋지만 속도가 떨어짐. SAN (Storage Area Network): 클라이언트는 네트워크를 이용해 접근하지만 서버인 storage는 private network로 연결되어 있다. (광케이블과 스위치로 local하게 연결되어 있음.) NAS에 비해 속도는 빨라졌지만 비용이 많이 든다. 2. Data Centers 2-1. Google data center https://www.youtube.com/watch?v=XZmGGAbHqa0 memcache, facebook, naver... 2-2. Facebooks Photo Storage Haystack 이전까지는 photo store sever라는 것이 따로 있어서 CDN에서 서버에 1차로 요청하면 서버에서는 사진이 저장되어 있는 NAS storage에 2차로 요청해 데이터를 가져왔다. 하지만 이렇게되면 디스크에 접근하는 횟수가 많아져서 느리다. haystack photo storage architecture는 디스크 접근 횟수를 줄이기 위해 index를 이용하였다. CDNs: Content Delivery Networks Haystack Cache: 사진들이 어디에 저자오디어 있는지 index가 써져있다. index를 알기 때문에 disk acess는 한 번만 하면 되고 속도는 상당히 올라간다. Haystack Store: memcached-based file index Memcached 캐싱을 디스크에 하는 대신 RAM에 올리는 방법. 사진 파일의 위치 정보인 인덱스를 메모리에 모두 올렸다(in-memroy index). external data source에 접근 횟수를 줄이는 것이 목적. Cold Storage 오래 전에 올라온 사진 보다 최근에 업로드 된 사진으로 접근하는 경우가 많았다. (the older, and thuss less popular, less accessed) 하지만 모든 사진은 같은 데이터 센터에 보관되어 있기 때문에 많은 에너지와 메모리가 필요하다. cold storage systmen은 서버 한 대가 여러개의 하드디스크를 관리하는 형태이다. Disks: rack 마다 2PB의 저장소 Power saving: on/off duty cycle.  Storage saving: Erasure coding (Reed-Solomon error correction code replication 효율을 3배로 늘릴 수 있는 방법. Reed-solomon coding: 코딩으로 4개의 블럭을 더 만들어 block recovery를 가능하게함.</summary>
       
 
       

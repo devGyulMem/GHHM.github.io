@@ -2,7 +2,7 @@
 layout: post
 current: post
 cover: assets/images/katalonlogo.png 
-title:  "WebUI Keywords"
+title:  "WebUI Element 1"
 navigation: True
 tags: [katalon-studio]
 class: post-template
