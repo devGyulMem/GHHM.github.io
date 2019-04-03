@@ -7,6 +7,7 @@ tags: [ErrorAndSolution]
 class: post-template
 subtitle: ".un file 자동생성 끄기"
 background: assets/images/jekyll.png
+cover: assets/images/jekyll.png
 subclass: 'post tag-getting-started'
 author: mem
 ---

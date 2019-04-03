@@ -7,6 +7,7 @@ tags: [ErrorAndSolution]
 class: post-template
 subtitle: "CRLF will be LF"
 background: assets/images/git.png
+cover: assets/images/git.png
 subclass: 'post tag-getting-started'
 author: mem
 ---

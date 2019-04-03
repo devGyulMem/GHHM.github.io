@@ -7,6 +7,7 @@ tags: [ErrorAndSolution]
 class: post-template
 subtitle: "호스팅 할 때 baseurl 문제"
 background: assets/images/github-pages.png
+cover: assets/images/github-pages.png
 subclass: 'post tag-getting-started'
 author: mem
 ---
