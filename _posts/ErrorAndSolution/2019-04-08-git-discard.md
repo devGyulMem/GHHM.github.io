@@ -5,7 +5,7 @@ title:  "Git discard"
 navigation: True
 tags: [ErrorAndSolution]
 class: post-template
-subtitle: "git rebase conflict"
+subtitle: "git discard (unstaged changes)"
 background: assets/images/git.png
 cover: assets/images/git.png
 subclass: 'post tag-getting-started'
