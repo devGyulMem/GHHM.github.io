@@ -1,4 +1,4 @@
----
+--
 layout: post
 cover: assets/images/katalonlogo.png 
 title:  "WebElement to TestObject"
@@ -23,9 +23,13 @@ table안에 있는 내용을 갖고 오고 싶다. xpath를 tr 단위의 넓은 
 
 `List<WebElement> CBList = WebUI.findWebElements(findTestObject('Object Repository/Page_Admin_RecruitNotice_CodeManage/checkbox_list_all'), 2)` 
 
-> xpath를 넓은 범위로 잡는다?
-> 테이블 에서 첫번째 raw의 xpath는 다음과 같다. `//table[@id='modalTable']/tbody/tr[1]/td/label/input[@class='checkbox']`
-> tr의 index를 제외하면 해당 테이블의 모든 raw의 xpath를 가져올 수 있다. `//table[@id='modalTable']/tbody/tr/td/label/input[@class='checkbox']`
+> **xpath를 넓은 범위로 잡는다?** 이게 무슨 말?
+>
+> 테이블 에서 첫번째 raw의 xpath는 다음과 같다. <br>
+> `//table[@id='modalTable']/tbody/tr[1]/td/label/input[@class='checkbox']`
+>
+> tr의 index를 제외하면 해당 테이블의 모든 raw의 xpath를 가져올 수 있다. <br>
+> `//table[@id='modalTable']/tbody/tr/td/label/input[@class='checkbox']`
 
 이렇게하면 문제가 뭐냐..
 카탈론은 WebUI로 액션을 주고 싶을 때 TestObject 객체를 파라미터로 넘겨야하는데 저렇게 가져온 리스트의 데이터타입은 WebElement다.
