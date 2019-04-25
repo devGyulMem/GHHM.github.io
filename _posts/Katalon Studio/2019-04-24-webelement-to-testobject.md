@@ -58,3 +58,22 @@ table안에 있는 내용을 갖고 오고 싶다. xpath를 tr 단위의 넓은 
 개빡침
 xpath를 직접 작성하여 가져오는 일은 하고싶지 않았는데.. A ㅏ ..
 방법을 생각해 보겠음 .. 
+
+
+*추가 
+카탈론 내부의 디폴트 커프텀 키워드에 HTMl 테이블을 핸들링하는 키워드가 있음...
+
+```groovy
+	/**
+	 * Get all rows of HTML table
+	 * @param table Katalon test object represent for HTML table
+	 * @param outerTagName outer tag name of TR tag, usually is TBODY
+	 * @return All rows inside HTML table
+	 */
+	@Keyword
+	def List<WebElement> getHtmlTableRows(TestObject table, String outerTagName) {
+		WebElement mailList = WebUiBuiltInKeywords.findWebElement(table)
+		List<WebElement> selectedRows = mailList.findElements(By.xpath("./" + outerTagName + "/tr"))
+		return selectedRows
+	}
+```
