@@ -3,7 +3,7 @@ layout: post
 current: post
 title:  "Web driver 실행 에러 발생"
 navigation: True
-tags: [ErrorAndSolution]
+tags: [ErrorAndSolution, KatalonStudio]
 class: post-template
 subtitle: "Chromedriver 버전 문제"
 background: assets/images/git.png
