@@ -7,7 +7,7 @@ tags: [ErrorAndSolution, Katalon Studio]
 class: post-template
 subtitle: "Chromedriver 버전 문제"
 background: assets/images/katalonlogo.png
-cover: assets/images/git.png
+cover: assets/images/katalonlogo.png
 subclass: 'post tag-getting-started'
 author: mem
 ---
