@@ -1,12 +1,12 @@
 ---
 layout: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/selenium-logo.png 
 title:  "Selenium - csp disable"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "Refused to load the script - 동적 스크립트 삽입으로 막혔을 때"
-background: assets/images/katalonlogo.png 
+background: assets/images/selenium-logo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---
