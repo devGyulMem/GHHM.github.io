@@ -1,13 +1,13 @@
 ---
 layout: post
 current: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "WebUI Element 1"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "Delete all cookies, Execute JavaScript, Forward, Get Page Height"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

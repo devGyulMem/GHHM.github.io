@@ -6,7 +6,7 @@ navigation: True
 tags: [ErrorAndSolution]
 class: post-template
 subtitle: "지킬 실행 시 local에서 정상작동하나 github page에서 css가 깨지는 문제"
-background: assets/images/jekyll.png
+background: assets/images/cover/jekyll.png
 subclass: 'post tag-getting-started'
 author: mem
 ---

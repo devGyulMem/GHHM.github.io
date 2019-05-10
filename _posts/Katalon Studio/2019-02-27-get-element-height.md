@@ -1,13 +1,13 @@
 ---
 layout: post
 current: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "WebUI Element 3"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "get element height/left position/width, mouse over/over offset, right click/click offset, scroll to element"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

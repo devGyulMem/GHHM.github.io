@@ -1,13 +1,13 @@
 ---
 layout: post
 current: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "Assertions"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "get page width, get url, get viewport height, get viewport left position, get viewport top position, get viewport width"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

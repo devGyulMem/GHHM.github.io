@@ -1,13 +1,13 @@
 ---
 layout: post
 current: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "Verify Element Checked"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "Verify element checked, deselect all option, deselect option by index, deselect option by value, get number of selected option, get number of total option"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

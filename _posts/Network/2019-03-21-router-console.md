@@ -5,7 +5,6 @@ navigation: True
 tags: [Network]
 class: post-template
 subtitle: "user mode, global mode"
-background: assets/images/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

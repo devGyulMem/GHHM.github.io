@@ -1,12 +1,12 @@
 ---
 layout: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "WebElement to TestObject"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "카탈론에서 WebElement를 TestObject로 바꾸는 방법"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---

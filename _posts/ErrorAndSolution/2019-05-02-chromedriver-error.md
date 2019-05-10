@@ -6,8 +6,8 @@ navigation: True
 tags: [ErrorAndSolution, Katalon Studio]
 class: post-template
 subtitle: "Chromedriver 버전 문제"
-background: assets/images/selenium-logo.png
-cover: assets/images/selenium-logo.png
+background: assets/images/cover/selenium-logo.png
+cover: assets/images/cover/selenium-logo.png
 subclass: 'post tag-getting-started'
 author: mem
 ---

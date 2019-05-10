@@ -6,8 +6,8 @@ navigation: True
 tags: [ErrorAndSolution]
 class: post-template
 subtitle: "git rebase conflict"
-background: assets/images/git.png
-cover: assets/images/git.png
+background: assets/images/cover/git.png
+cover: assets/images/cover/git.png
 subclass: 'post tag-getting-started'
 author: mem
 ---

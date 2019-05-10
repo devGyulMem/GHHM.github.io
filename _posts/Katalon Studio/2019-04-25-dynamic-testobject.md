@@ -1,12 +1,12 @@
 ---
 layout: post
-cover: assets/images/katalonlogo.png 
+cover: assets/images/cover/katalonlogo.png 
 title:  "Dynamic test object"
 navigation: True
 tags: [Katalon Studio]
 class: post-template
 subtitle: "정적 및 동적 테스트 오브젝트 핸들링"
-background: assets/images/katalonlogo.png 
+background: assets/images/cover/katalonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
 ---
