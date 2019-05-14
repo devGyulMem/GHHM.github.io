@@ -17,6 +17,8 @@ author: mem
 
 > An error has occurred. See the log file
 
+위 메시지가 뜨면서 카탈론 스튜디오 실행이 안된다.
+
 # Solution
 
 5.x 버전에서 나타나는 현상이라 버전을 업그레이드하면 해결된다고 한다.
