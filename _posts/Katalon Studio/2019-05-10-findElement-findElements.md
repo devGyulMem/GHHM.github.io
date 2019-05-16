@@ -1,3 +1,17 @@
+---
+layout: post
+cover: assets/images/cover/selenium-logo.png 
+title:  "find element와 find elements 차이점"
+navigation: True
+tags: [Katalon Studio, Selenium]
+class: post-template
+subtitle: "find element vs find elements"
+background: assets/images/cover/selenium-logo.png 
+subclass: 'post tag-getting-started'
+author: mem
+---
+
+
 
 # Selenium
 # find element vs find elements

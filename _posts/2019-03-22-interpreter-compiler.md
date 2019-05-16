@@ -2,9 +2,8 @@
 layout: post
 current: post
 navigation: True
-title: Welcome to Ghost
-date: 2017-07-27 10:00:00
-tags: [Getting started]
+title: Interpretoer vs Compiler
+tags: [Etc]
 class: post-template
 subclass: 'post tag-getting-started'
 author: mem

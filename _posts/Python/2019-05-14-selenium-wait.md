@@ -1,3 +1,16 @@
+---
+layout: post
+cover: assets/images/cover/selenium-logo.png 
+title:  "Selenium - 암시적 대기, 명시적 대기"
+navigation: True
+tags: [Selenium]
+class: post-template
+subtitle: "Implicitly wait vs Explicitly wait"
+background: assets/images/cover/selenium-logo.png 
+subclass: 'post tag-getting-started'
+author: mem
+---
+
 # Implicitly wait vs Explicitly wait
 
 ## Problem

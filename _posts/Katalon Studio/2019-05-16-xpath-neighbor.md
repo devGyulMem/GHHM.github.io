@@ -1,3 +1,16 @@
+---
+layout: post
+cover: assets/images/cover/selenium-logo.png 
+title:  "Xpath Axes 축 설정하여 상대적 위치 표현하기"
+navigation: True
+tags: [Katalon Studio, Selenium]
+class: post-template
+subtitle: "Xpath neighbor"
+background: assets/images/cover/selenium-logo.png 
+subclass: 'post tag-getting-started'
+author: mem
+---
+
 # Xpath neighbor
 
 동적 엘리먼트의 경우 미리 static한 xpath를 구하기 쉽지 않다.

@@ -1,3 +1,16 @@
+---
+layout: post
+cover: assets/images/cover/pythonlogo.png 
+title:  "서버시간 알아내기"
+navigation: True
+tags: [Python]
+class: post-template
+subtitle: "도메인과 시간 동기화 / reqeust로 서버시간 구하기"
+background: assets/images/cover/pythonlogo.png 
+subclass: 'post tag-getting-started'
+author: mem
+---
+
 # 자동화 폼 제출
 
 request를 보내서 서버 시간을 알아오는 방법도 있지만 아무래도 latancy 때문에 정확하지 않다.
@@ -42,7 +55,7 @@ while not end:
         
 ```
 
-### simple fine element code
+### simple find element code
 
 ``` python
 from selenium import webdriver as wd
