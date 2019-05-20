@@ -1,11 +1,11 @@
 ---
 layout: post
 cover: assets/images/cover/pythonlogo.png 
-title:  "서버시간 알아내기"
+title:  "웹 크롤링"
 navigation: True
 tags: [Python]
 class: post-template
-subtitle: "도메인과 시간 동기화 / reqeust로 서버시간 구하기"
+subtitle: "web crawling - beautifulsoup, selenium"
 background: assets/images/cover/pythonlogo.png 
 subclass: 'post tag-getting-started'
 author: mem
