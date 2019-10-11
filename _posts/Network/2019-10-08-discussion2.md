@@ -52,3 +52,21 @@ C가 IPv4이기 때문에, IPv4가 이해할 수 있는 헤더를 붙여줘야�
 
 ## 4. SDN OpenFlow network가 있다. S2에 datagram이 도착했다고 가정하자
 
+SDN : 소프트웨어로 통신 흐름을 관리하는 통신 네트워크
+
+![Alt text](/assets/images/post/discussion2-SDN-openflow.png)
+
+### 4-1. S2에 source IP address "203.21.1.2"의 데이터그램이 도착하면 차단한다. (Firewall)
+
+| match               | action |
+|---------------------|--------|
+| IP Src = 203.21.1.2 | drop   |
+
+### 4-2. port 1 에서 도착한 host h5 또는 h6의 목적지가 h1 또는 h2일 때 output port 2로 포워딩한다.
+
+| match               | action |
+|---------------------|--------|
+|Ingress = port 1     | forward(2)   |
+| IP Src = 10.3.\*.\* | |
+| IP Dst = 10.1.\*.\* | |
+
